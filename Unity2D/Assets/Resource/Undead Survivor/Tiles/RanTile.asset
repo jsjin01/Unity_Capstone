@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RanTile
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 0}
+  m_DefaultGameObject: {fileID: 1399456817023787441, guid: bd1d3a307d09cb440a7361eecc9c3d8c, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
