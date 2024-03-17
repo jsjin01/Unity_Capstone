@@ -101,6 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   dmg: 2
+  bulletSprites:
+  - {fileID: -537537479, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  - {fileID: 154122315, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  - {fileID: -1327499133, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
 --- !u!50 &2831679126029030861
 Rigidbody2D:
   serializedVersion: 4

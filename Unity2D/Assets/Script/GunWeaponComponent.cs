@@ -16,21 +16,30 @@ public enum DIRECTION // 방향 => 플레이어에서 받음
     LEFT,
     RIGHT
 }
-public class GunWeapon : MonoBehaviour
+public class GunWeaponComponent : MonoBehaviour
 {
+    public static GunWeaponComponent i;
 
     Vector3 Pos = Vector3.zero;                 //현재 위치
     Vector3 aimPos = Vector3.zero;              //총알이 날라가는 위치
     Quaternion rotation = Quaternion.identity;  //총알 각도=> sprite 조정하는데 사용
 
-    int atk = 10;               //공격력
-    float atkSpd = 0.1f;        //공격속도
-    GUN Type = GUN.HANDGUN;     //무기타입
-    bool isShot = true;         //발사 가능 판단 변수
+    public int atk { get; private set; } = 10;              //공격력 //밖에서는 가져다쓸 수 있지만 수정 불가능
+    float atkSpd = 0.1f;                                    //공격속도
+    public GUN Type { get; private set; } = GUN.HANDGUN;     //무기타입
+    bool isShot = true;                                      //발사 가능 판단 변수
 
+    [SerializeField] Sprite[] gunSprite;    //스프라이트 보관
+    [SerializeField] SpriteRenderer sr;     //스프라이트랜더러 변수
+
+    private void Awake()
+    {
+        i = this;
+    }
     void Start()
     {
         Pos = transform.position;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -42,6 +51,11 @@ public class GunWeapon : MonoBehaviour
             {
                 Shoot(DIRECTION.RIGHT);
             }
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            sr.sprite = gunSprite[2];
+            Type = GUN.RIFFLE;
         }
     }
 
