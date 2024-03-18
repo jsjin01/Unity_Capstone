@@ -5,16 +5,16 @@ using UnityEngine.UIElements;
 
 public class BulletComponet : MonoBehaviour
 {
-    [SerializeField] float speed = 10f;     //ÃÑ¾Ë ¼Óµµ
-    [SerializeField] int dmg;               //µ¥¹ÌÁö
-    Rigidbody2D rb;
+    [SerializeField] float speed = 10f;     //ï¿½Ñ¾ï¿½ ï¿½Óµï¿½
+    [SerializeField] int dmg;               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    Rigidbody2D rb2;
 
-    GUN Type;     //ÃÑ¾Ë Á¾·ù
-    [SerializeField] Sprite[] bulletSprites; //½ºÇÁ¶óÀÌÆ® °ü¸®
-    SpriteRenderer sr;                       //½ºÇÁ¶óÀÌÆ® ·£´õ·¯¸¦ °¡Á®¿È
+    GUN Type;     //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] Sprite[] bulletSprites; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    SpriteRenderer sr;                       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-    public void Move(Vector3 p)             //º¤ÅÍ¸¦ ¹Þ¾Æ¼­ »ç¿ë
+    public void Move(Vector3 p)             //ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½
     {
         if (rb == null)
         {
@@ -23,16 +23,16 @@ public class BulletComponet : MonoBehaviour
         dmg = GunWeaponComponent.i.atk;
         Type = GunWeaponComponent.i.Type;
         StateChange(Type);
-        rb.velocity = p.normalized * speed; //ÇØ´ç À§Ä¡·Î ¼Óµµ ºÎ¿©
-        Invoke("DestroyBullet", 5);         //5ÃÊ µÚ DestroyBullet È£Ãâ!!
+        rb.velocity = p.normalized * speed; //ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Óµï¿½ ï¿½Î¿ï¿½
+        Invoke("DestroyBullet", 5);         //5ï¿½ï¿½ ï¿½ï¿½ DestroyBullet È£ï¿½ï¿½!!
     }
 
-    private void DestroyBullet()                //ÃÑ¾Ë ¾ø¾Ö´Â ÇÔ¼ö
+    private void DestroyBullet()                //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½
     {
-        BulletPoolManager.i.ReturnBullet(gameObject);   //Ç®¿¡ ³Ö°í Àç»ç¿ë
+        BulletPoolManager.i.ReturnBullet(gameObject);   //Ç®ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
-    private void StateChange(GUN t) //»óÅÂ º¯È­
+    private void StateChange(GUN t) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
     {
      
         if (sr == null)
@@ -61,9 +61,9 @@ public class BulletComponet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-        //¸ó½ºÅÍ°¡ ÇÇÇØ¸¦ ÀÔ´Â ºÎºÐ       
+        //ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Ô´ï¿½ ï¿½Îºï¿½       
         }
-        CancelInvoke("DestroyBullet");      //¸î ÃÊµÚ¿¡ »èÁ¦ÇÑ´Ù´Â ¸í·ÉÀ» ¾ø¾Ú
-        DestroyBullet();                    //¹Ù·Î »èÁ¦
+        CancelInvoke("DestroyBullet");      //ï¿½ï¿½ ï¿½ÊµÚ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        DestroyBullet();                    //ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
