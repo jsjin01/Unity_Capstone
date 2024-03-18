@@ -7,7 +7,7 @@ public class BulletComponet : MonoBehaviour
 {
     [SerializeField] float speed = 10f;     //�Ѿ� �ӵ�
     [SerializeField] int dmg;               //������
-    Rigidbody2D rb2;
+    Rigidbody2D rb;
 
     GUN Type;     //�Ѿ� ����
     [SerializeField] Sprite[] bulletSprites; //��������Ʈ ����
