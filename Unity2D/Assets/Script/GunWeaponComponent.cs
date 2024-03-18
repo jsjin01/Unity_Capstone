@@ -14,7 +14,8 @@ public enum DIRECTION // ���� => �÷��̾�� ����
     UP,
     DOWN,
     LEFT,
-    RIGHT
+    RIGHT,
+    BASIC
 }
 public class GunWeaponComponent : MonoBehaviour
 {
