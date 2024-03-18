@@ -2,35 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-public enum GUN //ÃÑ Á¾·ù
+public enum GUN //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
-    HANDGUN,    //±ÇÃÑ
-    SHOTGUN,    //¼¦°Ç
-    RIFFLE      //¼ÒÃÑ
+    HANDGUN,    //ï¿½ï¿½ï¿½ï¿½
+    SHOTGUN,    //ï¿½ï¿½ï¿½ï¿½
+    RIFFLE      //ï¿½ï¿½ï¿½ï¿½
 }
 
-public enum DIRECTION // ¹æÇâ => ÇÃ·¹ÀÌ¾î¿¡¼­ ¹ÞÀ½
+public enum DIRECTION // ï¿½ï¿½ï¿½ï¿½ => ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
     UP,
     DOWN,
     LEFT,
-    RIGHT
+    RIGHT,
+    asd
 }
 public class GunWeaponComponent : MonoBehaviour
 {
     public static GunWeaponComponent i;
 
-    Vector3 Pos = Vector3.zero;                 //ÇöÀç À§Ä¡
-    Vector3 aimPos = Vector3.zero;              //ÃÑ¾ËÀÌ ³¯¶ó°¡´Â À§Ä¡
-    Quaternion rotation = Quaternion.identity;  //ÃÑ¾Ë °¢µµ=> sprite Á¶Á¤ÇÏ´Âµ¥ »ç¿ë
+    Vector3 Pos = Vector3.zero;                 //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    Vector3 aimPos = Vector3.zero;              //ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ó°¡´ï¿½ ï¿½ï¿½Ä¡
+    Quaternion rotation = Quaternion.identity;  //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½=> sprite ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½
 
-    public int atk { get; private set; } = 10;              //°ø°Ý·Â //¹Û¿¡¼­´Â °¡Á®´Ù¾µ ¼ö ÀÖÁö¸¸ ¼öÁ¤ ºÒ°¡´É
-    float atkSpd = 0.1f;                                    //°ø°Ý¼Óµµ
-    public GUN Type { get; private set; } = GUN.HANDGUN;     //¹«±âÅ¸ÀÔ
-    bool isShot = true;                                      //¹ß»ç °¡´É ÆÇ´Ü º¯¼ö
+    public int atk { get; private set; } = 10;              //ï¿½ï¿½ï¿½Ý·ï¿½ //ï¿½Û¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½
+    float atkSpd = 0.1f;                                    //ï¿½ï¿½ï¿½Ý¼Óµï¿½
+    public GUN Type { get; private set; } = GUN.HANDGUN;     //ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
+    bool isShot = true;                                      //ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    [SerializeField] Sprite[] gunSprite;    //½ºÇÁ¶óÀÌÆ® º¸°ü
-    [SerializeField] SpriteRenderer sr;     //½ºÇÁ¶óÀÌÆ®·£´õ·¯ º¯¼ö
+    [SerializeField] Sprite[] gunSprite;    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] SpriteRenderer sr;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Awake()
     {
@@ -66,7 +67,7 @@ public class GunWeaponComponent : MonoBehaviour
         BulletPoolManager.i.UseBullet(Pos, aimPos, rotation);
     }
 
-    void Aim(DIRECTION dir) // ³ª°¡´Â ¹æÇâ°ú °¢µµ ¼öÁ¤
+    void Aim(DIRECTION dir) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         if(dir == DIRECTION.UP)
         {
