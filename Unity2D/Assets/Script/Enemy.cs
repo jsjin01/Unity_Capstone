@@ -12,14 +12,14 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
 
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
     }
 
-    void fixedUpdate()
+    void FixedUpdate()
     {
         if (!isLive) return; // Live Check
 
