@@ -38,13 +38,13 @@ public class GunWeaponComponent : MonoBehaviour
     }
     void Start()
     {
-        Pos = transform.position;
         sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Pos = transform.position;
         if (Input.GetKey(KeyCode.Space))
         {
             if (isShot)
