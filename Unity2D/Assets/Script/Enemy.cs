@@ -38,6 +38,6 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>(); // target init
     }
 }
