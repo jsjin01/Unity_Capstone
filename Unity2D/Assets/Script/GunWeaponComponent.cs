@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-public enum GUN //?? ????
+public enum GUN 
 {
-    HANDGUN,    //????
-    SHOTGUN,    //????
-    RIFFLE      //????
+    HANDGUN,    
+    SHOTGUN,   
+    RIFFLE     
 }
 
-public enum DIRECTION // ???? => ?��?????? ????
+
+
+public enum DIRECTION 
 {
     UP,
     DOWN,
@@ -20,17 +22,20 @@ public class GunWeaponComponent : MonoBehaviour
 {
     public static GunWeaponComponent i;
 
-    Vector3 Pos = Vector3.zero;                 //???? ???
-    Vector3 aimPos = Vector3.zero;              //????? ?????? ???
-    Quaternion rotation = Quaternion.identity;  //??? ????=> sprite ??????��? ???
+    Vector3 Pos = Vector3.zero;                 
+    Vector3 aimPos = Vector3.zero;              
+    Quaternion rotation = Quaternion.identity;  
+      
 
-    public int atk { get; private set; } = 10;              //????? //??????? ??????? ?? ?????? ???? ?????
-    float atkSpd = 0.1f;                                    //??????
-    public GUN Type { get; private set; } = GUN.HANDGUN;     //???????
-    public bool isShot = true;                                      //??? ???? ??? ????
+    public int atk { get; private set; } = 10;              
+    float atkSpd = 0.1f;                                
+    public GUN Type { get; private set; } = GUN.HANDGUN;    
+    public bool isShot = true;                                      
+                                          
 
-    [SerializeField] Sprite[] gunSprite;    //????????? ????
-    [SerializeField] SpriteRenderer sr;     //??????????????? ????
+
+    [SerializeField] Sprite[] gunSprite;    
+    [SerializeField] SpriteRenderer sr;     
 
     private void Awake()
     {
@@ -66,7 +71,7 @@ public class GunWeaponComponent : MonoBehaviour
         BulletPoolManager.i.UseBullet(Pos, aimPos, rotation);
     }
 
-    void Aim(DIRECTION dir) // ?????? ????? ???? ????
+    void Aim(DIRECTION dir) 
     {
         if(dir == DIRECTION.UP)
         {
