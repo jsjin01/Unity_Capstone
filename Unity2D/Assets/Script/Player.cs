@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
 
-        gunWeaponComponent.Update();
+        //gunWeaponComponent.Update();
     }
 
     void FixedUpdate()
