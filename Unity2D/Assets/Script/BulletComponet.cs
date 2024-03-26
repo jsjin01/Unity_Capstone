@@ -21,7 +21,7 @@ public class BulletComponet : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         }
         dmg = GunWeaponComponent.i.atk;
-        Type = GunWeaponComponent.i.Type;
+        Type = GunWeaponComponent.i.type;
         StateChange(Type);
         rb.velocity = p.normalized * speed; //�ش� ��ġ�� �ӵ� �ο�
         Invoke("DestroyBullet", 5);         //5�� �� DestroyBullet ȣ��!!
@@ -61,9 +61,8 @@ public class BulletComponet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-        //���Ͱ� ���ظ� �Դ� �κ�       
+            CancelInvoke("DestroyBullet");     
+            DestroyBullet();
         }
-        CancelInvoke("DestroyBullet");      //�� �ʵڿ� �����Ѵٴ� ����� ����
-        DestroyBullet();                    //�ٷ� ����
     }
 }

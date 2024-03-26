@@ -9,58 +9,45 @@ public enum GUN
     RIFFLE     
 }
 
-
-
-public enum DIRECTION 
-{
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
-}
 public class GunWeaponComponent : MonoBehaviour
 {
     public static GunWeaponComponent i;
-
     Vector3 Pos = Vector3.zero;                 
     Vector3 aimPos = Vector3.zero;              
-    Quaternion rotation = Quaternion.identity;  
-      
+    Quaternion rotation = Quaternion.identity;
 
     public int atk { get; private set; } = 10;              
     float atkSpd = 0.1f;                                
-    public GUN Type { get; private set; } = GUN.HANDGUN;    
-    public bool isShot = true;                                      
+    public GUN type = GUN.HANDGUN;    
+    bool isAttack = true;                                      
                                           
-
-
     [SerializeField] Sprite[] gunSprite;    
-    [SerializeField] SpriteRenderer sr;     
+    [SerializeField] SpriteRenderer sr;
 
     private void Awake()
     {
         i = this;
     }
-    void Start()
+    private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        WeaponComponent.i.gEvt += () =>
+        {
+            StopAllCoroutines();
+            isAttack = true;
+        };
     }
-
     // Update is called once per frame
     public void Update()
     {
+        type = WeaponComponent.i.g;
+        ChangeSprite(type);
         Pos = transform.position;
         if (Input.GetKey(KeyCode.Space))
         {
-            if (isShot)
+            if (isAttack)
             {
-                Shoot(DIRECTION.RIGHT);
+                Shoot(Player.i.dir);
             }
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            sr.sprite = gunSprite[2];
-            Type = GUN.RIFFLE;
         }
     }
 
@@ -95,11 +82,26 @@ public class GunWeaponComponent : MonoBehaviour
         }
     }
 
-    IEnumerator ShootCol()
+    IEnumerator ShootCol() //Atk Rate
     {
-        isShot = false;
+        isAttack = false;
         yield return new WaitForSeconds(atkSpd);
-        isShot = true;
+        isAttack = true;
     }
 
+    void ChangeSprite(GUN g)
+    {
+        if(g == GUN.HANDGUN)
+        {
+            sr.sprite = gunSprite[0];
+        }
+        else if(g == GUN.SHOTGUN)
+        {
+            sr.sprite = gunSprite[1];
+        }
+        else if (g == GUN.RIFFLE)
+        {
+            sr.sprite = gunSprite[2];
+        }
+    }
 }

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("# Player Info")]   
     public float hp;
     public float maxHp = 100;
+    public int atk = 20;
+    public float atkSpeed = 1f;
     public int lv;
     public int exp;
     public int[] nextExp = { 100, 140, 196 };

@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DIRECTION
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+}
 public class Player : MonoBehaviour
 {
+    public static Player i;
     public Vector2 inputVec;
     public float speed;
+    public DIRECTION dir = DIRECTION.RIGHT;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -15,16 +24,16 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        spriter = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
-        gunWeaponComponent = GetComponent<GunWeaponComponent>();
+        i = this;
     }
 
 
     void Start()
     {
-        
+        rigid = GetComponent<Rigidbody2D>();
+        spriter = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        gunWeaponComponent = GetComponent<GunWeaponComponent>();
     }
 
     
@@ -33,7 +42,23 @@ public class Player : MonoBehaviour
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
 
-        //gunWeaponComponent.Update();
+        //Set the Player Direction
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            dir = DIRECTION.RIGHT;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        { 
+            dir = DIRECTION.LEFT; 
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            dir = DIRECTION.UP;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            dir = DIRECTION.DOWN;
+        }
     }
 
     void FixedUpdate()
