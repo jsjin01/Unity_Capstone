@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class BulletComponet : MonoBehaviour
 {
     [SerializeField] float speed = 10f;     //�Ѿ� �ӵ�
-    [SerializeField] int dmg;               //������
+    [SerializeField] public int dmg;               //������
     Rigidbody2D rb;
 
     GUN Type;     //�Ѿ� ����

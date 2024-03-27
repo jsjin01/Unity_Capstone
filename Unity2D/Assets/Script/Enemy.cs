@@ -15,17 +15,19 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
+    WaitForFixedUpdate wait;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        wait = new WaitForFixedUpdate();
     }
 
     void FixedUpdate()
     {
-        if (!isLive) return; // Live Check
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return; // Live Check
 
         Vector2 dirVec = target.position - rigid.position; // target Direction
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // nex pos
@@ -53,5 +55,35 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet")) return;
+
+        hp -= collision.GetComponent<BulletComponet>().dmg;
+        StartCoroutine(KnockBack());
+
+        if (hp > 0)
+        {
+            anim.SetTrigger("Hit");
+        }
+        else
+        {
+            Dead();
+        }
+    }
+
+    IEnumerator KnockBack()
+    {
+        yield return wait;
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
     }
 }
