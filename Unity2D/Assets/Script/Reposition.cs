@@ -32,6 +32,16 @@ public class Reposition : MonoBehaviour
                     transform.Translate(playerDir * 20 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f)); // respawn
                 }
                 break;
+            case "Ground":
+                if (distX > distY)
+                {
+                    transform.Translate(Vector3.right * dirX * 40);
+                }
+                else if (distX < distY)
+                {
+                    transform.Translate(Vector3.up * dirY * 40);
+                }
+                break;
         }
 
     }

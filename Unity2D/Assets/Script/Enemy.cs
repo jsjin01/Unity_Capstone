@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer spriter;
     Animator anim;
     WaitForFixedUpdate wait;
+    Collider2D coll;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
+        coll = GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
@@ -46,6 +48,10 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>(); // target init
         isLive = true;
+        coll.enabled = true;
+        rigid.simulated = true;
+        spriter.sortingOrder = 2;
+        anim.SetBool("Dead", false);
         hp = maxHp;
     }
 
@@ -57,32 +63,36 @@ public class Enemy : MonoBehaviour
         hp = data.hp;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
     {
         if (!collision.CompareTag("Bullet")) return;
 
-        hp -= collision.GetComponent<BulletComponet>().dmg;
-        StartCoroutine(KnockBack());
+        hp -= collision.GetComponent<BulletComponet>().dmg; // hp - damage
+        StartCoroutine(KnockBack()); //knockback
 
         if (hp > 0)
         {
             anim.SetTrigger("Hit");
         }
-        else
+        else //die setting
         {
-            Dead();
+            isLive = false;
+            coll.enabled = false;
+            rigid.simulated = false;
+            spriter.sortingOrder = 1;
+            anim.SetBool("Dead", true);
         }
     }
 
-    IEnumerator KnockBack()
+    IEnumerator KnockBack() // knockback
     {
         yield return wait;
-        Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 dirVec = transform.position - playerPos;
-        rigid.AddForce(dirVec.normalized * 10, ForceMode2D.Impulse);
+        Vector3 playerPos = GameManager.instance.player.transform.position; //player pos
+        Vector3 dirVec = transform.position - playerPos; // direct
+        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse); // 5px
     }
 
-    void Dead()
+    void Dead() // Animation-enemy-Dead
     {
         gameObject.SetActive(false);
     }
