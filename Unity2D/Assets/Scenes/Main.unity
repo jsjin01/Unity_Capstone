@@ -19080,7 +19080,7 @@ MonoBehaviour:
   atkSpeed: 1
   lv: 0
   exp: 0
-  nextExp: 640000008c000000c4000000
+  nextExp: 050000008c000000c4000000
   Epool: {fileID: 937606620}
   player: {fileID: 303992220}
 --- !u!4 &1964961805
