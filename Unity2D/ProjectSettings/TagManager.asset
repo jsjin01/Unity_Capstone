@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Ground
   - Area
+  - ItemPotion
   layers:
   - Default
   - TransparentFX

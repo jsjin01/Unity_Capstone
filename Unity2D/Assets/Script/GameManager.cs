@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime = 2 * 10f;
     [Header("# Player Info")]   
-    public float hp;
     public float maxHp = 100;
+    public float hp;
+    public float previousHp;
     public int atk = 20;
     public float atkSpeed = 1f;
     public int lv;
@@ -31,6 +32,11 @@ public class GameManager : MonoBehaviour
         hp = maxHp;
     }
 
+    void FixedUpdate()
+    {
+        previousHp = hp;
+    }
+
     void Update()
     {
         gameTime += Time.deltaTime;
@@ -39,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             gameTime = maxGameTime;
         }
+
     }
 
     public void GetExp()
