@@ -22,9 +22,13 @@ public class Player : MonoBehaviour
 
     GunWeaponComponent gunWeaponComponent;
 
+    public static bool canMove = true;
+    HandControl handControl;
+
     void Awake()
     {
         i = this;
+        handControl = GetComponentInChildren<HandControl>();
     }
 
 
@@ -39,26 +43,34 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
+        if (canMove)
+        {
+            inputVec.x = Input.GetAxisRaw("Horizontal");
+            inputVec.y = Input.GetAxisRaw("Vertical");
 
-        //Set the Player Direction
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            dir = DIRECTION.RIGHT;
+            //Set the Player Direction
+            if (inputVec.x > 0)
+            {
+                dir = DIRECTION.RIGHT;
+            }
+            else if (inputVec.x < 0)
+            {
+                dir = DIRECTION.LEFT;
+
+            }
+            else if (inputVec.y > 0)
+            {
+                dir = DIRECTION.UP;
+            }
+            else if (inputVec.y < 0)
+            {
+                dir = DIRECTION.DOWN;
+            }
+
+
+            handControl.SetDirection(dir);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
-        { 
-            dir = DIRECTION.LEFT; 
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            dir = DIRECTION.UP;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            dir = DIRECTION.DOWN;
-        }
+       
     }
 
     void FixedUpdate()
@@ -78,23 +90,5 @@ public class Player : MonoBehaviour
     }
 
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (!GameManager.instance.isLive)
-            return;
-
-        GameManager.instance.hp -= Time.deltaTime *  10;
-
-        if (GameManager.instance.hp < 0)
-        {
-            for (int index=2; index < transform.childCount; index++)
-            {
-                transform.GetChild(index).gameObject.SetActive(false);
-            }
-
-            anim.SetTrigger("Dead");
-        }
-    }
-
-
+   
 }
