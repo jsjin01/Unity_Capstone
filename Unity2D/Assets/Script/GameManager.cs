@@ -50,13 +50,19 @@ public class GameManager : MonoBehaviour
 
     public void GetExp()
     {
-        exp++;
+        IncreaseExperience(10);
 
-        if(exp == nextExp[lv])
+        if (exp >= nextExp[lv])
         {
             lv++;
             exp = 0;
         }
+    }
+
+    public void IncreaseExperience(int expAmount)
+    {
+        exp += expAmount;
+        Debug.Log("경험치 증가! 현재 경험치: " + exp);
     }
 
 }

@@ -945,12 +945,12 @@ MonoBehaviour:
   spawnData:
   - spriteType: 0
     spawnTime: 0.7
-    hp: 10
+    hp: 20
     speed: 1.5
   - spriteType: 1
-    spawnTime: 0.5
+    spawnTime: 1
     hp: 15
-    speed: 2.5
+    speed: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -19379,7 +19379,7 @@ MonoBehaviour:
   atkSpeed: 1
   lv: 0
   exp: 0
-  nextExp: 050000008c000000c4000000
+  nextExp: 140000008c000000c4000000
   Epool: {fileID: 937606620}
   player: {fileID: 303992223}
 --- !u!4 &1964961805

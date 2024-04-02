@@ -9,14 +9,23 @@ public class Enemy : MonoBehaviour
     public float maxHp; // max hp
     public RuntimeAnimatorController[] animCon; // status
     public Rigidbody2D target; // target
+    public GameObject expPrefab;
+    private Exp expScript;
 
     bool isLive; //Live or Dead
+    bool isStunned;
+    float stunDuration;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
     WaitForFixedUpdate wait;
     Collider2D coll;
+
+    public enum WeaponType
+    {
+        W1, W2, W3, W4, W5, W6, W7, W8,
+    }
 
     void Awake()
     {
@@ -29,7 +38,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return; // Live Check
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || isStunned) return; // Live Check
 
         Vector2 dirVec = target.position - rigid.position; // target Direction
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // nex pos
@@ -61,6 +70,8 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
+        isStunned = false;
+        stunDuration = 3f;
     }
 
     void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
@@ -68,8 +79,21 @@ public class Enemy : MonoBehaviour
         if (!collision.CompareTag("Bullet") || !isLive) return;
 
         hp -= collision.GetComponent<BulletComponet>().dmg; // hp - damage
-        StartCoroutine(KnockBack()); //knockback
 
+        WeaponType Wtype = WeaponType.W2;
+
+        switch (Wtype)
+        {
+            case WeaponType.W1:
+                StartCoroutine(KnockBack()); //knockback
+                break;
+            case WeaponType.W2:
+                StartCoroutine(Stun(stunDuration)); //sturn
+                break;
+            default:
+                //more
+                break;
+        }
         if (hp > 0)
         {
             anim.SetTrigger("Hit");
@@ -81,7 +105,20 @@ public class Enemy : MonoBehaviour
             rigid.simulated = false;
             spriter.sortingOrder = 1;
             anim.SetBool("Dead", true);
-            GameManager.instance.GetExp();
+            //GameManager.instance.GetExp();
+            if (expPrefab != null)
+            {
+                // randdom position
+                Vector2 currentPosition = transform.position;
+                float randomX = Random.Range(-0.5f, 0.5f);
+                float randomY = Random.Range(-0.5f, 0.5f);
+
+                // 1px = 0.01f
+                Vector2 randomOffset = new Vector2(randomX, randomY) * 0.01f;
+
+                // ExpPrefab spawn
+                GameObject expObj = Instantiate(expPrefab, currentPosition + randomOffset, Quaternion.identity);
+            }
         }
     }
 
@@ -91,6 +128,13 @@ public class Enemy : MonoBehaviour
         Vector3 playerPos = GameManager.instance.player.transform.position; //player pos
         Vector3 dirVec = transform.position - playerPos; // direct
         rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse); // 5px
+    }
+
+    IEnumerator Stun(float duration)
+    {
+        isStunned = true;   //stun
+        yield return new WaitForSeconds(duration); //stuntime
+        isStunned = false;  //stun fin
     }
 
     void Dead() // Animation-enemy-Dead
