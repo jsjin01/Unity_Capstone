@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
     WaitForFixedUpdate wait;
     Collider2D coll;
+    EnemyWeapon eWeapon;
 
     public enum WeaponType
     {
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<Collider2D>();
+        eWeapon = GetComponent<EnemyWeapon>();
     }
 
     void FixedUpdate()

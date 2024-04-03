@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4664129867723063212}
   - component: {fileID: 3490491927303544155}
   - component: {fileID: 641910405051439602}
+  - component: {fileID: 7486141299229810852}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -192,6 +193,22 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 12cfc8b2360c2fc4499d4f6f6607671a, type: 2}
   target: {fileID: 0}
   expPrefab: {fileID: 8503212470665202248, guid: 5e9423d4bd5bcb74199387f475d46e07, type: 3}
+--- !u!114 &7486141299229810852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130284751089543944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15911a6e4f98b74ebef6a1985a2dac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBulletPrefab: {fileID: 3402417795599280955, guid: 5e3f9039de41a9b48bd65cef6a39496c, type: 3}
+  firePoint: {fileID: 0}
+  fireRate: 2
+  fireRange: 5
 --- !u!1 &8344582047815713550
 GameObject:
   m_ObjectHideFlags: 0
