@@ -41,4 +41,6 @@ public class SpawnData
     public float spawnTime; // SpawnTime
     public int hp; // health
     public float speed; // speed
+    public float damage;
+    public float defense;
 }

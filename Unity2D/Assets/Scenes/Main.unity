@@ -944,13 +944,17 @@ MonoBehaviour:
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 3
+    spawnTime: 1
     hp: 20
     speed: 1.5
+    damage: 0
+    defense: 0
   - spriteType: 1
-    spawnTime: 10
+    spawnTime: 3
     hp: 15
     speed: 2
+    damage: 0
+    defense: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

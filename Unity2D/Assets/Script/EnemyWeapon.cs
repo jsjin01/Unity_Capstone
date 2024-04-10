@@ -6,6 +6,7 @@ public class EnemyWeapon : MonoBehaviour
 {
     public GameObject enemyBulletPrefab;
     public Transform firePoint;
+    public Transform chargePoint;
     public float fireRate; // bullet time
     public float fireRange = 5f; // distance
     private float nextFireTime;
@@ -18,6 +19,7 @@ public class EnemyWeapon : MonoBehaviour
         nextFireTime = Time.time; // init
         fireRate = 0.5f;
         firePoint = transform; // current pos
+        chargePoint = transform; // current pos
     }
 
     void Update()
@@ -27,17 +29,33 @@ public class EnemyWeapon : MonoBehaviour
         {
             Debug.Log("Fire condition met at time: " + Time.time);
             Debug.Log("Next fire time: " + nextFireTime);
-            ShootAtPlayer(player.position); // player pos
+        //    Fire(player.position); // player pos
             nextFireTime = Time.time + 1f / fireRate;//1f / fireRate; // 1 per sec
         }
     }
 
-    void ShootAtPlayer(Vector2 targetPosition)
+    public void ShootAtPlayer(Vector2 targetPosition)
     {
         GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 direction = (targetPosition - (Vector2)firePoint.position).normalized;
         rb.velocity = direction * 3f; // bullet speed
+    }
+
+    public IEnumerator Charging(Vector2 targetPosition, float chargeSpeed)
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2f);
+
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+        while (Vector2.Distance(transform.position, targetPosition) > 0.1f)
+        {
+            // 목표 지점으로 이동
+            Vector2 newPosition = (Vector2)transform.position + direction * chargeSpeed * Time.deltaTime;
+            transform.position = newPosition;
+            yield return null;
+        }
     }
 
     void OnDrawGizmosSelected()
