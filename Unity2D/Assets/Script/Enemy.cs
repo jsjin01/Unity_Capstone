@@ -39,7 +39,15 @@ public class Enemy : MonoBehaviour
 
     public enum WeaponType_E
     {
-        E1, E2, E3,
+        Charge_1,
+        Charge_2,
+        Charge_3,
+        Shoot_1,
+        Shoot_2,
+        Shoot_3,
+        Shoot_4,
+        Boss_1,
+        Boss_2,
     }
 
     void Awake()
@@ -56,12 +64,45 @@ public class Enemy : MonoBehaviour
     {
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || isStunned) return; // Live Check
 
-        Wtype_E = WeaponType_E.E1;
+        Wtype_E = WeaponType_E.Charge_3;
 
         // monster type
         switch (Wtype_E)
         {
-            case WeaponType_E.E1:
+            case WeaponType_E.Charge_1: //wait 2sec + charge
+                if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
+                {
+                    Charge(target.position);
+                    nextChargeTime = Time.time + 5f; // 5-2sec
+                }
+                else if (!Weapon_E.isCharging)
+                {
+                    WalkToTarget();
+                }
+                break;
+            case WeaponType_E.Charge_2: //2sec follow
+                if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
+                {
+                    StartCoroutine(RunToTarget(3f, 2f)); //speed, duration
+                    nextChargeTime = Time.time + 5f; // 5-2sec
+                }
+                else
+                {
+                    WalkToTarget();
+                }
+                break;
+            case WeaponType_E.Charge_3: //2sec follow stop * 3
+                if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
+                {
+                    StartCoroutine(RunToTarget_R(3f, 2f)); //speed, duration
+                    nextChargeTime = Time.time + 5f; // 5-2sec
+                }
+                else
+                {
+                    WalkToTarget();
+                }
+                break;
+            case WeaponType_E.Shoot_1: // shoot and stop
                 if (Time.time > nextFireTime)
                 {
                     if (Vector2.Distance(transform.position, target.position) <= fireRange)
@@ -94,21 +135,97 @@ public class Enemy : MonoBehaviour
                     }
                 }
                 break;
-            case WeaponType_E.E2:
-                if (Time.time > nextChargeTime)
+            case WeaponType_E.Shoot_2: // shoot and move
+                if (Time.time > nextFireTime && Vector2.Distance(transform.position, target.position) <= fireRange)
                 {
-                    if (Vector2.Distance(transform.position, target.position) <= chargeRange)
+                    Fire(target.position);
+                    nextFireTime = Time.time + 2f;
+                }
+                else
+                {
+                    // calc relative
+                    Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
+                    Vector2 targetPosition;
+
+                    // distance maintain
+                    if (relativePositionToPlayer.magnitude > fireRange)
                     {
-                        Charge(target.position);
-                        nextChargeTime = Time.time + 2f;
+                        targetPosition = target.position;
+                    }
+                    else //move
+                    {
+                        targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
+                    }
+
+                    // move direction
+                    Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+                    // move
+                    Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
+                    rigid.MovePosition((Vector2)rigid.position + nextVec);
+                }
+                break;
+            case WeaponType_E.Shoot_3: // shoot and stop
+                if (Time.time > nextFireTime)
+                {
+                    if (Vector2.Distance(transform.position, target.position) <= fireRange)
+                    {
+                        HomingMissile(target.position);
+                        nextFireTime = Time.time + 2f;
                     }
                     else
                     {
-                        Vector2 dirVec = target.position - rigid.position; // target Direction
-                        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // nex pos
-                        rigid.MovePosition(rigid.position + nextVec); // nex pos move
-                        rigid.velocity = Vector2.zero; // velocity init
+                        // calc relative
+                        Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
+                        Vector2 targetPosition;
+
+                        // distance maintain
+                        if (relativePositionToPlayer.magnitude > fireRange)
+                        {
+                            targetPosition = target.position;
+                        }
+                        else //move
+                        {
+                            targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
+                        }
+
+                        // move direction
+                        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+                        // move
+                        Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
+                        rigid.MovePosition((Vector2)rigid.position + nextVec);
                     }
+                }
+                break;
+            case WeaponType_E.Shoot_4: // shoot and move
+                if (Time.time > nextFireTime && Vector2.Distance(transform.position, target.position) <= fireRange)
+                {
+                    HomingMissile(target.position);
+                    nextFireTime = Time.time + 2f;
+                }
+                else
+                {
+                    // calc relative
+                    Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
+                    Vector2 targetPosition;
+
+                    // distance maintain
+                    if (relativePositionToPlayer.magnitude > fireRange)
+                    {
+                        targetPosition = target.position;
+                    }
+                    else //move
+                    {
+                        targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
+                    }
+
+                    // move direction
+                    Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+                    // move
+                    Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
+                    rigid.MovePosition((Vector2)rigid.position + nextVec);
                 }
                 break;
             default:
@@ -149,11 +266,12 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
     {
+
         if (!collision.CompareTag("Bullet") || !isLive) return;
 
         hp -= collision.GetComponent<BulletComponet>().dmg; // hp - damage
 
-        Wtype_P = WeaponType_P.P2;
+        Wtype_P = WeaponType_P.P1;
 
         switch (Wtype_P)
         {
@@ -195,6 +313,42 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void WalkToTarget()
+    {
+        Vector2 dirVec = target.position - rigid.position; // target Direction
+        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // next pos
+        rigid.MovePosition(rigid.position + nextVec); // next pos move
+        rigid.velocity = Vector2.zero; // velocity init
+    }
+
+    IEnumerator RunToTarget(float newSpeed, float duration)
+    {
+        float originalSpeed = speed;
+        speed = newSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+    }
+
+    IEnumerator RunToTarget_R(float newSpeed, float duration)
+    {
+        float originalSpeed = speed;
+        speed = newSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+        yield return new WaitForSeconds(duration);
+
+        speed = newSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+        yield return new WaitForSeconds(duration);
+
+        speed = newSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+
+        StartCoroutine(Stun(2f)); //sturn
+    }
+
     IEnumerator KnockBack() // knockback
     {
         yield return wait;
@@ -212,12 +366,17 @@ public class Enemy : MonoBehaviour
 
     void Fire(Vector2 targetPosition)
     {
-        Weapon_E.ShootAtPlayer(targetPosition);
+        Weapon_E.Shoot(targetPosition);
+    }
+
+    void HomingMissile(Vector2 targetPosition)
+    {
+        Weapon_E.ShootHoming(targetPosition);
     }
 
     void Charge(Vector2 targetPosition)
     {
-        StartCoroutine(Weapon_E.Charging(targetPosition, 5f));
+        StartCoroutine(Weapon_E.Charging(targetPosition, 3f));
     }
 
     void Dead() // Animation-enemy-Dead
