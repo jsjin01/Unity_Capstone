@@ -21,11 +21,25 @@ public class Enemy : MonoBehaviour
     Animator anim;
     WaitForFixedUpdate wait;
     Collider2D coll;
-    EnemyWeapon eWeapon;
+    EnemyWeapon Weapon_E;
 
-    public enum WeaponType
+    private float nextFireTime;
+    private float nextChargeTime;
+    public float fireRange = 5f; // distance
+    public float chargeRange = 5f; // distance
+    WeaponType_P Wtype_P;
+    WeaponType_E Wtype_E;
+    bool isWaitingToFire = false;
+
+
+    public enum WeaponType_P
     {
-        W1, W2, W3, W4, W5, W6, W7, W8,
+        P1, P2, P3,
+    }
+
+    public enum WeaponType_E
+    {
+        E1, E2, E3,
     }
 
     void Awake()
@@ -35,17 +49,72 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<Collider2D>();
-        eWeapon = GetComponent<EnemyWeapon>();
+        Weapon_E = GetComponent<EnemyWeapon>();
     }
 
     void FixedUpdate()
     {
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || isStunned) return; // Live Check
 
-        Vector2 dirVec = target.position - rigid.position; // target Direction
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // nex pos
-        rigid.MovePosition(rigid.position + nextVec); // nex pos move
-        rigid.velocity = Vector2.zero; // velocity init
+        Wtype_E = WeaponType_E.E1;
+
+        // monster type
+        switch (Wtype_E)
+        {
+            case WeaponType_E.E1:
+                if (Time.time > nextFireTime)
+                {
+                    if (Vector2.Distance(transform.position, target.position) <= fireRange)
+                    {
+                        Fire(target.position);
+                        nextFireTime = Time.time + 2f;
+                    }
+                    else
+                    {
+                        // calc relative
+                        Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
+                        Vector2 targetPosition;
+
+                        // distance maintain
+                        if (relativePositionToPlayer.magnitude > fireRange)
+                        {
+                            targetPosition = target.position;
+                        }
+                        else //move
+                        {
+                            targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
+                        }
+
+                        // move direction
+                        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+                        // move
+                        Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
+                        rigid.MovePosition((Vector2)rigid.position + nextVec);
+                    }
+                }
+                break;
+            case WeaponType_E.E2:
+                if (Time.time > nextChargeTime)
+                {
+                    if (Vector2.Distance(transform.position, target.position) <= chargeRange)
+                    {
+                        Charge(target.position);
+                        nextChargeTime = Time.time + 2f;
+                    }
+                    else
+                    {
+                        Vector2 dirVec = target.position - rigid.position; // target Direction
+                        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime; // nex pos
+                        rigid.MovePosition(rigid.position + nextVec); // nex pos move
+                        rigid.velocity = Vector2.zero; // velocity init
+                    }
+                }
+                break;
+            default:
+                //more
+                break;
+        }
     }
 
     void LateUpdate()
@@ -74,6 +143,8 @@ public class Enemy : MonoBehaviour
         hp = data.hp;
         isStunned = false;
         stunDuration = 3f;
+        nextFireTime = Time.time;
+        nextChargeTime = Time.time;
     }
 
     void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
@@ -82,14 +153,14 @@ public class Enemy : MonoBehaviour
 
         hp -= collision.GetComponent<BulletComponet>().dmg; // hp - damage
 
-        WeaponType Wtype = WeaponType.W2;
+        Wtype_P = WeaponType_P.P2;
 
-        switch (Wtype)
+        switch (Wtype_P)
         {
-            case WeaponType.W1:
+            case WeaponType_P.P1:
                 StartCoroutine(KnockBack()); //knockback
                 break;
-            case WeaponType.W2:
+            case WeaponType_P.P2:
                 StartCoroutine(Stun(stunDuration)); //sturn
                 break;
             default:
@@ -137,6 +208,16 @@ public class Enemy : MonoBehaviour
         isStunned = true;   //stun
         yield return new WaitForSeconds(duration); //stuntime
         isStunned = false;  //stun fin
+    }
+
+    void Fire(Vector2 targetPosition)
+    {
+        Weapon_E.ShootAtPlayer(targetPosition);
+    }
+
+    void Charge(Vector2 targetPosition)
+    {
+        StartCoroutine(Weapon_E.Charging(targetPosition, 5f));
     }
 
     void Dead() // Animation-enemy-Dead
