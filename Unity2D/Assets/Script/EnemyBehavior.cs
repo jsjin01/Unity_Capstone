@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeapon : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     public GameObject enemyBulletPrefab;
     public Transform firePoint;
@@ -23,17 +23,11 @@ public class EnemyWeapon : MonoBehaviour
         chargePoint = transform; // current pos
     }
 
-    //void Update()
-    //{
-    //    // check
-    //    if (Time.time > nextFireTime && Vector2.Distance(transform.position, player.position) <= fireRange)
-    //    {
-    //      //Debug.Log("Fire condition met at time: " + Time.time);
-    //        Debug.Log("Next fire time: " + nextFireTime);
-    //        Fire(player.position); // player pos
-    //        nextFireTime = Time.time + 1f / fireRate;//1f / fireRate; // 1 per sec
-    //    }
-    //}
+    /// <summary>
+    /// Fight Motion
+    /// </summary>
+    /// <param name="Motion"></param>
+    /// 
 
     public void Shoot(Vector2 targetPosition)
     {
@@ -56,25 +50,26 @@ public class EnemyWeapon : MonoBehaviour
         // Wait for 2 seconds
         isCharging = true;
         float chargeDelay = 2f;
-        float elapsedTime = 0f;
 
         yield return new WaitForSeconds(2f);
 
-        isCharging = false; // Charging completed
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
-        while (Vector2.Distance(transform.position, targetPosition) > 0.7f) //target Position Stop
+        float elapsedTime = 0f;
+        while (Vector2.Distance(transform.position, targetPosition) > 0.1f) //target Position Stop
         {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime > 3f)
+            {
+                isCharging = false; // Charging completed
+                yield break;
+            }
             // 목표 지점으로 이동
             Vector2 newPosition = (Vector2)transform.position + direction * chargeSpeed * Time.deltaTime;
             transform.position = newPosition;
 
             yield return null;
         }
+        isCharging = false; // Charging completed
     }
-
-    //void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.DrawWireSphere(transform.position, fireRange);
-    //}
 }

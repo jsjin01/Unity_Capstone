@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public float speed; // Monster Speed Setting
     public float hp; // current hp
     public float maxHp; // max hp
+    public float damage; // max hp
+    public float defense; // max hp
     public RuntimeAnimatorController[] animCon; // status
     public Rigidbody2D target; // target
     public GameObject expPrefab;
@@ -21,7 +23,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
     WaitForFixedUpdate wait;
     Collider2D coll;
-    EnemyWeapon Weapon_E;
+    EnemyBehavior enemyBehavior;
 
     private float nextFireTime;
     private float nextChargeTime;
@@ -34,7 +36,13 @@ public class Enemy : MonoBehaviour
 
     public enum WeaponType_P
     {
-        P1, P2, P3,
+        Status_KnockBack,
+        Status_Stun,
+        Status_Burn,
+        Status_Frostbite,
+        Status_Poison,
+        Status_Weaken,
+        Status_Bleed,
     }
 
     public enum WeaponType_E
@@ -57,14 +65,14 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<Collider2D>();
-        Weapon_E = GetComponent<EnemyWeapon>();
+        enemyBehavior = GetComponent<EnemyBehavior>();
     }
 
     void FixedUpdate()
     {
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || isStunned) return; // Live Check
 
-        Wtype_E = WeaponType_E.Charge_3;
+        Wtype_E = WeaponType_E.Charge_1;
 
         // monster type
         switch (Wtype_E)
@@ -75,7 +83,7 @@ public class Enemy : MonoBehaviour
                     Charge(target.position);
                     nextChargeTime = Time.time + 5f; // 5-2sec
                 }
-                else if (!Weapon_E.isCharging)
+                else if (enemyBehavior.isCharging == false)
                 {
                     WalkToTarget();
                 }
@@ -112,26 +120,7 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        // calc relative
-                        Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
-                        Vector2 targetPosition;
-
-                        // distance maintain
-                        if (relativePositionToPlayer.magnitude > fireRange)
-                        {
-                            targetPosition = target.position;
-                        }
-                        else //move
-                        {
-                            targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
-                        }
-
-                        // move direction
-                        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-
-                        // move
-                        Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
-                        rigid.MovePosition((Vector2)rigid.position + nextVec);
+                        WalkMaintain();
                     }
                 }
                 break;
@@ -143,26 +132,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    // calc relative
-                    Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
-                    Vector2 targetPosition;
-
-                    // distance maintain
-                    if (relativePositionToPlayer.magnitude > fireRange)
-                    {
-                        targetPosition = target.position;
-                    }
-                    else //move
-                    {
-                        targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
-                    }
-
-                    // move direction
-                    Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-
-                    // move
-                    Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
-                    rigid.MovePosition((Vector2)rigid.position + nextVec);
+                    WalkMaintain();
                 }
                 break;
             case WeaponType_E.Shoot_3: // shoot and stop
@@ -175,26 +145,7 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        // calc relative
-                        Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
-                        Vector2 targetPosition;
-
-                        // distance maintain
-                        if (relativePositionToPlayer.magnitude > fireRange)
-                        {
-                            targetPosition = target.position;
-                        }
-                        else //move
-                        {
-                            targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
-                        }
-
-                        // move direction
-                        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-
-                        // move
-                        Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
-                        rigid.MovePosition((Vector2)rigid.position + nextVec);
+                        WalkMaintain();
                     }
                 }
                 break;
@@ -206,26 +157,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    // calc relative
-                    Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
-                    Vector2 targetPosition;
-
-                    // distance maintain
-                    if (relativePositionToPlayer.magnitude > fireRange)
-                    {
-                        targetPosition = target.position;
-                    }
-                    else //move
-                    {
-                        targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
-                    }
-
-                    // move direction
-                    Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-
-                    // move
-                    Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
-                    rigid.MovePosition((Vector2)rigid.position + nextVec);
+                    WalkMaintain();
                 }
                 break;
             default:
@@ -258,6 +190,8 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHp = data.hp;
         hp = data.hp;
+        damage = data.damage;
+        defense = data.defense;
         isStunned = false;
         stunDuration = 3f;
         nextFireTime = Time.time;
@@ -271,15 +205,30 @@ public class Enemy : MonoBehaviour
 
         hp -= collision.GetComponent<BulletComponet>().dmg; // hp - damage
 
-        Wtype_P = WeaponType_P.P1;
+        Wtype_P = WeaponType_P.Status_KnockBack;
 
         switch (Wtype_P)
         {
-            case WeaponType_P.P1:
+            case WeaponType_P.Status_KnockBack:
                 StartCoroutine(KnockBack()); //knockback
                 break;
-            case WeaponType_P.P2:
-                StartCoroutine(Stun(stunDuration)); //sturn
+            case WeaponType_P.Status_Stun:
+                StartCoroutine(Stun(stunDuration)); //stun
+                break;
+            case WeaponType_P.Status_Burn:
+                StartCoroutine(Burn(stunDuration, 1)); //burn dot-dmg
+                break;
+            case WeaponType_P.Status_Frostbite:
+                StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
+                break;
+            case WeaponType_P.Status_Poison:
+                StartCoroutine(Poison(stunDuration, 1f)); //poison -dmg
+                break;
+            case WeaponType_P.Status_Weaken:
+                StartCoroutine(Weaken(stunDuration, 1f)); //weaken -def
+                break;
+            case WeaponType_P.Status_Bleed:
+                StartCoroutine(Bleed(stunDuration, 1f, 1f)); //bleed -all
                 break;
             default:
                 //more
@@ -312,7 +261,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
+    //Move
     private void WalkToTarget()
     {
         Vector2 dirVec = target.position - rigid.position; // target Direction
@@ -321,6 +270,31 @@ public class Enemy : MonoBehaviour
         rigid.velocity = Vector2.zero; // velocity init
     }
 
+    private void WalkMaintain()
+    {                    
+        // calc relative
+        Vector2 relativePositionToPlayer = target.position - (Vector2)transform.position;
+        Vector2 targetPosition;
+
+        // distance maintain
+        if (relativePositionToPlayer.magnitude > fireRange)
+        {
+            targetPosition = target.position;
+        }
+        else //move
+        {
+            targetPosition = (Vector2)transform.position - relativePositionToPlayer.normalized * fireRange;
+        }
+
+        // move direction
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+        // move
+        Vector2 nextVec = direction * speed * Time.fixedDeltaTime;
+        rigid.MovePosition((Vector2)rigid.position + nextVec);
+        rigid.velocity = Vector2.zero; // velocity init
+    }
+    
     IEnumerator RunToTarget(float newSpeed, float duration)
     {
         float originalSpeed = speed;
@@ -349,6 +323,26 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Stun(2f)); //sturn
     }
 
+    void Fire(Vector2 targetPosition)
+    {
+        enemyBehavior.Shoot(targetPosition);
+    }
+
+    void HomingMissile(Vector2 targetPosition)
+    {
+        enemyBehavior.ShootHoming(targetPosition);
+    }
+
+    void Charge(Vector2 targetPosition)
+    {
+        StartCoroutine(enemyBehavior.Charging(targetPosition, 3f));
+    }
+
+    /// <summary>
+    /// Status abnormality
+    /// </summary>
+    /// <param name="Status"></param>
+    /// 
     IEnumerator KnockBack() // knockback
     {
         yield return wait;
@@ -364,19 +358,72 @@ public class Enemy : MonoBehaviour
         isStunned = false;  //stun fin
     }
 
-    void Fire(Vector2 targetPosition)
+    IEnumerator Burn(float duration, int damage)
     {
-        Weapon_E.Shoot(targetPosition);
+        float interval = 1f; // Damage interval (1 second in this case)
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            if (hp < 0)
+                yield break;
+
+            yield return new WaitForSeconds(interval);
+            // Apply damage to rigid's health
+            hp -= damage;
+            timer += interval;
+        }
     }
 
-    void HomingMissile(Vector2 targetPosition)
+    IEnumerator Frostbite(float duration, float slowAmount)
     {
-        Weapon_E.ShootHoming(targetPosition);
+        float orgSpd = speed;
+
+        // Reduce player's movement speed
+        speed *= slowAmount;
+
+        yield return new WaitForSeconds(duration);
+
+        // Restore player's movement speed
+        speed = orgSpd;
     }
 
-    void Charge(Vector2 targetPosition)
+    IEnumerator Poison(float duration, float damageReduction)
     {
-        StartCoroutine(Weapon_E.Charging(targetPosition, 3f));
+        float orgAtk = damage;
+
+        // Reduce rigid's attack power
+        damage -= damageReduction;
+        yield return new WaitForSeconds(duration);
+        // Restore rigid's attack power
+        damage = orgAtk;
+    }
+
+    IEnumerator Weaken(float duration, float defenseReduction)
+    {
+        float orgDef = defense;
+
+        // Reduce rigid's defense
+        defense -= defenseReduction;
+        yield return new WaitForSeconds(duration);
+        // Restore rigid's defense
+        defense = orgDef;
+    }
+
+    IEnumerator Bleed(float duration, float damageReduction, float defenseReduction)
+    {
+        float orgAtk = damage;
+        float orgDef = defense;
+
+        // Reduce both attack power and defense
+        damage -= damageReduction;
+        defense -= defenseReduction;
+
+        yield return new WaitForSeconds(duration);
+
+        // Restore both attack power and defense
+        damage = orgAtk;
+        defense = orgDef;
     }
 
     void Dead() // Animation-enemy-Dead
