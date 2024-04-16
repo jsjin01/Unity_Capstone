@@ -216,7 +216,7 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Stun(stunDuration)); //stun
                 break;
             case WeaponType_P.Status_Burn:
-                StartCoroutine(Burn(stunDuration, 1)); //burn dot-dmg
+                StartCoroutine(Burn(stunDuration, 1f, 1f)); //burn dot-dmg
                 break;
             case WeaponType_P.Status_Frostbite:
                 StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
@@ -358,9 +358,8 @@ public class Enemy : MonoBehaviour
         isStunned = false;  //stun fin
     }
 
-    IEnumerator Burn(float duration, int damage)
+    IEnumerator Burn(float duration, float damage, float interval)
     {
-        float interval = 1f; // Damage interval (1 second in this case)
         float timer = 0f;
 
         while (timer < duration)
