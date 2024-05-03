@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-Unity2D/[Ll]ibrary/
-Unity2D/[Tt]emp/
-Unity2D/[Oo]bj/
-Unity2D/[Bb]uild/
-Unity2D/[Bb]uilds/
-Unity2D/[Ll]ogs/
-Unity2D/[Uu]ser[Ss]ettings/
+MonsterTerra(Capstone)/[Ll]ibrary/
+MonsterTerra(Capstone)/[Tt]emp/
+MonsterTerra(Capstone)/[Oo]bj/
+MonsterTerra(Capstone)/[Bb]uild/
+MonsterTerra(Capstone)/[Bb]uilds/
+MonsterTerra(Capstone)/[Ll]ogs/
+MonsterTerra(Capstone)/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
