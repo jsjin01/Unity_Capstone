@@ -9180,9 +9180,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1ef23516b32f638429a3f2f1b88ac02f, type: 3}
   soweapons:
   - {fileID: 21300000, guid: 80ef604e04745104fb40845540372370, type: 3}
+  - {fileID: 21300000, guid: 80ef604e04745104fb40845540372370, type: 3}
+  - {fileID: 21300000, guid: 80ef604e04745104fb40845540372370, type: 3}
+  - {fileID: 21300000, guid: 80ef604e04745104fb40845540372370, type: 3}
   mwweapons:
   - {fileID: 21300000, guid: 6706a809e408a0a479060d9e61630c39, type: 3}
+  - {fileID: 21300000, guid: 6706a809e408a0a479060d9e61630c39, type: 3}
+  - {fileID: 21300000, guid: 6706a809e408a0a479060d9e61630c39, type: 3}
+  - {fileID: 21300000, guid: 6706a809e408a0a479060d9e61630c39, type: 3}
   spweapons:
+  - {fileID: 21300000, guid: 3d6850a494befb44d9e328b8343e61b0, type: 3}
+  - {fileID: 21300000, guid: 3d6850a494befb44d9e328b8343e61b0, type: 3}
+  - {fileID: 21300000, guid: 3d6850a494befb44d9e328b8343e61b0, type: 3}
   - {fileID: 21300000, guid: 3d6850a494befb44d9e328b8343e61b0, type: 3}
 --- !u!1 &829880443
 GameObject:
