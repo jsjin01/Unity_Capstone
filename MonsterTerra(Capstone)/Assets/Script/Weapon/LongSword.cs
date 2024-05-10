@@ -22,9 +22,15 @@ public class LongSword: WeaponComponent
 
     public override void Attack()
     {
+        if (!canAttack)
+        {
+            return;
+        }
+
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject longsward = Instantiate(weapon[lv -1 ],GamePlayerMoveControl.i.playerPos , rotation , transform);
         longsward.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg);
+        StartCoroutine(AttackRate());
     }
 
     public override void WeaponLevelUp()

@@ -36,6 +36,7 @@ public enum SPTYPE
 } //지원 무기류
 public abstract class WeaponComponent : MonoBehaviour
 {
+    protected bool canAttack = true;         //공격 여부
     protected float weaponmulatk;            //무기 공격력 계수
     protected float weaponmulatkspd;         //무기 공격 속도 계수
 
@@ -47,6 +48,13 @@ public abstract class WeaponComponent : MonoBehaviour
     private void Start()
     {
     }  
+
+    protected IEnumerator AttackRate()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(endAtkSpd);
+        canAttack = true;
+    }
     private void Update()
     {
             //최종공격력 , 최종공격속도 계산

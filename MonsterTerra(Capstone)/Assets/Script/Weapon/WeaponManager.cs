@@ -13,6 +13,13 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] MWTYPE mwtype; // 선택한 마법무기
     [SerializeField] SPTYPE sptype; // 선택한 지원무기
     SpriteRenderer weaponSR;        // 플레이어가 하고 있는 캐릭터의 손의 무기 
+
+    //해당 무기의 weapon component를 가져옴
+    WeaponComponent crWeapon;
+    WeaponComponent soWeapon;
+    WeaponComponent mwWeapon;
+    WeaponComponent spWeapon;
+
     [Header("# Weapon Sprite")]
     [SerializeField] Sprite[] crweapons;
     [SerializeField] Sprite[] soweapons;
@@ -75,5 +82,17 @@ public class WeaponManager : MonoBehaviour
     public void Attack()
     {
         LongSword.i.Attack();
+    }
+
+    public void SetWeapon(int cr, int so, int mw, int sp) //선택한 무기만 활성화
+    {
+        transform.GetChild(0).GetChild(cr).gameObject.SetActive(true);
+        transform.GetChild(1).GetChild(so).gameObject.SetActive(true);
+        transform.GetChild(2).GetChild(mw).gameObject.SetActive(true);
+        transform.GetChild(3).GetChild(sp).gameObject.SetActive(true);
+        crWeapon = transform.GetChild(0).GetChild(cr).GetComponent<WeaponComponent>();
+        soWeapon = transform.GetChild(1).GetChild(so).GetComponent<WeaponComponent>();
+        mwWeapon = transform.GetChild(2).GetChild(mw).GetComponent<WeaponComponent>();
+        spWeapon = transform.GetChild(3).GetChild(sp).GetComponent<WeaponComponent>();
     }
 }
