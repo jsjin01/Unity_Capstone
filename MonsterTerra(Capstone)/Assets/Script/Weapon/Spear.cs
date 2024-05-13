@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : WeaponComponent
+public class Spear : WeaponComponent
 {
-    public static Axe i;
+    public static Spear i;
     [SerializeField] GameObject[] weapon;
     int index = 0; //공격 모션 
 
@@ -27,8 +27,8 @@ public class Axe : WeaponComponent
         }
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-        GameObject axe = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
-        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri);
+        GameObject spear = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
+        spear.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri);
         StartCoroutine(AttackRate());
     }
 
@@ -37,23 +37,23 @@ public class Axe : WeaponComponent
         lv++;
         if (lv == 1)
         {
-            weaponmulatk += 0.2f;  //추가 공격력 계수 20% 증가
+            index++;                 //무기 길이 1.5배 증가
         }
         else if (lv == 2)
         {
-            addCridmg += 0.15f;    //크리티컬 데미지 15% 증가
+            weaponmulatkspd -= 0.5f; //무기 공속 계수 50% 증가
         }
         else if (lv == 3)
         {
-            debuffTpye = 8;        //파열효과를 지니는 부분
+           index++;                  //무기 길이 2배 증가
         }
         else if (lv == 4)
         {
-            weaponmulatk *= 1.3f;  //추가 공격력의 30%만큼 강화
+            weaponmulatkspd -= 0.5f; //무기 공속 계수 50% 증가
         }
         else if (lv == 5)
         {
-            index++;               //초월 공격 전환
+            index++;                 //초월 공격 전환
         }
         else
         {

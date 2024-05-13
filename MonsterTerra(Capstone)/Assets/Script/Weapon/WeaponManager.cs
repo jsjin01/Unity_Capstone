@@ -39,7 +39,7 @@ public class WeaponManager : MonoBehaviour
     {
         weaponSR = GamePlayerManager.i.Character.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         //무기를 적용하고 있는 스프라이트랜더러를 가져옴
-        SetWeapon(1, 1, 1, 1); //무기 설정
+        SetWeapon(2, 1, 1, 1); //무기 설정
     }
 
     private void Update()
