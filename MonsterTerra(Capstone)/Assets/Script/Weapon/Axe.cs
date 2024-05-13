@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LongSword: WeaponComponent
+public class Axe : WeaponComponent
 {
-    public static LongSword i;
-    [SerializeField]GameObject[] weapon;
-    int index = 0; //공격 모션 
+    public static Axe i;
+    [SerializeField] GameObject[] weapon;
+    int index = 1; //공격 모션 
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class LongSword: WeaponComponent
     {
         //기본값 적용
         weaponmulatk = 1.2f;
-        weaponmulatkspd = 1.2f;
+        weaponmulatkspd = 3.0f;
     }
 
     public override void Attack()
@@ -27,31 +27,31 @@ public class LongSword: WeaponComponent
         }
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-        GameObject longsward = Instantiate(weapon[index],GamePlayerMoveControl.i.playerPos , rotation , transform);
-        longsward.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri);
+        GameObject axe = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
+        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri);
         StartCoroutine(AttackRate());
     }
 
     public override void WeaponLevelUp()
     {
         lv++;
-        if(lv == 1)
+        if (lv == 1)
         {
-            index++;               //공격범위가 1.5배 증가
+            weaponmulatk += 0.2f;  //추가 공격력 계수 20% 증가
         }
-        else if(lv == 2)
+        else if (lv == 2)
         {
-            addCridmg += 0.1f;     //크리티컬 데미지 10% 증가
+            addCridmg += 0.15f;    //크리티컬 데미지 15% 증가
         }
-        else if(lv == 3)
+        else if (lv == 3)
         {
-            weaponmulatk += 0.1f;  //추가 공격력 계수 10% 증가
+            debuffTpye = 8;        //파열효과를 지니는 부분
         }
         else if (lv == 4)
         {
-            weaponmulatkspd -= 0.1f;//추가 공격 속도 계수 10% 감소
+            weaponmulatk *= 1.3f;  //추가 공격력의 30%만큼 강화
         }
-        else if(lv == 5)
+        else if (lv == 5)
         {
             index++;               //초월 공격 전환
         }

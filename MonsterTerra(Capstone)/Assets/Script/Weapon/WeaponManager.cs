@@ -39,6 +39,7 @@ public class WeaponManager : MonoBehaviour
     {
         weaponSR = GamePlayerManager.i.Character.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         //무기를 적용하고 있는 스프라이트랜더러를 가져옴
+        SetWeapon(1, 1, 1, 1); //무기 설정
     }
 
     private void Update()
@@ -81,7 +82,23 @@ public class WeaponManager : MonoBehaviour
 
     public void Attack()
     {
-        LongSword.i.Attack();
+        //지금 손에 들고 있는 무기에 따라 공격 방식이 변함
+        if (idx == 1)
+        {
+            crWeapon.Attack();
+        }
+        else if(idx == 2)
+        {
+            soWeapon.Attack();
+        }
+        else if(idx == 3)
+        {
+            mwWeapon.Attack();
+        }
+        else if(idx == 4)
+        {
+            spWeapon.Attack();
+        }
     }
 
     public void SetWeapon(int cr, int so, int mw, int sp) //선택한 무기만 활성화

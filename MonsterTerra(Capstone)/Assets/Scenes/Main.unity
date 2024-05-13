@@ -9324,7 +9324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 4
-  crtype: 0
+  crtype: 1
   sotype: 0
   mwtype: 0
   sptype: 0
@@ -9516,6 +9516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063238928}
+  - component: {fileID: 1063238929}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -9538,6 +9539,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1389546431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063238929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063238927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1351e58ae2361cc498c6d2595d954b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+  - {fileID: 800948443205293284, guid: e7225ba32242f844f87368822701a1e5, type: 3}
+  - {fileID: 800948443205293284, guid: 704cc259332b3c243a1cbcf48297e539, type: 3}
 --- !u!1 &1132670021
 GameObject:
   m_ObjectHideFlags: 0
@@ -9799,7 +9815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1236582178
 Transform:
   m_ObjectHideFlags: 0
@@ -9829,6 +9845,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon:
   - {fileID: 6398955092616812878, guid: 3ccd3a2466a570248a2324ffbd0e44aa, type: 3}
+  - {fileID: 6398955092616812878, guid: 453f5900d475eba43a36955361457c7e, type: 3}
+  - {fileID: 6398955092616812878, guid: c051b2e5f81887449b2af0d46c1b9a7e, type: 3}
 --- !u!1 &1265891638
 GameObject:
   m_ObjectHideFlags: 0
