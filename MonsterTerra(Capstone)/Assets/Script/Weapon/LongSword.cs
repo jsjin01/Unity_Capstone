@@ -59,5 +59,9 @@ public class LongSword: WeaponComponent
         {
             Debug.Log("더이상 강화할 수 없습니다.");
         }
+        if (lv == 6)
+        {
+            lv--;
+        }
     }
 }

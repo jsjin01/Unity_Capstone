@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spear : WeaponComponent
+public class Sickle : WeaponComponent
 {
-    public static Spear i;
+    public static Sickle i;
     [SerializeField] GameObject[] weapon;
-    int index = 0; //공격 모션 
+    int index = 0; //공격 모션
+    int endindex = 2;
 
     private void Awake()
     {
@@ -25,10 +26,14 @@ public class Spear : WeaponComponent
         {
             return;
         }
-
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-        GameObject spear = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
-        spear.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri);
+        GameObject sickle = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
+        sickle.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri, debuffType);
+        if(lv == 5)
+        {
+            GameObject sickleVFX = Instantiate(weapon[endindex], GamePlayerMoveControl.i.playerPos, Quaternion.Euler(0,0,0), transform);
+            sickleVFX.GetComponentInChildren<SickleLvMaxVFX>().SetAttack(0, 0, 0);
+        }
         StartCoroutine(AttackRate());
     }
 
@@ -37,23 +42,23 @@ public class Spear : WeaponComponent
         lv++;
         if (lv == 1)
         {
-            index++;                 //무기 길이 1.5배 증가
+            debuffType = 7; // 출혈효과 1초간 
         }
         else if (lv == 2)
         {
-            weaponmulatkspd -= 0.5f; //무기 공속 계수 50% 증가
+            index++;       //무기 길이 증가
         }
         else if (lv == 3)
         {
-           index++;                  //무기 길이 2배 증가
+            weaponmulatk += 0.1f; //10% 만큼 데미지 증가
         }
         else if (lv == 4)
         {
-            weaponmulatkspd -= 0.5f; //무기 공속 계수 50% 증가
+            debuffType = 7; // 출혈 효과 영구 지속
         }
         else if (lv == 5)
         {
-            index++;                 //초월 공격 전환
+            Debug.Log("초월");
         }
         else
         {

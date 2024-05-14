@@ -27,7 +27,7 @@ public class Axe : WeaponComponent
         }
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject axe = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
-        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri, debuffTpye);
+        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri, debuffType);
         StartCoroutine(AttackRate());
     }
 
@@ -44,7 +44,7 @@ public class Axe : WeaponComponent
         }
         else if (lv == 3)
         {
-            debuffTpye = 8;        //파열효과를 지니는 부분
+            debuffType = 8;        //파열효과를 지니는 부분
         }
         else if (lv == 4)
         {
@@ -57,6 +57,10 @@ public class Axe : WeaponComponent
         else
         {
             Debug.Log("더이상 강화할 수 없습니다.");
+        }
+        if (lv == 6)
+        {
+            lv--;
         }
     }
 }

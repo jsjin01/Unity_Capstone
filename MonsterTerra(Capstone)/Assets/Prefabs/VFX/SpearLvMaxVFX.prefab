@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd2787f266d35546b282d68715fefa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  parent: {fileID: 2737304819681729360}
   target: {x: 0, y: 0}
   dTime: 0.45
 --- !u!1 &7921304138529858643

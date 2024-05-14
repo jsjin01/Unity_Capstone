@@ -41,7 +41,7 @@ public abstract class WeaponComponent : MonoBehaviour
     protected float weaponmulatkspd = 0;         //무기 공격 속도 계수
     protected float addCridmg = 0;               //추가 크리티컬 데미지 
     protected float addCri = 0;                  //추가 크리티컬 확률
-    protected int debuffTpye = 0;                //효과 부여 => default로 0값 부여
+    protected int debuffType = 0;                //효과 부여 => default로 0값 부여
     protected int lv = 0;                        //무기 레벨
     //1->2 /2->3 /3->4 /4->5 / 5 -> 초월
 

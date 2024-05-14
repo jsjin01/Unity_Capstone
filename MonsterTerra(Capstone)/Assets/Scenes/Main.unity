@@ -9597,6 +9597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1132670022}
+  - component: {fileID: 1132670023}
   m_Layer: 0
   m_Name: Sickle
   m_TagString: Untagged
@@ -9619,6 +9620,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1389546431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132670023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132670021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12a55df22da04e4a82ce84a8e5bd9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+  - {fileID: 4597317822600964250, guid: ed724251ca06e72439ca1abd5a7202ac, type: 3}
+  - {fileID: 4597317822600964250, guid: ccb65f3b8e4300345a704797f7e280d7, type: 3}
+  - {fileID: 5999130622530828007, guid: 9bc7a45361ee95745847d538d5195812, type: 3}
 --- !u!1 &1137505384
 GameObject:
   m_ObjectHideFlags: 0

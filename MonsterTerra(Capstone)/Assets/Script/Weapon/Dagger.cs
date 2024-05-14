@@ -42,5 +42,9 @@ public class Dagger : WeaponComponent
     public override void WeaponLevelUp()
     {
         lv++; //DaggerVFX에서 적용
+        if(lv == 6)
+        {
+            lv--;
+        }
     }
 }

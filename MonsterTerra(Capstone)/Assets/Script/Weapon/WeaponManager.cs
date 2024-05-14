@@ -44,10 +44,14 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (startchange)
+        if (startchange)//start보다 늦게 호출해야되서 Updata에 넣음
         {
             changeWeapon();
             startchange = false;
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            crWeapon.WeaponLevelUp();
         }
     }
 

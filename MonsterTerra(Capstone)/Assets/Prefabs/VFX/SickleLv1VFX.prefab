@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8099963559298274056}
   - component: {fileID: 4619223967831556622}
+  - component: {fileID: 2941947710611652609}
+  - component: {fileID: 911366484138579143}
   m_Layer: 0
   m_Name: img
   m_TagString: Untagged
@@ -84,6 +86,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2941947710611652609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466813120029782317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd2787f266d35546b282d68715fefa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4597317822600964250}
+  target: {x: 0, y: 0}
+  dTime: 0.3
+--- !u!61 &911366484138579143
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466813120029782317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.7222222}
+    newSize: {x: 0.5, y: 0.7222222}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.7222222}
+  m_EdgeRadius: 0
 --- !u!1 &2594686799252944583
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +189,7 @@ Animation:
   m_GameObject: {fileID: 2594686799252944583}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: a6cd66d55280ac64db4c33fe0335ae35, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: a6cd66d55280ac64db4c33fe0335ae35, type: 2}
   m_WrapMode: 0
