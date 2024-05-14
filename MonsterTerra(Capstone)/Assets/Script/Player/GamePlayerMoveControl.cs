@@ -25,7 +25,7 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     void Update()
     {
-        playerPos = transform.position;
+        playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f) ;
         Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetKey(KeyCode.Space))
         {

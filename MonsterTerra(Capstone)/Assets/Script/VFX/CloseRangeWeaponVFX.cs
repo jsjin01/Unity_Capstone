@@ -7,6 +7,7 @@ public class CloseRangeWeaponVFX : MonoBehaviour
     float atk = 5;
     float cridmg = 0;
     float cri = 0;
+    int etype = 0;
     [SerializeField] GameObject parent;
     [SerializeField] Vector2 target;
     [SerializeField] float dTime = 1.0f;
@@ -18,15 +19,16 @@ public class CloseRangeWeaponVFX : MonoBehaviour
 
     private void Update()
     {
-        target = GameObject.Find("Player").GetComponent<Transform>().position;
+        target = GamePlayerMoveControl.i.playerPos;
         parent.transform.position = target;
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri, int _etype = 0, GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;
         cri = _cri;
+        etype = _etype;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +36,7 @@ public class CloseRangeWeaponVFX : MonoBehaviour
         if (collision.CompareTag("Monster"))
         {
             //몬스터에게 데미지 주는 부분
-            collision.GetComponent<Enemy>().TakeDamage(atk);
+            collision.GetComponent<Enemy>().TakeDamage(atk,cridmg,cri,etype);
             Debug.Log("takeDamage");
         }
     }

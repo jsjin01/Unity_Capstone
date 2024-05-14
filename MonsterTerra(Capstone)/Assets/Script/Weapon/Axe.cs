@@ -25,10 +25,9 @@ public class Axe : WeaponComponent
         {
             return;
         }
-
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject axe = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
-        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri);
+        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri, debuffTpye);
         StartCoroutine(AttackRate());
     }
 
