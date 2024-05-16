@@ -25,7 +25,15 @@ public class BulletComponent : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         }
 
-        rb.velocity = p.normalized * speed; //일직선으로 나가는 부분
+        if (p == new Vector3(0, 0, 0))
+        {
+            Vector3 q = new Vector3(1, 0, 0);
+            rb.velocity = q.normalized * speed;
+        }
+        else
+        {
+            rb.velocity = p.normalized * speed; //일직선으로 나가는 부분
+        }
     }
 
     public void SetAttack(float _atk, float _cridmg, float _cri, int _etype = 0, GameObject obj = null) //데미지 설정

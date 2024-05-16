@@ -29,8 +29,8 @@ public class Bow : WeaponComponent
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject arrow = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
-        arrow.GetComponent<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
-        arrow.GetComponent<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
+        arrow.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
+        arrow.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
         if (lvMax)
         {
             Quaternion leftRotation = Quaternion.Euler(0f, 0f, angle + 30);
