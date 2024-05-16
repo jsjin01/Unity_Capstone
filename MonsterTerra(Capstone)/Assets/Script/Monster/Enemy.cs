@@ -220,69 +220,69 @@ public class Enemy : MonoBehaviour
         nextChargeTime = Time.time;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
-    {
+    //void OnTriggerEnter2D(Collider2D collision) //Damage or Dead
+    //{
 
-        if (!collision.CompareTag("Bullet") || !isLive) return;
+    //    if (!collision.CompareTag("Bullet") || !isLive) return;
 
-        hp -= collision.GetComponent<BulletComponent>().dmg; // hp - damage
+    //    hp -= collision.GetComponent<BulletComponent>().dmg; // hp - damage
 
-        Wtype_P = WeaponType_P.Status_KnockBack;
+    //    Wtype_P = WeaponType_P.Status_KnockBack;
 
-        switch (Wtype_P)
-        {
-            case WeaponType_P.Status_KnockBack:
-                StartCoroutine(KnockBack()); //knockback
-                break;
-            case WeaponType_P.Status_Stun:
-                StartCoroutine(Stun(stunDuration)); //stun
-                break;
-            case WeaponType_P.Status_Burn:
-                StartCoroutine(Burn(stunDuration, 1f, 1f)); //burn dot-dmg
-                break;
-            case WeaponType_P.Status_Frostbite:
-                StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
-                break;
-            case WeaponType_P.Status_Poison:
-                StartCoroutine(Poison(stunDuration, 1f)); //poison -dmg
-                break;
-            case WeaponType_P.Status_Weaken:
-                StartCoroutine(Weaken(stunDuration, 1f)); //weaken -def
-                break;
-            case WeaponType_P.Status_Bleed:
-                StartCoroutine(Bleed(stunDuration, 1f, 1f)); //bleed -all
-                break;
-            default:
-                //more
-                break;
-        }
-        if (hp > 0)
-        {
-            //anim.SetTrigger("Hit");
-        }
-        else //die setting
-        {
-            isLive = false;
-            coll.enabled = false;
-            rigid.simulated = false;
-            //spriter.sortingOrder = 1;
-            //anim.SetBool("Dead", true);
-            GamePlayerManager.i.GetExp();
-            if (expPrefab != null)
-            {
-                // randdom position
-                Vector2 currentPosition = transform.position;
-                float randomX = Random.Range(-0.5f, 0.5f);
-                float randomY = Random.Range(-0.5f, 0.5f);
+    //    switch (Wtype_P)
+    //    {
+    //        case WeaponType_P.Status_KnockBack:
+    //            StartCoroutine(KnockBack()); //knockback
+    //            break;
+    //        case WeaponType_P.Status_Stun:
+    //            StartCoroutine(Stun(stunDuration)); //stun
+    //            break;
+    //        case WeaponType_P.Status_Burn:
+    //            StartCoroutine(Burn(stunDuration, 1f, 1f)); //burn dot-dmg
+    //            break;
+    //        case WeaponType_P.Status_Frostbite:
+    //            StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
+    //            break;
+    //        case WeaponType_P.Status_Poison:
+    //            StartCoroutine(Poison(stunDuration, 1f)); //poison -dmg
+    //            break;
+    //        case WeaponType_P.Status_Weaken:
+    //            StartCoroutine(Weaken(stunDuration, 1f)); //weaken -def
+    //            break;
+    //        case WeaponType_P.Status_Bleed:
+    //            StartCoroutine(Bleed(stunDuration, 1f, 1f)); //bleed -all
+    //            break;
+    //        default:
+    //            //more
+    //            break;
+    //    }
+    //    if (hp > 0)
+    //    {
+    //        //anim.SetTrigger("Hit");
+    //    }
+    //    else //die setting
+    //    {
+    //        isLive = false;
+    //        coll.enabled = false;
+    //        rigid.simulated = false;
+    //        //spriter.sortingOrder = 1;
+    //        //anim.SetBool("Dead", true);
+    //        GamePlayerManager.i.GetExp();
+    //        if (expPrefab != null)
+    //        {
+    //            // randdom position
+    //            Vector2 currentPosition = transform.position;
+    //            float randomX = Random.Range(-0.5f, 0.5f);
+    //            float randomY = Random.Range(-0.5f, 0.5f);
 
-                // 1px = 0.01f
-                Vector2 randomOffset = new Vector2(randomX, randomY) * 0.01f;
+    //            // 1px = 0.01f
+    //            Vector2 randomOffset = new Vector2(randomX, randomY) * 0.01f;
 
-                // ExpPrefab spawn
-                GameObject expObj = Instantiate(expPrefab, currentPosition + randomOffset, Quaternion.identity);
-            }
-        }
-    }
+    //            // ExpPrefab spawn
+    //            GameObject expObj = Instantiate(expPrefab, currentPosition + randomOffset, Quaternion.identity);
+    //        }
+    //    }
+    //}
     //Move
     private void WalkToTarget()
     {

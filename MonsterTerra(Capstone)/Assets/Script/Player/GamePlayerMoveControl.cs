@@ -27,9 +27,13 @@ public class GamePlayerMoveControl : MonoBehaviour
     {
         playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f) ;
         Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //무기 공격하는 부분
         {
             WeaponManager.i.Attack();
+        }
+        if (Input.GetKeyDown(KeyCode.Q)) //무기 교체 부분
+        {
+            WeaponManager.i.changeWeapon();
         }
     }
 
