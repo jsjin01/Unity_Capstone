@@ -45,28 +45,24 @@ public class EnemyBehavior : MonoBehaviour
         rb.velocity = direction * 3f; // bullet speed
     }
 
-    public IEnumerator Charging(Vector2 targetPosition, float chargeSpeed)
+    public IEnumerator Charging(Vector2 targetPosition, float chargeSpeed, float chargeDistance)
     {
         // Wait for 2 seconds
         isCharging = true;
-        //float chargeDelay = 2f;  => 사용안됨
 
         yield return new WaitForSeconds(2f);
 
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
-        float elapsedTime = 0f;
-        while (Vector2.Distance(transform.position, targetPosition) > 0.1f) //target Position Stop
+        float distanceTraveled = 0f; // 이동한 거리를 추적하기 위한 변수 추가
+        while (distanceTraveled < chargeDistance) // 이동한 거리가 chargeDistance보다 작을 때까지 반복
         {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > 3f)
-            {
-                isCharging = false; // Charging completed
-                yield break;
-            }
             // 목표 지점으로 이동
             Vector2 newPosition = (Vector2)transform.position + direction * chargeSpeed * Time.deltaTime;
             transform.position = newPosition;
+
+            // 이동한 거리 갱신
+            distanceTraveled += chargeSpeed * Time.deltaTime;
 
             yield return null;
         }

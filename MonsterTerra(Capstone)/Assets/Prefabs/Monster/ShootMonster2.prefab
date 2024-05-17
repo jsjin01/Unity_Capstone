@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d82dccec3631a488a0418be264fe1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBulletPrefab: {fileID: 0}
+  enemyBulletPrefab: {fileID: 5981970629542209787, guid: 04f0f5a26c28319459541806f27f95ff, type: 3}
   firePoint: {fileID: 0}
   chargePoint: {fileID: 0}
   fireRate: 2
