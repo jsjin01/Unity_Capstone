@@ -80,8 +80,6 @@ public class Enemy : MonoBehaviour
     {
         if (!isLive || isStunned) return; // Live Check
 
-        Wtype_E = WeaponType_E.Charge_1;
-
         // monster type
         switch (Wtype_E)
         {
@@ -89,7 +87,7 @@ public class Enemy : MonoBehaviour
                 if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
                 {
                     Charge(target.position);
-                    nextChargeTime = Time.time + 5f; // 5-2sec
+                    nextChargeTime = Time.time + 7f; // 7-2sec
                 }
                 else if (enemyBehavior.isCharging == false)
                 {
@@ -100,7 +98,7 @@ public class Enemy : MonoBehaviour
                 if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
                 {
                     StartCoroutine(RunToTarget(3f, 2f)); //speed, duration
-                    nextChargeTime = Time.time + 5f; // 5-2sec
+                    nextChargeTime = Time.time + 7f; // 7-2sec
                 }
                 else
                 {
@@ -111,7 +109,7 @@ public class Enemy : MonoBehaviour
                 if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
                 {
                     StartCoroutine(RunToTarget_R(3f, 2f)); //speed, duration
-                    nextChargeTime = Time.time + 5f; // 5-2sec
+                    nextChargeTime = Time.time + 7f; // 7-2sec
                 }
                 else
                 {
@@ -176,7 +174,7 @@ public class Enemy : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isLive) return;
+        if (!isLive || enemyBehavior.isCharging) return;
         if (target.position.x > rigid.position.x) //방향에 따라 이미지 전환
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -253,41 +251,6 @@ public class Enemy : MonoBehaviour
     //        }
     //    }
     //}
-    private void MonsterCheck()
-    {
-        if (gameObject.CompareTag("RushMonster1"))
-        {
-            anit = transform.Find("z_MonsterRush1").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("RushMonster2"))
-        {
-            anit = transform.Find("z_MonsterRush2").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("RushMonster3"))
-        {
-            anit = transform.Find("z_MonsterRush3").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("RushMonster4"))
-        {
-            anit = transform.Find("z_MonsterRush4").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("ShootMonster1"))
-        {
-            anit = transform.Find("z_MonsterShoot1").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("ShootMonster2"))
-        {
-            anit = transform.Find("z_MonsterShoot2").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("ShootMonster3"))
-        {
-            anit = transform.Find("z_MonsterShoot3").GetChild(0).GetComponent<Animator>();
-        }
-        else if (gameObject.CompareTag("ShootMonster4"))
-        {
-            anit = transform.Find("z_MonsterShoot4").GetChild(0).GetComponent<Animator>();
-        }
-    }
     //Move
     private void WalkToTarget()
     {
@@ -325,7 +288,7 @@ public class Enemy : MonoBehaviour
     IEnumerator RunToTarget(float newSpeed, float duration)
     {
         float originalSpeed = speed;
-        speed = newSpeed;
+        speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
     }
@@ -333,17 +296,17 @@ public class Enemy : MonoBehaviour
     IEnumerator RunToTarget_R(float newSpeed, float duration)
     {
         float originalSpeed = speed;
-        speed = newSpeed;
+        speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
         yield return new WaitForSeconds(duration);
 
-        speed = newSpeed;
+        speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
         yield return new WaitForSeconds(duration);
 
-        speed = newSpeed;
+        speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
 
@@ -362,7 +325,7 @@ public class Enemy : MonoBehaviour
 
     void Charge(Vector2 targetPosition)
     {
-        StartCoroutine(enemyBehavior.Charging(targetPosition, speed * 2));
+        StartCoroutine(enemyBehavior.Charging(targetPosition, speed * 2, 7f));
     }
 
     /// <summary>
@@ -527,6 +490,50 @@ public class Enemy : MonoBehaviour
         anit.SetTrigger("Dead");
         yield return new WaitForSeconds(anitTime);
         gameObject.SetActive(false);
+    }
+
+    private void MonsterCheck()
+    {
+        if (gameObject.CompareTag("RushMonster1"))
+        {
+            anit = transform.Find("z_MonsterRush1").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Charge_1;
+        }
+        else if (gameObject.CompareTag("RushMonster2"))
+        {
+            anit = transform.Find("z_MonsterRush2").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Charge_1;
+        }
+        else if (gameObject.CompareTag("RushMonster3"))
+        {
+            anit = transform.Find("z_MonsterRush3").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Charge_2;
+        }
+        else if (gameObject.CompareTag("RushMonster4"))
+        {
+            anit = transform.Find("z_MonsterRush4").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Charge_3;
+        }
+        else if (gameObject.CompareTag("ShootMonster1"))
+        {
+            anit = transform.Find("z_MonsterShoot1").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Shoot_1;
+        }
+        else if (gameObject.CompareTag("ShootMonster2"))
+        {
+            anit = transform.Find("z_MonsterShoot2").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Shoot_2;
+        }
+        else if (gameObject.CompareTag("ShootMonster3"))
+        {
+            anit = transform.Find("z_MonsterShoot3").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Shoot_3;
+        }
+        else if (gameObject.CompareTag("ShootMonster4"))
+        {
+            anit = transform.Find("z_MonsterShoot4").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Shoot_4;
+        }
     }
 
     void AnitTime()
