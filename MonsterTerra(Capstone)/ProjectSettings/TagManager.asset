@@ -7,6 +7,14 @@ TagManager:
   - Ground
   - Monster
   - Bullet
+  - RushMonster1
+  - RushMonster2
+  - RushMonster3
+  - RushMonster4
+  - ShootMonster1
+  - ShootMonster2
+  - ShootMonster3
+  - ShootMonster4
   layers:
   - Default
   - TransparentFX

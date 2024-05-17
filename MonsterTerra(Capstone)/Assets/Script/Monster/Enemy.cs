@@ -66,13 +66,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        //spriter = GetComponent<SpriteRenderer>();
-        //anim = GetComponent<Animator>();
-        anit = transform.Find("z_MonsterRush1").GetChild(0).GetComponent<Animator>();
-        AnitTime();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<BoxCollider2D>();
         enemyBehavior = GetComponent<EnemyBehavior>();
+        MonsterCheck();
+        AnitTime();
     }
     private void Update()
     {
@@ -255,6 +253,41 @@ public class Enemy : MonoBehaviour
     //        }
     //    }
     //}
+    private void MonsterCheck()
+    {
+        if (gameObject.CompareTag("RushMonster1"))
+        {
+            anit = transform.Find("z_MonsterRush1").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("RushMonster2"))
+        {
+            anit = transform.Find("z_MonsterRush2").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("RushMonster3"))
+        {
+            anit = transform.Find("z_MonsterRush3").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("RushMonster4"))
+        {
+            anit = transform.Find("z_MonsterRush4").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("ShootMonster1"))
+        {
+            anit = transform.Find("z_MonsterShoot1").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("ShootMonster2"))
+        {
+            anit = transform.Find("z_MonsterShoot2").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("ShootMonster3"))
+        {
+            anit = transform.Find("z_MonsterShoot3").GetChild(0).GetComponent<Animator>();
+        }
+        else if (gameObject.CompareTag("ShootMonster4"))
+        {
+            anit = transform.Find("z_MonsterShoot4").GetChild(0).GetComponent<Animator>();
+        }
+    }
     //Move
     private void WalkToTarget()
     {

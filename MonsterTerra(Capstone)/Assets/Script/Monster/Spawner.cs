@@ -27,8 +27,8 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        //GameObject enemy = GameManager.instance.Epool.Get(Random.Range(0,2)); // 0,1 random spawn
-        GameObject enemy = GameManager.i.Epool.Get(0);   // enemy spawn
+        GameObject enemy = GameManager.i.Epool.Get(Random.Range(0,8)); // 0,8 random spawn
+        //GameObject enemy = GameManager.i.Epool.Get(1);   // enemy spawn
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().Init(spawnData[level]);
     }
