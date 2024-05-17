@@ -40,8 +40,9 @@ public class Enemy : MonoBehaviour
     bool startani = true;
     public enum WeaponType_P
     {
-        Status_KnockBack,
+        Status_None,
         Status_Stun,
+        Status_KnockBack,
         Status_Burn,
         Status_Frostbite,
         Status_Poison,
@@ -227,35 +228,6 @@ public class Enemy : MonoBehaviour
 
     //    hp -= collision.GetComponent<BulletComponent>().dmg; // hp - damage
 
-    //    Wtype_P = WeaponType_P.Status_KnockBack;
-
-    //    switch (Wtype_P)
-    //    {
-    //        case WeaponType_P.Status_KnockBack:
-    //            StartCoroutine(KnockBack()); //knockback
-    //            break;
-    //        case WeaponType_P.Status_Stun:
-    //            StartCoroutine(Stun(stunDuration)); //stun
-    //            break;
-    //        case WeaponType_P.Status_Burn:
-    //            StartCoroutine(Burn(stunDuration, 1f, 1f)); //burn dot-dmg
-    //            break;
-    //        case WeaponType_P.Status_Frostbite:
-    //            StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
-    //            break;
-    //        case WeaponType_P.Status_Poison:
-    //            StartCoroutine(Poison(stunDuration, 1f)); //poison -dmg
-    //            break;
-    //        case WeaponType_P.Status_Weaken:
-    //            StartCoroutine(Weaken(stunDuration, 1f)); //weaken -def
-    //            break;
-    //        case WeaponType_P.Status_Bleed:
-    //            StartCoroutine(Bleed(stunDuration, 1f, 1f)); //bleed -all
-    //            break;
-    //        default:
-    //            //more
-    //            break;
-    //    }
     //    if (hp > 0)
     //    {
     //        //anim.SetTrigger("Hit");
@@ -461,6 +433,36 @@ public class Enemy : MonoBehaviour
         {
             anit.SetTrigger("Hit");
             //hit ¼¼ÆÃ
+            switch ((WeaponType_P)Etype)
+            {
+                case WeaponType_P.Status_None:
+                    Debug.Log(Etype);
+                    break;
+                case WeaponType_P.Status_Stun:
+                    StartCoroutine(Stun(stunDuration)); //stun
+                    break;
+                case WeaponType_P.Status_KnockBack:
+                    StartCoroutine(KnockBack()); //knockback
+                    break;
+                case WeaponType_P.Status_Burn:
+                    StartCoroutine(Burn(stunDuration, 1f, 1f)); //burn dot-dmg
+                    break;
+                case WeaponType_P.Status_Frostbite:
+                    StartCoroutine(Frostbite(stunDuration, 1f)); //frostbite -spd
+                    break;
+                case WeaponType_P.Status_Poison:
+                    StartCoroutine(Poison(stunDuration, 1f)); //poison -dmg
+                    break;
+                case WeaponType_P.Status_Weaken:
+                    StartCoroutine(Weaken(stunDuration, 1f)); //weaken -def
+                    break;
+                case WeaponType_P.Status_Bleed:
+                    StartCoroutine(Bleed(stunDuration, 1f, 1f)); //bleed -all
+                    break;
+                default:
+                    //more
+                    break;
+            }
         }
         else //die setting
         {
