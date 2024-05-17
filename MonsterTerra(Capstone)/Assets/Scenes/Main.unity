@@ -9372,7 +9372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 4
-  crtype: 4
+  crtype: 0
   sotype: 1
   mwtype: 1
   sptype: 3
@@ -19010,7 +19010,7 @@ MonoBehaviour:
   - {fileID: 7324535260650862708, guid: 2036462c85c4a654e924691359a6b2bf, type: 3}
   - {fileID: 4520482910778721677, guid: fb2532c5c8ad890429bb0dfe0ec6a0f4, type: 3}
   - {fileID: 8835876434284860826, guid: 27916f53eb2a86248957f833eeeb37c5, type: 3}
-  - {fileID: 6643933937228693196, guid: 79e10f941dba6ce48b036e41a101ab5d, type: 3}
+  - {fileID: 818899318116114093, guid: 79e10f941dba6ce48b036e41a101ab5d, type: 3}
   - {fileID: 6697481651831839543, guid: 7d92fd8ddc404494c924de2d556a5b94, type: 3}
 --- !u!1 &2027995051
 GameObject:

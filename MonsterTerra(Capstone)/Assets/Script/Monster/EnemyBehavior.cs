@@ -39,10 +39,13 @@ public class EnemyBehavior : MonoBehaviour
 
     public void ShootHoming(Vector2 targetPosition)
     {
-        GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        GameObject bulletObject = Instantiate(enemyBulletPrefab, firePoint.position, Quaternion.identity);
+        EnemyBullet bullet = bulletObject.GetComponent<EnemyBullet>(); // Bullet 스크립트 가져오기
+
         Vector2 direction = (targetPosition - (Vector2)firePoint.position).normalized;
-        rb.velocity = direction * 3f; // bullet speed
+
+        // Bullet 스크립트의 ShootHoming 함수 호출하여 총알을 플레이어를 따라가게 만듦
+        bullet.ShootHoming(direction, 3f, player);
     }
 
     public IEnumerator Charging(Vector2 targetPosition, float chargeSpeed, float chargeDistance)
