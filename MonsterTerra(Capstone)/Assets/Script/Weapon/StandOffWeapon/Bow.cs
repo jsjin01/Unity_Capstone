@@ -28,21 +28,42 @@ public class Bow : WeaponComponent
         }
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+        //화살 생성
         GameObject arrow = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
         arrow.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
         arrow.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
         if (lvMax)
         {
-            Quaternion leftRotation = Quaternion.Euler(0f, 0f, angle + 30);
+            //추가 화살 각도 및 벡터 계산
+            Quaternion leftRotation = Quaternion.Euler(0f, 0f, angle+ 30);
             Quaternion rightRotation = Quaternion.Euler(0f, 0f, angle - 30);
-            GameObject arrow1 = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, leftRotation, transform);
-            GameObject arrow2 = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rightRotation, transform);
-            arrow1.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
-            arrow1.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
-            arrow2.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
-            arrow2.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
+            Vector2 leftDir = RotateVector2(Vector2.right, angle + 30);
+            Vector2 rightDir = RotateVector2(Vector2.right, angle - 30);
+
+            //왼쪽 화살 && 오른쪽 화살 생성
+            GameObject leftArrow = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, leftRotation, transform);
+            GameObject rightArrow = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rightRotation, transform);
+            leftArrow.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
+            leftArrow.GetComponentInChildren<BulletComponent>().Move(leftDir); 
+            rightArrow.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
+            rightArrow.GetComponentInChildren<BulletComponent>().Move(rightDir); 
         }
         StartCoroutine(AttackRate());
+    }
+    Vector2 RotateVector2(Vector2 dir, float angle) //각도에 따른 playDir 변화 계산
+    {
+        // 각도를 라디안으로 변환
+        float rad = angle * Mathf.Deg2Rad;
+
+        // 회전 변환 적용
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+
+        float newX = dir.x * cos - dir.y * sin;
+        float newY = dir.x * sin + dir.y * cos;
+
+        return new Vector2(newX, newY).normalized;
     }
 
     public override void WeaponLevelUp()

@@ -51,7 +51,23 @@ public class WeaponManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            crWeapon.WeaponLevelUp();
+
+            if (idx == 1)
+            {
+                crWeapon.WeaponLevelUp();
+            }
+            else if (idx == 2)
+            {
+                soWeapon.WeaponLevelUp();
+            }
+            else if (idx == 3) 
+            {
+                mwWeapon.WeaponLevelUp();
+            }
+            else if(idx == 4)
+            {
+                spWeapon.WeaponLevelUp();
+            }
         }
     }
 
