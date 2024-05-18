@@ -27,10 +27,38 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        GameObject enemy = GameManager.i.Epool.Get(Random.Range(0,8)); // 0,8 random spawn
+        GameObject enemy = GameManager.i.Epool.Get(Random.Range(0,10)); // 0,10 random spawn
         //GameObject enemy = GameManager.i.Epool.Get(1);   // enemy spawn
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().Init(spawnData[level]);
+    }
+
+    public void BossSpawn_1()
+    {
+        StartCoroutine(SpawnBossEnemies(0,4));
+    }
+
+    public void BossSpawn_2()
+    {
+        StartCoroutine(SpawnBossEnemies(3,7));
+    }
+
+    IEnumerator SpawnBossEnemies(int e1, int e2)
+    {
+        // Loop through and spawn RushMonster1 and ShootMonster1 enemies
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnMonster(e1);
+            SpawnMonster(e2);
+            yield return new WaitForSeconds(1f); // Delay between spawns
+        }
+    }
+
+    void SpawnMonster(int enemyNo)
+    {
+        GameObject enemy = GameManager.i.Epool.Get(enemyNo); // Assuming the index for RushMonster1 is 0
+        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        enemy.GetComponent<Enemy>().Init(spawnData[level]); // Initialize enemy
     }
 }
 

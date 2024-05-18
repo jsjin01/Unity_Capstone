@@ -30,7 +30,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        if ((isHoming))
+        if (isHoming)
         {
             // 플레이어를 향하는 방향 벡터를 계산
             Vector2 targetDirection = ((Vector2)target.position - rb.position).normalized;

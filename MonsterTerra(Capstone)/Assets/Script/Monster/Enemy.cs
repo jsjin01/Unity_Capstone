@@ -34,7 +34,8 @@ public class Enemy : MonoBehaviour
     WeaponType_P Wtype_P;
     WeaponType_E Wtype_E;
     bool isWaitingToFire = false;
-
+    int bossShootCnt = 0;
+    Spawner spawner;
 
     float animationLength;
     bool startani = true;
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        spawner = FindObjectOfType<Spawner>();
         rigid = GetComponent<Rigidbody2D>();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<BoxCollider2D>();
@@ -166,6 +168,36 @@ public class Enemy : MonoBehaviour
                     WalkMaintain();
                 }
                 break;
+            case WeaponType_E.Boss_1: //2sec follow stop * 3
+                if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
+                {
+                    spawner.BossSpawn_1();
+                    StartCoroutine(Pattern_Boss_Charge(3f, 2f)); //speed, duration
+                    nextChargeTime = Time.time + 15f; // 7-2sec
+                }
+                else
+                {
+                    WalkToTarget();
+                }
+                break;
+            case WeaponType_E.Boss_2: // shoot and move
+                if (Time.time > nextFireTime && Vector2.Distance(transform.position, target.position) <= fireRange)
+                {
+                    HomingMissile(target.position);
+                    bossShootCnt++;
+                    nextFireTime = Time.time + 0.5f;
+                    if (bossShootCnt == 10)
+                    {
+                        spawner.BossSpawn_2();
+                        StartCoroutine(Stun(5f)); //stun
+                        nextFireTime = Time.time + 15f;
+                    }
+                }
+                else
+                {
+                    WalkMaintain();
+                }
+                break;
             default:
                 //more
                 break;
@@ -174,7 +206,7 @@ public class Enemy : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isLive || enemyBehavior.isCharging) return;
+        if (!isLive || enemyBehavior.isCharging || isStunned) return;
         if (target.position.x > rigid.position.x) //방향에 따라 이미지 전환
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -310,7 +342,32 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
 
-        StartCoroutine(Stun(2f)); //sturn
+        StartCoroutine(Stun(2f)); //stun
+    }
+
+    IEnumerator Pattern_Boss_Charge(float newSpeed, float duration)
+    {
+        float originalSpeed = speed;
+        speed *= 1.5f;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+        yield return new WaitForSeconds(duration);
+
+        speed *= 1.5f;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+        yield return new WaitForSeconds(duration);
+
+        speed *= 1.5f;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+
+        StartCoroutine(Stun(5f)); //stun
+        hp += 100f;
+        yield return new WaitForSeconds(1f);
+        hp += 100f;
+        yield return new WaitForSeconds(1f);
+        hp += 100f;
     }
 
     void Fire(Vector2 targetPosition)
@@ -533,6 +590,16 @@ public class Enemy : MonoBehaviour
         {
             anit = transform.Find("z_MonsterShoot4").GetChild(0).GetComponent<Animator>();
             Wtype_E = WeaponType_E.Shoot_4;
+        }
+        else if (gameObject.CompareTag("BossMonster1"))
+        {
+            anit = transform.Find("z_MonsterBoss1").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Boss_1;
+        }
+        else if (gameObject.CompareTag("BossMonster2"))
+        {
+            anit = transform.Find("z_MonsterBoss2").GetChild(0).GetComponent<Animator>();
+            Wtype_E = WeaponType_E.Boss_2;
         }
     }
 
