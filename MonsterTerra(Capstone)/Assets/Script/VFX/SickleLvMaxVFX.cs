@@ -33,7 +33,9 @@ public class SickleLvMaxVFX : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster"))
+        if (collision.CompareTag("RushMonster1") || collision.CompareTag("RushMonster2") || collision.CompareTag("RushMonster3") || collision.CompareTag("RushMonster4") ||
+           collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
+           collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
             collision.GetComponent<Enemy>().TakeDamage(0,0,0,7); // 데미지 없이 출혈 효과만 적용
         }

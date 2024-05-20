@@ -9372,7 +9372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 4
-  crtype: 0
+  crtype: 4
   sotype: 1
   mwtype: 1
   sptype: 3

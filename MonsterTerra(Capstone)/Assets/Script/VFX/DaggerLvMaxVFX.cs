@@ -42,7 +42,9 @@ public class DaggerLvMaxVFX : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster"))
+        if (collision.CompareTag("RushMonster1") || collision.CompareTag("RushMonster2") || collision.CompareTag("RushMonster3") || collision.CompareTag("RushMonster4") ||
+           collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
+           collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
             //몬스터에게 데미지 주는 부분
             enemy = collision.GetComponent<Enemy>();
