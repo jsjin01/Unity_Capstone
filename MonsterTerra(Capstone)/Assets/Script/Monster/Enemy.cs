@@ -361,13 +361,14 @@ public class Enemy : MonoBehaviour
         speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
+        yield return new WaitForSeconds(duration);
 
         StartCoroutine(Stun(5f)); //stun
-        hp += 100f;
+        hp += 1f;
         yield return new WaitForSeconds(1f);
-        hp += 100f;
+        hp += 1f;
         yield return new WaitForSeconds(1f);
-        hp += 100f;
+        hp += 1f;
     }
 
     void Fire(Vector2 targetPosition)
