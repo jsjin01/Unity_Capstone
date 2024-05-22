@@ -6,12 +6,12 @@ public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public SpawnData[] spawnData;
-    public int maxEnemies = 10; // 최대 소환할 몹의 수
     private int currentEnemyCount = 0; // 현재 소환된 몹의 수
     private int currentBossCount = 0;
     public int enemyKillCount = 0;
     public int BossKillCount = 0;
     public int level = 0;
+    public int maxEnemies; // 최대 소환할 몹의 수
     int prelevel = 0;
     float timer;
 
@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>(); // point array( me = 0, components = 1~N )
+        maxEnemies = 10 * (level + 1);
     }
     
     void Update()
@@ -71,7 +72,7 @@ public class Spawner : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                if (enemyKillCount == 10)
+                if (enemyKillCount == maxEnemies)
                     level++;
                 break;
             case 4:
@@ -92,7 +93,7 @@ public class Spawner : MonoBehaviour
             case 6:
             case 7:
             case 8:
-                if (enemyKillCount == 10)
+                if (enemyKillCount == maxEnemies)
                     level++;
                 break;
             case 9:
@@ -115,6 +116,7 @@ public class Spawner : MonoBehaviour
 
         if (level != prelevel)
         {
+            maxEnemies = 10 * (level + 1);
             currentEnemyCount = 0;
             currentBossCount = 0;
             enemyKillCount = 0;
