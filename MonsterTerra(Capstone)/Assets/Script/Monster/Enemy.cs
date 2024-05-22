@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
                     Charge(target.position);
                     nextChargeTime = Time.time + 7f; // 7-2sec
                 }
-                else if (enemyBehavior.isCharging == false)
+                else if (!enemyBehavior.isCharging)
                 {
                     WalkToTarget();
                 }
@@ -543,6 +543,7 @@ public class Enemy : MonoBehaviour
         isLive = false;
         coll.enabled = false;
         rigid.simulated = false;
+        enemyBehavior.isCharging = false;
         anit.SetTrigger("Dead");
         yield return new WaitForSeconds(anitTime);
         gameObject.SetActive(false);

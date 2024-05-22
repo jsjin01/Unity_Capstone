@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
         fireRate = 0.5f;
         firePoint = transform;       // current pos
         chargePoint = transform;     // current pos
-    }
+}
 
     /// <summary>
     /// Fight Motion
@@ -58,7 +58,7 @@ public class EnemyBehavior : MonoBehaviour
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
         float distanceTraveled = 0f; // 이동한 거리를 추적하기 위한 변수 추가
-        while (distanceTraveled < chargeDistance) // 이동한 거리가 chargeDistance보다 작을 때까지 반복
+        while (distanceTraveled < chargeDistance) // 이동할 거리가 남아 있고 적이 살아있는 동안에만 이동
         {
             // 목표 지점으로 이동
             Vector2 newPosition = (Vector2)transform.position + direction * chargeSpeed * Time.deltaTime;
