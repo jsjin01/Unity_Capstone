@@ -9880,7 +9880,7 @@ MonoBehaviour:
   speed: 20
   lv: 0
   exp: 0
-  maxExp: 640000008c000000c4000000
+  maxExp: e803000078050000a8070000
 --- !u!1 &1208608303
 GameObject:
   m_ObjectHideFlags: 0
@@ -19241,11 +19241,69 @@ MonoBehaviour:
   spawnPoint: []
   spawnData:
   - spriteType: 0
-    spawnTime: 10
+    spawnTime: 1
     hp: 20
     speed: 1.5
     damage: 1
     defense: 0
+  - spriteType: 1
+    spawnTime: 1
+    hp: 30
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 2
+    spawnTime: 1
+    hp: 40
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 3
+    spawnTime: 1
+    hp: 50
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 4
+    spawnTime: 1
+    hp: 200
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 5
+    spawnTime: 1
+    hp: 20
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 6
+    spawnTime: 1
+    hp: 30
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 7
+    spawnTime: 1
+    hp: 40
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 8
+    spawnTime: 1
+    hp: 50
+    speed: 1.5
+    damage: 1
+    defense: 0
+  - spriteType: 9
+    spawnTime: 1
+    hp: 200
+    speed: 1.5
+    damage: 1
+    defense: 0
+  maxEnemies: 10
+  enemyKillCount: 0
+  BossKillCount: 0
+  level: 0
 --- !u!1 &2036104929
 GameObject:
   m_ObjectHideFlags: 0
