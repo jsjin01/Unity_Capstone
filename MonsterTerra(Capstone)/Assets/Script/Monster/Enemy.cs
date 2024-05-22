@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public GameObject expPrefab;
     private Exp expScript;
 
-    bool isLive; //Live or Dead
+    public bool isLive; //Live or Dead
     bool isStunned;
     float stunDuration;
 
@@ -480,6 +480,7 @@ public class Enemy : MonoBehaviour
     //default 값은 0으로 효과를 넣고 크리티컬 데미지와 확률을 넣을 수 있게 수정하기!
     public void TakeDamage(float dmg, float cridmg, float cri, int Etype = 0)
     {
+        dmg -= defense;
         hp -= dmg;
         Debug.Log(hp);
         if (hp > 0)
@@ -520,9 +521,6 @@ public class Enemy : MonoBehaviour
         else //die setting
         {
             StartCoroutine(Die(animationLength));
-            //isLive = false;
-            //coll.enabled = false;
-            //rigid.simulated = false;
             if (expPrefab != null)
             {
                 // random position
@@ -539,7 +537,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Die(float anitTime)
+    public IEnumerator Die(float anitTime)
     {
         isLive = false;
         coll.enabled = false;
@@ -547,6 +545,11 @@ public class Enemy : MonoBehaviour
         anit.SetTrigger("Dead");
         yield return new WaitForSeconds(anitTime);
         gameObject.SetActive(false);
+
+        if (Wtype_E == WeaponType_E.Boss_1 || Wtype_E == WeaponType_E.Boss_2)
+            spawner.BossKillCount++;
+        else
+            spawner.enemyKillCount++;
     }
 
     private void MonsterCheck()
