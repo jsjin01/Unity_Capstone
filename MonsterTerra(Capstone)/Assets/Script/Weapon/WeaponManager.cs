@@ -74,6 +74,7 @@ public class WeaponManager : MonoBehaviour
 
     public void changeWeapon() //무기 바꾸기 
     {
+        Debug.Log("Weapon change");
         if(idx == 1) //근접 -> 원거리
         {
             weaponSR.sprite = soweapons[(int)sotype];

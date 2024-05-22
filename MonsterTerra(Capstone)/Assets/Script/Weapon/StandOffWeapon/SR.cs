@@ -41,19 +41,19 @@ public class SR : WeaponComponent
         lv++;
         if (lv == 1)
         {
-            weaponmulatkspd -= 0.2f;// 공격속도 20% 증가
+            weaponmulatk += 0.2f; //무기 추가 공격력 20% 증가
         }
         else if (lv == 2)
         {
-            weaponmulatk += 0.1f; //무기 추가 공격력 10% 증가
+            addCridmg += 0.30f; // 치명타 데미지 30% 증가
         }
         else if (lv == 3)
         {
-            addCridmg += 0.15f; // 치명타 데미지 15% 증가
+            addCri += 0.1f; // 치명타 확률 10% 증가
         }
         else if (lv == 4)
         {
-            addCri += 0.1f; //치명타 확률 10퍼 증가
+            weaponmulatk += 0.3f; //무기 추가 공격력 30% 증가
         }
         else if (lv == 5)
         {
