@@ -29,10 +29,14 @@ public class SR : WeaponComponent
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
-        //화살 생성
+        //SR bullet 생성
         GameObject srBullet = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
         srBullet.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri);
         srBullet.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
+        if (lvMax)
+        {
+            srBullet.GetComponentInChildren<BulletComponent>().SetMax();                           //총알 Max 레벨
+        }
         StartCoroutine(AttackRate());
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float damage = 10f;
+    public int damage = 10;
     public float bulletLifetime = 5f;
     Rigidbody2D rb;
     Vector2 initialDirection;
@@ -45,6 +45,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
+            GamePlayerMoveControl.i.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

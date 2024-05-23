@@ -25,7 +25,7 @@ public class Spear : WeaponComponent
         {
             return;
         }
-
+        GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject spear = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
         spear.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri);

@@ -3,26 +3,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //애니메이션 부분,스프라이트 부분 다 주석처리 
-    public float speed; // Monster Speed Setting
-    public float hp; // current hp
-    public float maxHp; // max hp
-    public float damage; // max hp
-    public float defense; // max hp
+    //몬스터 기본 상태
+    public float speed; // 스피드
+    public float hp; // 현재 체력
+    public float maxHp; // 최대 체력
+    public float damage; // 데미지
+    public float defense; //방어력
 
-    //public RuntimeAnimatorController[] animCon; // status
+    //타겟팅 설정 및 EXP  구슬 설정
     public Rigidbody2D target; // target
     public GameObject expPrefab;
     private Exp expScript;
 
+    //상태 이상에 따른 행동 불가
     public bool isLive; //Live or Dead
     bool isStunned;
     float stunDuration;
 
     Rigidbody2D rigid;
     [SerializeField]Animator anit;
-    //SpriteRenderer spriter;
-    //Animator anim;
     WaitForFixedUpdate wait;
     [SerializeField] BoxCollider2D coll;
     EnemyBehavior enemyBehavior;
@@ -31,12 +30,14 @@ public class Enemy : MonoBehaviour
     private float nextChargeTime;
     public float fireRange = 5f; // distance
     public float chargeRange = 5f; // distance
-    WeaponType_P Wtype_P;
-    WeaponType_E Wtype_E;
+
+    WeaponType_P Wtype_P;   //상태이상
+    WeaponType_E Wtype_E;   //몬스터 타입
     bool isWaitingToFire = false;
     int bossShootCnt = 0;
     Spawner spawner;
 
+    public bool isAttack = true; //공격가능 상태
     float animationLength;
     bool startani = true;
     public enum WeaponType_P
@@ -83,7 +84,7 @@ public class Enemy : MonoBehaviour
         if (!isLive || isStunned) return; // Live Check
 
         // monster type
-        switch (Wtype_E)
+        switch (Wtype_E) // 타입에 따른 공격 패턴
         {
             case WeaponType_E.Charge_1: //wait 2sec + charge
                 if (Time.time > nextChargeTime && Vector2.Distance(transform.position, target.position) <= chargeRange)
@@ -620,5 +621,23 @@ public class Enemy : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (isAttack)
+            {
+                GamePlayerMoveControl.i.TakeDamage((int)damage);
+            }
+        }
+    }
+
+    IEnumerator AttackRate() // 공격속도가 정해져있음
+    {
+        isAttack = false;
+        yield return new WaitForSeconds(0.5f);
+        isAttack = true;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,19 @@ public class BulletComponent : MonoBehaviour
 
     [SerializeField] GameObject parent;
     [SerializeField] float dTime = 1.0f;
+    float bulletTime = 0f; //불릿이 살아있는 시간
 
-    [SerializeField]SOTYPE Type;     //누구의 총알인지 구별
+    [SerializeField] SOTYPE Type;     //누구의 총알인지 구별
+    [SerializeField] bool isdirdmg = false;  //거리 비례 데미지
     [SerializeField] bool isguided = false;  //유도되는지 여부
 
+    void Update()
+    {
+        if (isdirdmg) // 날라가는 동안 살있는 시간
+        {
+            bulletTime += Time.deltaTime;
+        }
+    }
     public void Move(Vector3 p)      //쏜 방향으로 쭉 날라감      
     {
         if (rb == null)
@@ -55,7 +65,9 @@ public class BulletComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //몬스터랑 충돌하면 삭제
     {
-        if (collision.CompareTag("Monster"))
+        if (collision.CompareTag("RushMonster1") || collision.CompareTag("RushMonster2") || collision.CompareTag("RushMonster3") || collision.CompareTag("RushMonster4") ||
+           collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
+           collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
             collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype); // 몬스터에게 데미지 주는 부분
             CancelInvoke("DestroyBullet");
@@ -63,6 +75,17 @@ public class BulletComponent : MonoBehaviour
         }
     }
 
+    public void SetMax()
+    {
+        if(Type == SOTYPE.SR)
+        {
+            isdirdmg = true;
+        }
+        if(Type == SOTYPE.AR)
+        {
+            isguided = true;
+        }
+    }
     private void GuidedBullet() //유도되는 부분
     {
         //몬스터들 중 총알과 가장 가까운 부분에 있는 몬스터에게 날라감

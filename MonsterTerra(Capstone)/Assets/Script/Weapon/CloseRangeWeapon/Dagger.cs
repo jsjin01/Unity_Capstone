@@ -27,7 +27,7 @@ public class Dagger : WeaponComponent
         {
             return;
         }
-
+        GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject dagger = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
         dagger.GetComponentInChildren<DaggerVFX>().SetAttack(dmg, endCriDmg, endCri, lv);

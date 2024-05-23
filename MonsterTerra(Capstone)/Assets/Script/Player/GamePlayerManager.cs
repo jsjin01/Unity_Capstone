@@ -17,6 +17,7 @@ public class GamePlayerManager : MonoBehaviour
     public int lv = 1;
     public int exp = 0; // 현재 경험치
     public int[] maxExp = { 100, 140, 196  ,100000000}; // Level UP 하기까지 필요한 경험치
+    public bool isDead = false;
     
     private void Awake()
     {

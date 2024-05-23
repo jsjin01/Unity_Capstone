@@ -8,7 +8,6 @@ public class DaggerLvMaxVFX : MonoBehaviour
     float cridmg = 0;
     float cri = 0;
     int etype = 0; // 특수 효과
-    int lv = 0;    //레벨도 받음
 
     float addatk = 0;//추가타 데미지
     float addcri = 0;//추가타 크리티컬 확률

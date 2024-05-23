@@ -19,15 +19,15 @@ public class CameraControl : MonoBehaviour
         i = this; 
     }
 
-    private void LateUpdate()
-    {
-        FollowPlayer();
-    }
     void Start()
     {
         player = GameObject.Find("Player").transform;
     }
 
+    private void LateUpdate()
+    {
+        FollowPlayer();
+    }
     private void Update()
     {
         //if (Input.GetKey(KeyCode.Space))
@@ -38,7 +38,7 @@ public class CameraControl : MonoBehaviour
     void FollowPlayer()
     {
         Vector3 playerPos = new Vector3(player.position.x, player.position.y, -1);
-        transform.position = Vector3.Lerp(transform.position, playerPos, lerpSpeed * Time.deltaTime);
+        transform.position = playerPos;
     }
 
     public void StartCameraShake(float dur, float amount, float speed)

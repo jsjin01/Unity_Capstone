@@ -26,6 +26,7 @@ public class Sickle : WeaponComponent
         {
             return;
         }
+        GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject sickle = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
         sickle.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri, debuffType);

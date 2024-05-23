@@ -7,7 +7,7 @@ public class GamePlayerMoveControl : MonoBehaviour
     public static GamePlayerMoveControl i;
 
     Rigidbody2D rb; 
-    [SerializeField]Animator anit; 
+    public Animator anit; 
 
     public Vector2 playerDir;//플레이어가 이동하는 방향을 받아옴
     public Vector2 playerPos;
@@ -22,11 +22,8 @@ public class GamePlayerMoveControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
     }
-
-    void Update()
+    private void Update()
     {
-        playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f) ;
-        Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetKeyDown(KeyCode.Space)) //무기 공격하는 부분
         {
             WeaponManager.i.Attack();
@@ -35,6 +32,12 @@ public class GamePlayerMoveControl : MonoBehaviour
         {
             WeaponManager.i.changeWeapon();
         }
+    }
+
+    void FixedUpdate()
+    {
+        playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f) ;
+        Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
     void Move(float x, float y)           //플레이어 이동
@@ -54,6 +57,16 @@ public class GamePlayerMoveControl : MonoBehaviour
         anit.SetFloat("speed", playerDir.magnitude);
     }
 
+    public void TakeDamage(int dmg) //데미지 받는 행위
+    {
+        GamePlayerManager.i.hp -= dmg; //데미지 받음
+        anit.SetTrigger("Hit");
+        if(GamePlayerManager.i.hp <= 0)
+        {
+            GamePlayerManager.i.isDead = true; //죽음 활성화
+            anit.ResetTrigger("Dead");
+        }
+    }
 
 
 }

@@ -25,7 +25,7 @@ public class LongSword: WeaponComponent
         {
             return;
         }
-
+        GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject longsward = Instantiate(weapon[index],GamePlayerMoveControl.i.playerPos , rotation , transform);
         longsward.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg, endCriDmg, endCri);

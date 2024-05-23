@@ -60,6 +60,7 @@ public abstract class WeaponComponent : MonoBehaviour
     protected IEnumerator AttackRate()
     {
         canAttack = false;
+        Debug.Log(endAtkSpd);
         yield return new WaitForSeconds(endAtkSpd);
         canAttack = true;
     }
