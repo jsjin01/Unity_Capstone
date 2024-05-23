@@ -14599,9 +14599,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 0}
   MaxHp: 100
-  hp: 0
+  hp: 100
   atk: 20
-  atkSpd: 1
+  atkSpd: 1.5
   cri: 0
   criDmg: 1.5
   speed: 5
