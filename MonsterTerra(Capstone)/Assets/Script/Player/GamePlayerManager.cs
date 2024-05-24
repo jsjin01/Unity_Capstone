@@ -9,6 +9,8 @@ public class GamePlayerManager : MonoBehaviour
     public GameObject Character;
     public float MaxHp = 100;
     public float hp = 100;
+    public float MaxMp = 100;
+    public float mp = 100;
     public int atk = 20;
     public float atkSpd = 1f;
     public float cri = 0;
