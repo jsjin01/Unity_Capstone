@@ -12023,7 +12023,7 @@ MonoBehaviour:
   idx: 4
   crtype: 1
   sotype: 1
-  mwtype: 0
+  mwtype: 3
   sptype: 1
   crweapons:
   - {fileID: 21300000, guid: df367e17050e9674884b070363137c6a, type: 3}
@@ -12041,7 +12041,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 225681339281e445bb8f5ac8efbf2655, type: 3}
   - {fileID: 21300000, guid: e6aa64867e4a44c19825b33c99b448c5, type: 3}
   - {fileID: 21300000, guid: 8fe3f5228b68342e88e304d34b985b5b, type: 3}
-  - {fileID: 21300000, guid: d98dc45d410684a6e8254c3fc82ab315, type: 3}
+  - {fileID: 21300000, guid: 2f3478403c4af4ea0a78d2fa9542bb5e, type: 3}
   - {fileID: 21300000, guid: 6706a809e408a0a479060d9e61630c39, type: 3}
   spweapons:
   - {fileID: 21300000, guid: 3d6850a494befb44d9e328b8343e61b0, type: 3}
