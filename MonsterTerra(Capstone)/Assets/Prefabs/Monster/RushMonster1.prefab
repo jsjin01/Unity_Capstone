@@ -51,7 +51,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -145,10 +145,12 @@ MonoBehaviour:
   defense: 0
   target: {fileID: 0}
   expPrefab: {fileID: 7836481195849247303, guid: 21d60d3e19f389c49a4067ed914f6231, type: 3}
+  isLive: 0
   anit: {fileID: 56698742984115916}
   coll: {fileID: 0}
   fireRange: 5
   chargeRange: 5
+  isAttack: 1
 --- !u!1 &72562827721234033
 GameObject:
   m_ObjectHideFlags: 0

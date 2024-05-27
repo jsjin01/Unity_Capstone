@@ -623,12 +623,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        Debug.Log("ON");
+        if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("P");
             if (isAttack)
             {
+                Debug.Log("h");
                 GamePlayerMoveControl.i.TakeDamage((int)damage);
             }
         }

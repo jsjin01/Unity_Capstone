@@ -25,6 +25,8 @@ public class GamePlayerMoveControl : MonoBehaviour
         cd = GetComponent<BoxCollider2D>();
         tr = transform.GetChild(2).GetComponent<TrailRenderer>();
         anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
+        rb.constraints = RigidbodyConstraints2D.None; //재시작할 때 고정되어있는 부분 풀기
+        rb.freezeRotation = true; //회전 안하도록 설정
     }
     private void Update()
     {
@@ -102,10 +104,11 @@ public class GamePlayerMoveControl : MonoBehaviour
         } //죽으면 끝나도록 설정
         GamePlayerManager.i.hp -= dmg; //데미지 받음
         anit.SetTrigger("Hit");
-        CameraControl.i.StartCameraShake(0.1f,0.3f,20f);
+        CameraControl.i.StartCameraShake(0.1f,0.2f,50f);
         if(GamePlayerManager.i.hp <= 0)
         {
             GamePlayerManager.i.isDead = true; //죽음 활성화
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;//몬스터에게 안 밀리도록 고정
             anit.SetTrigger("Dead");
 
             GameManager.i.GameOver();

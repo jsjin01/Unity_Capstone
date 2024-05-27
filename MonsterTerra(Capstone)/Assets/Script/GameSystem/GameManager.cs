@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameOverRoutine());
     }
 
-    IEnumerator GameOverRoutine()
+    IEnumerator GameOverRoutine() //죽은 후 0.5초 후 결과창 뜨도록 설정
     {
         isLive=false;
 
@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour
         uiResult.SetActive(true);
     }
 
-    public void GameRetry()
+    public void GameRetry() //다시 창을 띄워 초기화
     {
         SceneManager.LoadScene(0);
     }
 
-    public void QuitGame()
+    public void QuitGame() // 게임에서 나가기
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
