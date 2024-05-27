@@ -28,6 +28,8 @@ public class GamePlayerMoveControl : MonoBehaviour
     }
     private void Update()
     {
+        if (!GameManager.i.isLive) return;
+
         if (Input.GetKeyDown(KeyCode.Space)) //무기 공격하는 부분
         {
             WeaponManager.i.Attack();
@@ -44,7 +46,7 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GamePlayerManager.i.isDead)
+        if (GamePlayerManager.i.isDead || !GameManager.i.isLive)
         {
             return;
         } //죽으면 끝나도록 설정
@@ -105,6 +107,8 @@ public class GamePlayerMoveControl : MonoBehaviour
         {
             GamePlayerManager.i.isDead = true; //죽음 활성화
             anit.SetTrigger("Dead");
+
+            GameManager.i.GameOver();
         }
     }
 

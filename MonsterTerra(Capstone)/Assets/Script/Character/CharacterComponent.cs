@@ -26,4 +26,6 @@ public abstract class CharacterComponent : MonoBehaviour
 
     public abstract void LevelUp();//고유 패시브에서 레벨 업 시에 적용되는 부분
     public abstract void CharaterSkill(); //고유 스킬
+
+
 }

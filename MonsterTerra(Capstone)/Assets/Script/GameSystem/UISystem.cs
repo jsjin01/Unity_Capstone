@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class UISystem : MonoBehaviour
 {
     public InfoType type;
+    public Image characterImage; // 이미지를 표시할 Image 컴포넌트
+    public Sprite[] characterSprites; // 캐릭터 이미지들을 저장할 배열
+    int[] character;
+
     Text myText;
     Slider mySlider;
     Spawner spawner;
+    WeaponManager weaponManager;
+
 
     public enum InfoType
     {
@@ -19,6 +25,13 @@ public class UISystem : MonoBehaviour
         Hp,
         Mp,
         Stage,
+        Weapon,
+        Weapon_Text,
+        Character,
+        Character_CR,
+        Character_SO,
+        Character_MG,
+        Character_SP,
         None
     }
 
@@ -27,6 +40,14 @@ public class UISystem : MonoBehaviour
         myText = GetComponent<Text>();
         mySlider = GetComponent<Slider>();
         spawner = FindObjectOfType<Spawner>();
+        weaponManager = FindObjectOfType<WeaponManager>();
+    }
+
+    void Start()
+    {
+        character = new int[5];
+        // 시작할 때 첫 번째 캐릭터 이미지를 표시
+        ShowCharacterImage(0);
     }
 
     void LateUpdate()
@@ -50,6 +71,32 @@ public class UISystem : MonoBehaviour
                 break;
             case InfoType.Stage:
                 myText.text = string.Format("Stage {0}", spawner.level + 1);
+                break;
+            case InfoType.Weapon:
+                //int i = weaponManager.idx;
+                break;
+        }
+    }
+
+    public void ChangeCharacter(int dir)
+    {
+         character[0] += dir;
+         ShowCharacterImage(0);
+    }
+
+    void ShowCharacterImage(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                if (character[type] >= characterSprites.Length)
+                    character[type] = 0;
+                else if(character[type] <= 0)
+                    character[type] = characterSprites.Length - 1;
+
+                characterImage.sprite = characterSprites[character[type]];
+                break;
+            default:
                 break;
         }
     }

@@ -37,6 +37,8 @@ public class Spawner : MonoBehaviour
     
     void Update()
     {
+        if (!GameManager.i.isLive) return;
+
         timer += Time.deltaTime;    //timer
         levelCheck();
         if (timer > spawnData[level].spawnTime) // Setting Value

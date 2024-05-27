@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager i;
 
     [Header("# Game Control")]
-    public bool isLive = true; // 게임이 시작됬는지 아닌지 판단하는 변수
+    public bool isLive; // 게임이 시작됬는지 아닌지 판단하는 변수
     public float gameTime;
 
     [Header("# Game Object")]
     public EnemyPoolManager Epool;
+    public GameObject uiMain;
+    public GameObject uiResult;
 
     private void Awake()
     {
@@ -26,6 +29,42 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLive) return;
+
         gameTime += Time.deltaTime;
+    }
+
+    public void GameStart()
+    {
+        isLive = true;
+    }
+
+    public void GameOver() //player 사망시 호출
+    {
+        StartCoroutine(GameOverRoutine());
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        isLive=false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        uiMain.SetActive(false);
+        uiResult.SetActive(true);
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
