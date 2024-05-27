@@ -36,6 +36,10 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GamePlayerManager.i.isDead)
+        {
+            return;
+        } //죽으면 끝나도록 설정
         playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f) ;
         Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
@@ -59,12 +63,17 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     public void TakeDamage(int dmg) //데미지 받는 행위
     {
+        if (GamePlayerManager.i.isDead)
+        {
+            return;
+        } //죽으면 끝나도록 설정
         GamePlayerManager.i.hp -= dmg; //데미지 받음
         anit.SetTrigger("Hit");
+        CameraControl.i.StartCameraShake(0.2f,1f,1f);
         if(GamePlayerManager.i.hp <= 0)
         {
             GamePlayerManager.i.isDead = true; //죽음 활성화
-            anit.ResetTrigger("Dead");
+            anit.SetTrigger("Dead");
         }
     }
 
