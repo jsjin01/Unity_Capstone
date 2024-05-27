@@ -13896,7 +13896,7 @@ GameObject:
   - component: {fileID: 1056623733}
   - component: {fileID: 1056623732}
   m_Layer: 5
-  m_Name: SupportWeapon_LvUp (3)
+  m_Name: SupportWeapon_LvUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14145,7 +14145,7 @@ GameObject:
   - component: {fileID: 1126660663}
   - component: {fileID: 1126660662}
   m_Layer: 5
-  m_Name: MagicWeapon_LvUp (2)
+  m_Name: MagicWeapon_LvUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
