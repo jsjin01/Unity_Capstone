@@ -9937,9 +9937,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  characterImage: {fileID: 0}
-  characterSprites: []
+  type: 9
+  nameText: {fileID: 1818706589}
+  characterImage: {fileID: 140983363}
+  characterSprites:
+  - {fileID: 21300000, guid: fa597da8da6c67743b19789e4c81c935, type: 3}
+  - {fileID: 21300000, guid: 696a3aa4f4d1bb646809249a38a9b033, type: 3}
+  - {fileID: 21300000, guid: efc4256297dca61499ede7ad4aaff63d, type: 3}
+  - {fileID: 21300000, guid: 9b7a7250b77c192479ac85607320e955, type: 3}
+  - {fileID: 21300000, guid: fe2781da35028d74ba667ece47518657, type: 3}
+  - {fileID: 21300000, guid: 7603beb1238a48d46803a357e9c8a903, type: 3}
+  - {fileID: 21300000, guid: 0388aee81680dad46b5c47260412a9f1, type: 3}
+  - {fileID: 21300000, guid: 343b74fd7861aca42b8d4af59c652e3a, type: 3}
 --- !u!1 &158996139
 GameObject:
   m_ObjectHideFlags: 0
@@ -11062,6 +11071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
 --- !u!1 &238604516
@@ -12088,6 +12098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
+  nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
 --- !u!1 &410525174
@@ -12251,7 +12262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414692661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140983365}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeCharacter
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &414692661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12858,6 +12881,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1999035075}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1775787719}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
@@ -15266,7 +15301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &712757672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19426,53 +19461,6 @@ MonoBehaviour:
   exp: 0
   maxExp: 640000008c000000c4000000
   isDead: 0
---- !u!1 &1140202846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1140202848}
-  - component: {fileID: 1140202847}
-  m_Layer: 0
-  m_Name: UISystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1140202847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140202846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  characterImage: {fileID: 0}
-  characterSprites: []
---- !u!4 &1140202848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140202846}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142286312
 GameObject:
   m_ObjectHideFlags: 0
@@ -20630,7 +20618,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1243233579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140983365}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeCharacter
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1243233579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25901,7 +25901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1416023259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27993,6 +27993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 6
+  nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
 --- !u!1 &1686984063
@@ -29031,16 +29032,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818706587}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870416042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchoredPosition: {x: 0, y: -300.00003}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1818706589
@@ -29921,6 +29922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
 --- !u!1 &1905244759
@@ -71727,5 +71729,4 @@ SceneRoots:
   - {fileID: 88422066}
   - {fileID: 1963660063}
   - {fileID: 766763382}
-  - {fileID: 1140202848}
   - {fileID: 1775787720}
