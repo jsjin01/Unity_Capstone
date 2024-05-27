@@ -6,7 +6,9 @@ public class GamePlayerMoveControl : MonoBehaviour
 {
     public static GamePlayerMoveControl i;
 
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
+    BoxCollider2D cd;
+    [SerializeField]TrailRenderer tr;
     public Animator anit; 
 
     public Vector2 playerDir;//플레이어가 이동하는 방향을 받아옴
@@ -20,6 +22,8 @@ public class GamePlayerMoveControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cd = GetComponent<BoxCollider2D>();
+        tr = transform.GetChild(2).GetComponent<TrailRenderer>();
         anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
     }
     private void Update()
@@ -31,6 +35,10 @@ public class GamePlayerMoveControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) //무기 교체 부분
         {
             WeaponManager.i.changeWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))//회피기 작동
+        {
+            StartCoroutine("MissKey");
         }
     }
 
@@ -61,6 +69,29 @@ public class GamePlayerMoveControl : MonoBehaviour
         anit.SetFloat("speed", playerDir.magnitude);
     }
 
+    IEnumerator MissKey()//회피기 key
+    {
+        Debug.Log("miss");
+        cd.enabled = false;
+        tr.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+
+        Vector2 startPosition = transform.position;
+        Vector2 endPosition = startPosition + playerDir * GamePlayerManager.i.speed * 1;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.3f)
+        {
+            transform.position = Vector2.Lerp(startPosition, endPosition, elapsedTime / 0.3f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = endPosition; 
+        cd.enabled = true;
+        tr.enabled = false;
+    }
+
     public void TakeDamage(int dmg) //데미지 받는 행위
     {
         if (GamePlayerManager.i.isDead)
@@ -69,7 +100,7 @@ public class GamePlayerMoveControl : MonoBehaviour
         } //죽으면 끝나도록 설정
         GamePlayerManager.i.hp -= dmg; //데미지 받음
         anit.SetTrigger("Hit");
-        CameraControl.i.StartCameraShake(0.2f,1f,1f);
+        CameraControl.i.StartCameraShake(0.1f,0.3f,20f);
         if(GamePlayerManager.i.hp <= 0)
         {
             GamePlayerManager.i.isDead = true; //죽음 활성화

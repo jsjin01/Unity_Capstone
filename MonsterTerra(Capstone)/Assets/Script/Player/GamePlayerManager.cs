@@ -7,6 +7,8 @@ public class GamePlayerManager : MonoBehaviour
     public static GamePlayerManager i;
     [Header("# Player Info")]
     public GameObject Character;
+    public CHARACTERTYPE ctype;   //  캐릭터 타입
+    public CharacterComponent CC; // 캐릭터 컴포넌트
     public float MaxHp = 100;
     public float hp = 100;
     public float MaxMp = 100;
@@ -19,6 +21,8 @@ public class GamePlayerManager : MonoBehaviour
     public int lv = 1;
     public int exp = 0; // 현재 경험치
     public int[] maxExp = { 100, 140, 196  ,100000000}; // Level UP 하기까지 필요한 경험치
+
+    //죽었는지 판단하는 변수
     public bool isDead = false;
     
     private void Awake()
@@ -27,7 +31,7 @@ public class GamePlayerManager : MonoBehaviour
         selectCharacter();// 지정된 캐릭터 설정
     }
 
-    void  selectCharacter()
+    void  selectCharacter() // 활성화된 캐릭터 찾기
     {
         Transform c = transform.Find("Character").transform;
         Transform activeChild = null;
@@ -43,7 +47,8 @@ public class GamePlayerManager : MonoBehaviour
         if (activeChild != null)
         {
             Character = activeChild.gameObject;
-        }  // 활성화된 캐릭터 찾기 
+        } 
+        CC = c.GetComponent<CharacterComponent>();
     }
     public void GetExp() //레벨업 시스템
     {
@@ -51,6 +56,7 @@ public class GamePlayerManager : MonoBehaviour
 
         if (exp >= maxExp[lv])
         {
+            CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
         }

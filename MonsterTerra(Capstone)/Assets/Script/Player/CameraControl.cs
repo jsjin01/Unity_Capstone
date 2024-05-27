@@ -12,7 +12,7 @@ public class CameraControl : MonoBehaviour
 
     IEnumerator camShake;  //카메라 흔들림 설정
     Vector2 oripos;        //카메라 흔들리기 전의 위치
-
+    bool isShack = false; //흔들리는상태인지 아닌지 계산
 
     private void Awake()
     {
@@ -28,15 +28,12 @@ public class CameraControl : MonoBehaviour
     {
         FollowPlayer();
     }
-    private void Update()
-    {
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    StartCameraShake(0.5f, 1, 20);
-        //}
-    }
     void FollowPlayer()
     {
+        if (isShack)
+        {
+            return;
+        }
         Vector3 playerPos = new Vector3(player.position.x, player.position.y, -1);
         transform.position = playerPos;
     }
@@ -55,11 +52,11 @@ public class CameraControl : MonoBehaviour
 
     IEnumerator Shake(float dur, float amount, float speed)
     {
+        isShack = true;
         float t = dur;                         //흔들릴 시간
         Transform cam = transform;             // 메인 카메라가 있는 위치
 
         oripos = (Vector2)player.position;           // 흔들리기 전의 위치
-        Debug.Log(oripos);
         Vector2 targerPos = transform.position; //흔들리는 위치 설정
 
         while(t > 0)
@@ -85,6 +82,6 @@ public class CameraControl : MonoBehaviour
 
        
         cam.localPosition = player.position;        //흔들리기 전 위치로 돌림
-
+        isShack = false;
     }
 }
