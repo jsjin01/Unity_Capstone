@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class UISystem : MonoBehaviour
 {
     public InfoType type;
+    public Text nameText;
     public Image characterImage; // 이미지를 표시할 Image 컴포넌트
     public Sprite[] characterSprites; // 캐릭터 이미지들을 저장할 배열
-    int[] character;
+    int character = 0;
+    int[] weapon = { 0, 0, 0, 0 };
 
     Text myText;
     Slider mySlider;
@@ -26,12 +28,6 @@ public class UISystem : MonoBehaviour
         Mp,
         Stage,
         Weapon,
-        Weapon_Text,
-        Character,
-        Character_CR,
-        Character_SO,
-        Character_MG,
-        Character_SP,
         None
     }
 
@@ -45,9 +41,8 @@ public class UISystem : MonoBehaviour
 
     void Start()
     {
-        character = new int[5];
         // 시작할 때 첫 번째 캐릭터 이미지를 표시
-        ShowCharacterImage(0);
+        ShowCharacterImage();
     }
 
     void LateUpdate()
@@ -80,24 +75,22 @@ public class UISystem : MonoBehaviour
 
     public void ChangeCharacter(int dir)
     {
-         character[0] += dir;
-         ShowCharacterImage(0);
+        character += dir;
+        ShowCharacterImage();
     }
 
-    void ShowCharacterImage(int type)
+    void ShowCharacterImage()
     {
-        switch (type)
-        {
-            case 0:
-                if (character[type] >= characterSprites.Length)
-                    character[type] = 0;
-                else if(character[type] <= 0)
-                    character[type] = characterSprites.Length - 1;
+        if (character >= characterSprites.Length)
+            character = 0;
+        else if (character < 0)
+            character = characterSprites.Length - 1;
 
-                characterImage.sprite = characterSprites[character[type]];
-                break;
-            default:
-                break;
+        // nameText 변수를 사용하는 부분
+        if (nameText != null)
+        {
+            characterImage.sprite = characterSprites[character];
+            nameText.text = characterSprites[character].name;
         }
     }
 }
