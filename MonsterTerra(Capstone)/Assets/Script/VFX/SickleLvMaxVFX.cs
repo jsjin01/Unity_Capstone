@@ -7,7 +7,10 @@ public class SickleLvMaxVFX : MonoBehaviour
     float atk = 5;
     float cridmg = 0;
     float cri = 0;
+
     int etype = 0; // 특수 효과
+    float dur = 0;
+    float amount = 0;
 
     [SerializeField] GameObject parent;
     [SerializeField] Vector2 target;
@@ -24,11 +27,14 @@ public class SickleLvMaxVFX : MonoBehaviour
         parent.transform.position = target;
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri, float _dur = 0, float _amount = 0, GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;
         cri = _cri;
+
+        dur = _dur;
+        amount = _amount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +43,7 @@ public class SickleLvMaxVFX : MonoBehaviour
            collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
            collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
-            collision.GetComponent<Enemy>().TakeDamage(0,0,0,7); // 데미지 없이 출혈 효과만 적용
+            collision.GetComponent<Enemy>().TakeDamage(0,0,0,7,dur ,amount); // 데미지 없이 출혈 효과만 적용
         }
     }
 

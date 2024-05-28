@@ -12,6 +12,8 @@ public class BulletComponent : MonoBehaviour
     float cridmg;
     float cri;
     int etype = 0;
+    float dur = 0;
+    float amount = 0;
     Rigidbody2D rb;
 
     [SerializeField] GameObject parent;
@@ -60,7 +62,7 @@ public class BulletComponent : MonoBehaviour
         }
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, int _etype = 0, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri, float _dur = 0, float _amount = 0, int _etype = 0, GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;
@@ -95,7 +97,7 @@ public class BulletComponent : MonoBehaviour
         {
             isdirdmg = true;
         }
-        if(Type == SOTYPE.AR)
+        if(Type == SOTYPE.AR || Type == SOTYPE.CROSSBOW)
         {
             isguided = true;
         }
@@ -115,6 +117,9 @@ public class BulletComponent : MonoBehaviour
             // 새로운 방향을 이용해 속도를 조정
             rb.velocity = newDirection * speed;
         }
+
+        float angle = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle ));
 
     }
 

@@ -7,7 +7,10 @@ public class CloseRangeWeaponVFX : MonoBehaviour
     float atk = 5;
     float cridmg = 0;
     float cri = 0;
+    //효과창
     int etype = 0;
+    float dur = 0f;
+    float amount = 0f;
     [SerializeField] GameObject parent;
     [SerializeField] Vector2 target;
     [SerializeField] float dTime = 1.0f;
@@ -23,12 +26,15 @@ public class CloseRangeWeaponVFX : MonoBehaviour
         parent.transform.position = target;
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, int _etype = 0, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri, float _dur = 0, float _amount = 0, int _etype = 0, GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;
         cri = _cri;
+
         etype = _etype;
+        dur = _dur;
+        amount = _amount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,6 +8,8 @@ public class Sickle : WeaponComponent
     [SerializeField] GameObject[] weapon;
     int index = 0; //공격 모션
     int endindex = 2;
+    float dur = 0f;
+    float amount = 0f;
 
     private void Awake()
     {
@@ -44,6 +46,8 @@ public class Sickle : WeaponComponent
         if (lv == 1)
         {
             debuffType = 7; // 출혈효과 1초간 
+            dur = 1f;
+            amount = 0.1f;
         }
         else if (lv == 2)
         {
@@ -55,7 +59,8 @@ public class Sickle : WeaponComponent
         }
         else if (lv == 4)
         {
-            debuffType = 7; // 출혈 효과 영구 지속
+            dur = 300f;
+            amount = 0.1f;
         }
         else if (lv == 5)
         {

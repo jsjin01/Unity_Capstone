@@ -7,6 +7,7 @@ public class DaggerLvMaxVFX : MonoBehaviour
     float atk = 5;
     float cridmg = 0;
     float cri = 0;
+
     int etype = 0; // 특수 효과
 
     float addatk = 0;//추가타 데미지
@@ -32,7 +33,7 @@ public class DaggerLvMaxVFX : MonoBehaviour
         parent.transform.position = target;
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri,  GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;

@@ -7,6 +7,8 @@ public class Axe : WeaponComponent
     public static Axe i;
     [SerializeField] GameObject[] weapon;
     int index = 0; //공격 모션 
+    float dur = 0f;
+    float amount = 0f;
 
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class Axe : WeaponComponent
         GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject axe = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);
-        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri, debuffType);
+        axe.GetComponentInChildren<CloseRangeWeaponVFX>().SetAttack(dmg,endCriDmg,endCri, dur, amount, debuffType);
         StartCoroutine(AttackRate());
     }
 
@@ -45,7 +47,9 @@ public class Axe : WeaponComponent
         }
         else if (lv == 3)
         {
-            debuffType = 8;        //파열효과를 지니는 부분
+            debuffType = 6;        //파열효과를 지니는 부분
+            dur = 3f;
+            amount = 0.3f;
         }
         else if (lv == 4)
         {
