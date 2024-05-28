@@ -14,6 +14,8 @@ public class GamePlayerMoveControl : MonoBehaviour
     public Vector2 playerDir;//플레이어가 이동하는 방향을 받아옴
     public Vector2 playerPos;
 
+    bool isMiss = true; //회피기를 사용할 수 있는지의 여부
+
     private void Awake()
     {
         i = this;
@@ -42,7 +44,10 @@ public class GamePlayerMoveControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))//회피기 작동
         {
-            StartCoroutine("MissKey");
+            if(isMiss)
+            {
+                StartCoroutine("MissKey");
+            }
         }
     }
 
@@ -91,9 +96,23 @@ public class GamePlayerMoveControl : MonoBehaviour
             yield return null;
         }
 
+        StartCoroutine("MissCol");//대쉬 쿨타임 진입
         transform.position = endPosition; 
         cd.enabled = true;
         tr.enabled = false;
+    }
+
+    IEnumerator MissCol() //대쉬 쿨타임
+    {
+        isMiss = false;
+        float elapsedTime = 0f;
+        while (elapsedTime < 5f)
+        {
+            elapsedTime += Time.deltaTime;
+            GamePlayerManager.i.mp = elapsedTime * 20;
+            yield return null;
+        }
+        isMiss = true;
     }
 
     public void TakeDamage(int dmg) //데미지 받는 행위
