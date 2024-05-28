@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
         fireRate = 0.5f;
         firePoint = transform;       // current pos
         chargePoint = transform;     // current pos
-}
+    }
 
     /// <summary>
     /// Fight Motion
