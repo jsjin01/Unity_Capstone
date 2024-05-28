@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BulletComponent : MonoBehaviour
 {
@@ -21,11 +22,24 @@ public class BulletComponent : MonoBehaviour
     [SerializeField] bool isdirdmg = false;  //거리 비례 데미지
     [SerializeField] bool isguided = false;  //유도되는지 여부
 
+    Transform[] Enemy;
+    Transform target;
+
+    private void Start()
+    {
+        Invoke("DestroyBullet", dTime); //일정 시간 이후 삭제
+        FindClosestEnemy();
+    }
+
     void Update()
     {
         if (isdirdmg) // 날라가는 동안 살있는 시간
         {
             bulletTime += Time.deltaTime;
+        }
+        if (isguided)
+        {
+            GuidedBullet();
         }
     }
     public void Move(Vector3 p)      //쏜 방향으로 쭉 날라감      
@@ -52,10 +66,6 @@ public class BulletComponent : MonoBehaviour
         cridmg = _cridmg;
         cri = _cri;
         etype = _etype;
-    }
-    private void Start()
-    {
-        Invoke("DestroyBullet", dTime); //일정 시간 이후 삭제
     }
 
     void DestroyBullet()
@@ -92,7 +102,41 @@ public class BulletComponent : MonoBehaviour
     }
     private void GuidedBullet() //유도되는 부분
     {
+        FindClosestEnemy();
         //몬스터들 중 총알과 가장 가까운 부분에 있는 몬스터에게 날라감
+        Vector2 targetDirection = ((Vector2)target.position - rb.position).normalized;
+
+        // 새로운 방향 계산
+        Vector2 newDirection = Vector2.Lerp(rb.velocity.normalized, targetDirection, speed * Time.deltaTime);
+
+        // 만약 새로운 방향이 목표 방향에 충분히 가깝지 않으면
+        if (Vector2.Dot(newDirection, targetDirection) < 0.99f)
+        {
+            // 새로운 방향을 이용해 속도를 조정
+            rb.velocity = newDirection * speed;
+        }
+
     }
 
+    void FindClosestEnemy()
+    {
+        Enemy = GameObject.Find("EnemyPool").GetComponentsInChildren<Transform>();
+        float closestDistance = Mathf.Infinity;
+        Transform closestEnemy = null;
+
+        foreach (Transform enemy in Enemy)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy;
+            }
+        }
+
+        if (closestEnemy != null)
+        {
+            target = closestEnemy;
+        }
+    }
 }

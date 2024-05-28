@@ -395,9 +395,11 @@ public class Enemy : MonoBehaviour
     IEnumerator KnockBack() // knockback
     {
         yield return wait;
+        Debug.Log("knock");
         Vector3 playerPos = target.position; //player pos
         Vector3 dirVec = transform.position - playerPos; // direct
-        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse); // 5px
+        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse); // 5px => 어케하는지 모르겠음
+        // rigid.MovePosition(transform.position + dirVec.normalized * 5); =>  그냥 밀리도록 설정
     }
 
     IEnumerator Stun(float duration)
@@ -662,13 +664,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("ON");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("P");
             if (isAttack)
             {
-                Debug.Log("h");
                 GamePlayerMoveControl.i.TakeDamage((int)damage);
             }
         }

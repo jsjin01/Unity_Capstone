@@ -145,10 +145,12 @@ MonoBehaviour:
   defense: 0
   target: {fileID: 0}
   expPrefab: {fileID: 7836481195849247303, guid: 21d60d3e19f389c49a4067ed914f6231, type: 3}
+  isLive: 0
   anit: {fileID: 0}
   coll: {fileID: 0}
   fireRange: 5
   chargeRange: 5
+  isAttack: 1
 --- !u!1001 &2984177250161003922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,6 +251,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6444390111046357412, guid: d7866057c604e4f47b3dcfeee4d6cfac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
