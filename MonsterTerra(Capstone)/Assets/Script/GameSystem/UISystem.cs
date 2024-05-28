@@ -7,8 +7,7 @@ using System.IO;
 public class UISystem : MonoBehaviour
 {
     public InfoType type;
-    public Text nameText;   //ImageName, Name
-    public Text perText;    //perfomance
+    public Text nameText;   //ImageName
     public Image characterImage; // 이미지를 표시할 Image 컴포넌트
     public Sprite[] characterSprites; // 캐릭터 이미지들을 저장할 배열
     public GameObject[] imageWeaponCR; // 이미지 게임 오브젝트 배열
@@ -60,8 +59,11 @@ public class UISystem : MonoBehaviour
         // 시작할 때 첫 번째 캐릭터 이미지를 표시
         //ShowCharacterImage();
         //ShowWeaponCR();
-        //LoadDataToArray(out characterNames, out cperformances);
-        //LoadDataToArray2(out weaponNames, out wperformances);
+        if(explanation != null)
+        {
+            LoadDataToArray(out characterNames, out cperformances);
+            LoadDataToArray2(out weaponNames, out wperformances);
+        }
     }
 
     void LateUpdate()
@@ -197,15 +199,45 @@ public class UISystem : MonoBehaviour
     //Show Name, Show Perfomance
     public void ShowExplanation(int imgType)
     {
-        //Text nameText = explanation.transform.Find("NameText").GetComponent<Text>();
-        //Text perText = explanation.transform.Find("PerText").GetComponent<Text>();
-        //
-        //if (imgType == 0)
-        //{
-        //    nameText.text = characterNames[1];
-        //    perText.text = cperformances[1];
-        //}
-        explanation.SetActive(true);
+        // explanation 객체가 null인지 확인
+        if (explanation != null)
+        {
+            // explanation 게임 오브젝트의 자식에 있는 Text 컴포넌트를 가져옴
+            Text _nameText = explanation.transform.Find("ExplantionTitle").GetComponent<Text>();
+            Text _perText = explanation.transform.Find("ExplantionT").GetComponent<Text>();
+
+            if (imgType == 0)
+            {
+                _nameText.text = characterNames[character];
+                _perText.text = cperformances[character];
+            }
+            else if(imgType == 1)
+            {
+                _nameText.text = weaponNames[weaponCR];
+                _perText.text = wperformances[weaponCR];
+            }
+            else if (imgType == 2)
+            {
+                _nameText.text = weaponNames[weaponSO + 5];
+                _perText.text = wperformances[weaponSO + 5];
+            }
+            else if (imgType == 3)
+            {
+                _nameText.text = weaponNames[weaponMG + 10];
+                _perText.text = wperformances[weaponMG + 10];
+            }
+            else if (imgType == 4)
+            {
+                _nameText.text = weaponNames[weaponSP + 15];
+                _perText.text = wperformances[weaponSP + 15];
+            }
+            explanation.SetActive(true);
+        }
+        else
+        {
+            // explanation 객체가 null인 경우에 실행될 코드
+            Debug.LogWarning("Explanation object is null!");
+        }
     }
     //Exit Explanation
     public void ExitExplanation()
