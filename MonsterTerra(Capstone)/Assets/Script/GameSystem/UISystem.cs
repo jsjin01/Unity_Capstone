@@ -88,6 +88,9 @@ public class UISystem : MonoBehaviour
             case InfoType.Stage:
                 myText.text = string.Format("Stage {0}", spawner.level + 1);
                 break;
+            case InfoType.Level:
+                myText.text = string.Format("Lv.{0}", GamePlayerManager.i.lv + 1);
+                break;
             case InfoType.Weapon:
                 //int i = weaponManager.idx;
                 break;

@@ -9949,6 +9949,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7603beb1238a48d46803a357e9c8a903, type: 3}
   - {fileID: 21300000, guid: 0388aee81680dad46b5c47260412a9f1, type: 3}
   - {fileID: 21300000, guid: 343b74fd7861aca42b8d4af59c652e3a, type: 3}
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 1927890381}
 --- !u!1 &158996139
 GameObject:
   m_ObjectHideFlags: 0
@@ -11074,6 +11079,11 @@ MonoBehaviour:
   nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
 --- !u!1 &238604516
 GameObject:
   m_ObjectHideFlags: 0
@@ -12115,6 +12125,11 @@ MonoBehaviour:
   nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
 --- !u!1 &410525174
 GameObject:
   m_ObjectHideFlags: 0
@@ -14787,6 +14802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680721888}
+  - component: {fileID: 680721889}
   m_Layer: 5
   m_Name: StandOffImg
   m_TagString: Untagged
@@ -14818,6 +14834,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &680721889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680721887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 2096445173}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO:
+  - {fileID: 1418154001}
+  - {fileID: 1120586030}
+  - {fileID: 649458654}
+  - {fileID: 312336000}
+  - {fileID: 1200237100}
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 1927890381}
 --- !u!1 &685068718
 GameObject:
   m_ObjectHideFlags: 0
@@ -15238,6 +15280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 703825503}
+  - component: {fileID: 703825504}
   m_Layer: 5
   m_Name: MagicImg
   m_TagString: Untagged
@@ -15269,6 +15312,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &703825504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703825502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 2116309847}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG:
+  - {fileID: 202463391}
+  - {fileID: 1630378060}
+  - {fileID: 1736372636}
+  - {fileID: 1420847401}
+  - {fileID: 1349721267}
+  imageWeaponSP: []
+  explanation: {fileID: 1927890381}
 --- !u!1 &712757671
 GameObject:
   m_ObjectHideFlags: 0
@@ -15474,7 +15543,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 735868614}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 703825504}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponMG
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &735868614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15670,7 +15751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 740575770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140983365}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ShowExplanation
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &740575770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15709,6 +15802,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740575767}
   m_CullTransparentMesh: 1
+--- !u!1 &742115420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 742115421}
+  m_Layer: 5
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &742115421
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742115420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1517207212}
+  m_Father: {fileID: 1999035076}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -116, y: 50}
+  m_SizeDelta: {x: 20, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &742566561
 GameObject:
   m_ObjectHideFlags: 0
@@ -16927,7 +17056,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 829216626}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864878453}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponSP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &829216626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17078,7 +17219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 832566406}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1927890383}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ExitExplanation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &832566406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17296,6 +17449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864878452}
+  - component: {fileID: 864878453}
   m_Layer: 5
   m_Name: SWImg
   m_TagString: Untagged
@@ -17327,6 +17481,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &864878453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864878451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 9118018}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP:
+  - {fileID: 507806324}
+  - {fileID: 803391175}
+  - {fileID: 2104566659}
+  - {fileID: 1891351508}
+  - {fileID: 694361753}
+  explanation: {fileID: 1927890381}
 --- !u!1 &890169245
 GameObject:
   m_ObjectHideFlags: 0
@@ -18862,7 +19042,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1111200187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680721889}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ShowExplanation
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1111200187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19058,7 +19250,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1125820865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280626007}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ShowExplanation
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1125820865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19490,8 +19694,8 @@ RectTransform:
   - {fileID: 1200996283}
   - {fileID: 864878452}
   - {fileID: 198914898}
-  - {fileID: 1986698758}
   - {fileID: 829216624}
+  - {fileID: 1986698758}
   - {fileID: 1368778089}
   m_Father: {fileID: 712757672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25010,6 +25214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280626006}
+  - component: {fileID: 1280626007}
   m_Layer: 5
   m_Name: CloseRangeImg
   m_TagString: Untagged
@@ -25041,6 +25246,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1280626007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280626005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 642162538}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR:
+  - {fileID: 476143216}
+  - {fileID: 630806440}
+  - {fileID: 28084038}
+  - {fileID: 206280156}
+  - {fileID: 509932711}
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 1927890381}
 --- !u!1 &1311272120
 GameObject:
   m_ObjectHideFlags: 0
@@ -25485,7 +25716,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368019955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 703825504}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponMG
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1368019955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25606,7 +25849,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368778091}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864878453}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ShowExplanation
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1368778091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26806,6 +27061,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482300607}
   m_CullTransparentMesh: 1
+--- !u!1 &1517207211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517207212}
+  - component: {fileID: 1517207214}
+  - component: {fileID: 1517207213}
+  - component: {fileID: 1517207215}
+  m_Layer: 5
+  m_Name: LevelText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1517207212
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517207211}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 742115421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1517207213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517207211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 5
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Lv.99
+--- !u!222 &1517207214
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517207211}
+  m_CullTransparentMesh: 1
+--- !u!114 &1517207215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517207211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  nameText: {fileID: 0}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
 --- !u!1 &1540237276
 GameObject:
   m_ObjectHideFlags: 0
@@ -27153,7 +27509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1595388078}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680721889}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponSO
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1595388078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27274,7 +27642,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1597553645}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680721889}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponSO
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1597553645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27730,7 +28110,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1662565164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280626007}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponCR
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1662565164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27837,8 +28229,8 @@ RectTransform:
   - {fileID: 2120047465}
   - {fileID: 703825503}
   - {fileID: 252157789}
-  - {fileID: 1368019953}
   - {fileID: 735868612}
+  - {fileID: 1368019953}
   - {fileID: 2058676926}
   m_Father: {fileID: 712757672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28081,6 +28473,11 @@ MonoBehaviour:
   nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
 --- !u!1 &1686984063
 GameObject:
   m_ObjectHideFlags: 0
@@ -28714,7 +29111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2286ffc522b350b4f9218dc72b4e5b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLive: 1
+  isLive: 0
   gameTime: 0
   Epool: {fileID: 2021649754}
   uiMain: {fileID: 1999035075}
@@ -29915,6 +30312,11 @@ MonoBehaviour:
   nameText: {fileID: 0}
   characterImage: {fileID: 0}
   characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
 --- !u!1 &1905244759
 GameObject:
   m_ObjectHideFlags: 0
@@ -29991,6 +30393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1927890382}
+  - component: {fileID: 1927890383}
   m_Layer: 5
   m_Name: Explanation
   m_TagString: Untagged
@@ -30021,6 +30424,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1927890383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927890381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 47505545}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 1927890381}
 --- !u!1 &1963660060
 GameObject:
   m_ObjectHideFlags: 0
@@ -34461,7 +34885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1986698760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864878453}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponSP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1986698760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34656,6 +35092,7 @@ RectTransform:
   - {fileID: 407549671}
   - {fileID: 1163327788}
   - {fileID: 1133990118}
+  - {fileID: 742115421}
   m_Father: {fileID: 88422066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -35073,7 +35510,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2058676928}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 703825504}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ShowExplanation
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2058676928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35273,7 +35722,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2079408092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280626007}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: ChangeWeaponCR
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2079408092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35611,7 +36072,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ice Magic
+  m_Text: Random Magic
 --- !u!222 &2116309848
 CanvasRenderer:
   m_ObjectHideFlags: 0
