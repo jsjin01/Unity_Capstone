@@ -70,6 +70,10 @@ public class BulletComponent : MonoBehaviour
            collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
             collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype); // 몬스터에게 데미지 주는 부분
+            if (isdirdmg)
+            {
+                collision.GetComponent<Enemy>().TakeTrueDamage(bulletTime * speed * 0.5f, cridmg, cri); //거리 비례 데미지 
+            }
             CancelInvoke("DestroyBullet");
             DestroyBullet();
         }
@@ -90,4 +94,5 @@ public class BulletComponent : MonoBehaviour
     {
         //몬스터들 중 총알과 가장 가까운 부분에 있는 몬스터에게 날라감
     }
+
 }

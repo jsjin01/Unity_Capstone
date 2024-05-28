@@ -482,9 +482,16 @@ public class Enemy : MonoBehaviour
     //default 값은 0으로 효과를 넣고 크리티컬 데미지와 확률을 넣을 수 있게 수정하기!
     public void TakeDamage(float dmg, float cridmg, float cri, int Etype = 0)
     {
-        dmg -= defense;
-        hp -= dmg;
-        Debug.Log(hp);
+        dmg -= defense; //방어력에 따른 데미지 감소
+        float criTrigger = Random.Range(0, 1f);
+        if(criTrigger <= cri) // 크리티컬 적용
+        {
+            hp -= dmg * cridmg;
+        }
+        else
+        {
+            hp -= dmg;
+        }
         if (hp > 0)
         {
             anit.SetTrigger("Hit");
@@ -521,6 +528,36 @@ public class Enemy : MonoBehaviour
             }
         }
         else //die setting
+        {
+            StartCoroutine(Die(animationLength));
+            if (expPrefab != null)
+            {
+                // random position
+                Vector2 currentPosition = transform.position;
+                float randomX = Random.Range(-0.5f, 0.5f);
+                float randomY = Random.Range(-0.5f, 0.5f);
+
+                // 1px = 0.01f
+                Vector2 randomOffset = new Vector2(randomX, randomY) * 0.01f;
+
+                // ExpPrefab spawn
+                GameObject expObj = Instantiate(expPrefab, currentPosition + randomOffset, Quaternion.identity);
+            }
+        }
+    }
+
+    public void TakeTrueDamage(float dmg, float cridmg, float cri) //고정 데미지 계산
+    {
+        float criTrigger = Random.Range(0, 1f);
+        if (criTrigger <= cri) // 크리티컬 적용
+        {
+            hp -= dmg * cridmg;
+        }
+        else
+        {
+            hp -= dmg;
+        }
+        if (hp < 0)
         {
             StartCoroutine(Die(animationLength));
             if (expPrefab != null)

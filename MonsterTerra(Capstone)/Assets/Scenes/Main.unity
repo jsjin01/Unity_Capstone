@@ -14614,7 +14614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 4
   crtype: 1
-  sotype: 1
+  sotype: 3
   mwtype: 3
   sptype: 1
   crweapons:
@@ -19453,7 +19453,7 @@ MonoBehaviour:
   MaxMp: 100
   mp: 100
   atk: 20
-  atkSpd: 1.5
+  atkSpd: 1
   cri: 0
   criDmg: 1.5
   speed: 5

@@ -48,10 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046eebac4167d54429ea652302f01f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   parent: {fileID: 2756701174964250876}
   dTime: 1
   Type: 3
+  isdirdmg: 0
   isguided: 0
 --- !u!50 &8899973553375942804
 Rigidbody2D:
