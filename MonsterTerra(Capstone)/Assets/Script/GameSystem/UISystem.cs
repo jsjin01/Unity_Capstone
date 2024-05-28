@@ -7,8 +7,8 @@ using System.IO;
 public class UISystem : MonoBehaviour
 {
     public InfoType type;
-    public Text nameText;
-    public Text perText;
+    public Text nameText;   //ImageName, Name
+    public Text perText;    //perfomance
     public Image characterImage; // 이미지를 표시할 Image 컴포넌트
     public Sprite[] characterSprites; // 캐릭터 이미지들을 저장할 배열
     public GameObject[] imageWeaponCR; // 이미지 게임 오브젝트 배열
@@ -22,13 +22,13 @@ public class UISystem : MonoBehaviour
     string[] weaponNames;
     string[] wperformances;
 
-    int character = 0;
-    int weaponCR = 0;
-    int weaponSO = 0;
-    int weaponMG = 0;
-    int weaponSP = 0;
+    int character = 0;  //Character No
+    int weaponCR = 0;   //CR Weapon No
+    int weaponSO = 0;   //SO Weapon No
+    int weaponMG = 0;   //MG Weapon No
+    int weaponSP = 0;   //SP Weapon No
 
-    Text myText;
+    Text myText;    //Stage Text
     Slider mySlider;
     Spawner spawner;
     WeaponManager weaponManager;
@@ -194,7 +194,7 @@ public class UISystem : MonoBehaviour
             nameText.text = imageWeaponSP[weaponSP].name;
         }
     }
-
+    //Show Name, Show Perfomance
     public void ShowExplanation(int imgType)
     {
         //Text nameText = explanation.transform.Find("NameText").GetComponent<Text>();
@@ -207,7 +207,7 @@ public class UISystem : MonoBehaviour
         //}
         explanation.SetActive(true);
     }
-
+    //Exit Explanation
     public void ExitExplanation()
     {
         explanation.SetActive(false);
