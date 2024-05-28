@@ -31,7 +31,7 @@ public class CrossBow : WeaponComponent
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
-        //SR bullet 생성
+        //CrossBow Arrow 생성
         GameObject cbArrow = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
         cbArrow.GetComponentInChildren<BulletComponent>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
         cbArrow.GetComponentInChildren<BulletComponent>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
