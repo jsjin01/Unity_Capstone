@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,12 @@ public class IceMagic : WeaponComponent
 {
     public static IceMagic i;
     [SerializeField] GameObject bullet; // 투사체
+    [SerializeField] GameObject LvMax; // 만렙 스킬
     bool lvMax = false;
-    float dur = 0f;
-    float amount = 0f;
+    public int idxlv = 0;
+
+    float dur = 3f;
+    float amount = 0.2f;
 
 
     private void Awake()
@@ -18,8 +22,9 @@ public class IceMagic : WeaponComponent
     private void Start()
     {
         //기본값 적용
-        weaponmulatk = 0.5f;
-        weaponmulatkspd = 3.0f;
+        weaponmulatk = 1f;
+        weaponmulatkspd = 15.0f;
+        debuffType = 4;
     }
 
     public override void Attack()
@@ -31,10 +36,17 @@ public class IceMagic : WeaponComponent
 
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
-        //CrossBow Arrow 생성
+        //ICE Bullet 생성
         GameObject iceBullet = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
         iceBullet.GetComponentInChildren<MagicBullet>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
         iceBullet.GetComponentInChildren<MagicBullet>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
+
+        if (lvMax)
+        {
+            GameObject iceWorld = Instantiate(LvMax, GamePlayerMoveControl.i.playerPos, Quaternion.Euler(0,0,0), transform);
+            iceWorld.transform.GetChild(0).GetComponentInChildren<MagicVFX>().SetAttack(dmg / 10, endCriDmg, endCri, dur, amount, debuffType);
+        }
+
         StartCoroutine(AttackRate());
     }
 
@@ -43,23 +55,22 @@ public class IceMagic : WeaponComponent
         lv++;
         if (lv == 1)
         {
-            debuffType = 7;
+            idxlv++;//범위 증가
         }
         else if (lv == 2)
         {
-            //화살 추가
+            amount *= 2f;//둔화율 2배 증가
         }
         else if (lv == 3)
         {
-            weaponmulatkspd -= 0.5f; // 공격 속도 계수 0.5 감소
+            dur = 5; //둔화 시간 5초로 증가
         }
         else if (lv == 4)
         {
-            //화살 추가
+           weaponmulatkspd  -= 5f;
         }
         else if (lv == 5)
         {
-            dur = 3000f;//지속 무한히 지속
             lvMax = true;
         }
         else

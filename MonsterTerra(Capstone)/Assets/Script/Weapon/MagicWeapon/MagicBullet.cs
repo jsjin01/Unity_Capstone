@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MagicBullet : MonoBehaviour
 {
+    [SerializeField] MWTYPE magicT;
+    int idx = 0;
     [SerializeField] float speed = 10f;
     //공격력, 크리티컬 데미지, 크리티컬 확률, 효과 부여
     float atk;
@@ -12,9 +14,10 @@ public class MagicBullet : MonoBehaviour
     int etype = 0;
     float dur = 0;
     float amount = 0;
+
     Rigidbody2D rb;
 
-    [SerializeField] GameObject magicVFX;
+    [SerializeField] GameObject[] magicVFX;
     [SerializeField] GameObject parent;
     [SerializeField] float dTime = 1.0f;
 
@@ -24,6 +27,7 @@ public class MagicBullet : MonoBehaviour
 
     private void Start()
     {
+        idx = IceMagic.i.idxlv;
         Invoke("DestroyBullet", dTime); //일정 시간 이후 삭제
         FindClosestEnemy();
     }
@@ -55,12 +59,15 @@ public class MagicBullet : MonoBehaviour
         atk = _atk;
         cridmg = _cridmg;
         cri = _cri;
+
         etype = _etype;
+        dur = _dur;
+        amount = _amount;
     }
 
     void DestroyBullet()
     {
-        GameObject iceParticle = Instantiate(magicVFX, transform.position, Quaternion.Euler(0, 0, 0), GameObject.Find("IceMagic").transform);
+        GameObject iceParticle = Instantiate(magicVFX[idx], transform.position, Quaternion.Euler(0, 0, 0), GameObject.Find("IceMagic").transform);
         iceParticle.GetComponentInChildren<MagicVFX>().SetAttack(atk / 10, cridmg, cri, dur, amount, etype); //장판 데미지 설정
         Destroy(parent); //삭제
     }
@@ -71,7 +78,7 @@ public class MagicBullet : MonoBehaviour
            collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
            collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
-            collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype); // 몬스터에게 데미지 주는 부분
+            collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype, dur , amount); // 몬스터에게 데미지 주는 부분
             CancelInvoke("DestroyBullet");
             DestroyBullet();
         }

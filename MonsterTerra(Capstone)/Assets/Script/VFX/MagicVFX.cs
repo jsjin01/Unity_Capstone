@@ -7,6 +7,7 @@ public class MagicVFX : MonoBehaviour
     float atk = 5;
     float cridmg = 0;
     float cri = 0;
+
     //효과창
     int etype = 0;
     float dur = 0f;
@@ -44,11 +45,20 @@ public class MagicVFX : MonoBehaviour
            collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
         {
             //몬스터에게 데미지 주는 부분
-            collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype);
-            Debug.Log("takeDamage");
+            collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, 0, dur, amount);
         }
         StartCoroutine(Rate());
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RushMonster1") || collision.CompareTag("RushMonster2") || collision.CompareTag("RushMonster3") || collision.CompareTag("RushMonster4") ||
+        collision.CompareTag("ShootMonster1") || collision.CompareTag("ShootMonster2") || collision.CompareTag("ShootMonster3") || collision.CompareTag("ShootMonster4") ||
+        collision.CompareTag("BossMonster1") || collision.CompareTag("BossMonster2"))
+        {
+            //몬스터에게 데미지 주는 부분
+            collision.GetComponent<Enemy>().TakeDamage(atk, cridmg, cri, etype, dur, amount);
+        }
     }
 
     public void DestroyWeapon(float dt = 0)

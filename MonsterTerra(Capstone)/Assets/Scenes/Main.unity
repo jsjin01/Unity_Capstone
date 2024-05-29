@@ -9937,7 +9937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 9
+  type: 8
   nameText: {fileID: 1818706589}
   characterImage: {fileID: 140983363}
   characterSprites:
@@ -9954,6 +9954,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &158996139
 GameObject:
   m_ObjectHideFlags: 0
@@ -10232,7 +10237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &202463392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11084,6 +11089,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &238604516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11208,6 +11218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6865980978896926864, guid: 2b826ea20e96ae04a84e3a072d3487ec, type: 3}
+  LvMax: {fileID: 7874516541444969589, guid: 6f73f6e10e732d74aba05e3bbf99b4dd, type: 3}
+  idxlv: 0
 --- !u!1 &243397451
 GameObject:
   m_ObjectHideFlags: 0
@@ -12130,6 +12142,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &410525174
 GameObject:
   m_ObjectHideFlags: 0
@@ -12828,6 +12845,7 @@ GameObject:
   - component: {fileID: 434736727}
   - component: {fileID: 434736726}
   - component: {fileID: 434736725}
+  - component: {fileID: 434736728}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -12899,6 +12917,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 434736728}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 712757671}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -12922,18 +12952,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1775787719}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &434736726
 MonoBehaviour:
@@ -12973,6 +12991,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434736723}
   m_CullTransparentMesh: 1
+--- !u!114 &434736728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434736723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c5d8f92bcb42488aef4a7bca9938c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  nameText: {fileID: 0}
+  characterImage: {fileID: 0}
+  characterSprites: []
+  imageWeaponCR: []
+  imageWeaponSO: []
+  imageWeaponMG: []
+  imageWeaponSP: []
+  explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &476143216
 GameObject:
   m_ObjectHideFlags: 0
@@ -14860,6 +14904,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &685068718
 GameObject:
   m_ObjectHideFlags: 0
@@ -15338,6 +15387,11 @@ MonoBehaviour:
   - {fileID: 1349721267}
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &712757671
 GameObject:
   m_ObjectHideFlags: 0
@@ -17507,6 +17561,11 @@ MonoBehaviour:
   - {fileID: 1891351508}
   - {fileID: 694361753}
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &890169245
 GameObject:
   m_ObjectHideFlags: 0
@@ -19654,7 +19713,7 @@ MonoBehaviour:
   MaxMp: 100
   mp: 100
   atk: 20
-  atkSpd: 1
+  atkSpd: 0
   cri: 0
   criDmg: 1.5
   speed: 5
@@ -25272,6 +25331,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &1311272120
 GameObject:
   m_ObjectHideFlags: 0
@@ -27162,6 +27226,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &1540237276
 GameObject:
   m_ObjectHideFlags: 0
@@ -27860,7 +27929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630378061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28478,6 +28547,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &1686984063
 GameObject:
   m_ObjectHideFlags: 0
@@ -30317,6 +30391,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 0}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &1905244759
 GameObject:
   m_ObjectHideFlags: 0
@@ -30445,6 +30524,11 @@ MonoBehaviour:
   imageWeaponMG: []
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
+  character: 0
+  weaponCR: 0
+  weaponSO: 0
+  weaponMG: 0
+  weaponSP: 0
 --- !u!1 &1963660060
 GameObject:
   m_ObjectHideFlags: 0
@@ -36538,7 +36622,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6197302014289296149}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41456,7 +41540,7 @@ Animator:
   m_GameObject: {fileID: 1979906668782564858}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -50454,7 +50538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3608921398452995730
 Transform:
   m_ObjectHideFlags: 0
@@ -50966,7 +51050,7 @@ Animator:
   m_GameObject: {fileID: 8469670956163941313}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -54902,7 +54986,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763984501838593508}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54922,7 +55006,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2355270488461025880}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57300,7 +57384,7 @@ Animator:
   m_GameObject: {fileID: 2463242712712583070}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -62409,7 +62493,7 @@ Animator:
   m_GameObject: {fileID: 870413361453689382}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -63206,7 +63290,7 @@ Animator:
   m_GameObject: {fileID: 5485252609091364890}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -63981,7 +64065,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3578345707570813406}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65294,7 +65378,7 @@ Animator:
   m_GameObject: {fileID: 7602010570564092708}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: ab937231d0600440fb0d8757568d78d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -70779,7 +70863,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7636536453238320654}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -72110,7 +72194,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7898037236617625910}
   m_LocalRotation: {x: -0, y: 0.008726557, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

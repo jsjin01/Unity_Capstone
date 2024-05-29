@@ -496,12 +496,13 @@ public class Enemy : MonoBehaviour
         }
         if (hp > 0)
         {
+            Debug.Log(dur);
             anit.SetTrigger("Hit");
             //hit ¼¼ÆÃ
             switch ((WeaponType_P)Etype)
             {
                 case WeaponType_P.Status_None:
-                    Debug.Log(Etype);
+                    
                     break;
                 case WeaponType_P.Status_Stun:
                     StartCoroutine(Stun(dur)); //stun
