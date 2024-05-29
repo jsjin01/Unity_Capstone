@@ -36324,6 +36324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123995180}
+  - component: {fileID: 2123995181}
   m_Layer: 0
   m_Name: PoisonMagic
   m_TagString: Untagged
@@ -36346,6 +36347,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1664625770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123995181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123995179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f2b20791f8bc34585ab511e5ff7395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6865980978896926864, guid: e1e1cf45c36fc3b48a68fbbb98b61c2d, type: 3}
+  LvMax: {fileID: 7874516541444969589, guid: daaae3a266ea9b948bfbc0334905daa9, type: 3}
+  idxlv: 0
 --- !u!1 &2124544728
 GameObject:
   m_ObjectHideFlags: 0
