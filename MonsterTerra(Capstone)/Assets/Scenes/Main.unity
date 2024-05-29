@@ -15380,11 +15380,11 @@ MonoBehaviour:
   imageWeaponCR: []
   imageWeaponSO: []
   imageWeaponMG:
-  - {fileID: 202463391}
   - {fileID: 1630378060}
   - {fileID: 1736372636}
   - {fileID: 1420847401}
   - {fileID: 1349721267}
+  - {fileID: 202463391}
   imageWeaponSP: []
   explanation: {fileID: 1927890381}
   character: 0

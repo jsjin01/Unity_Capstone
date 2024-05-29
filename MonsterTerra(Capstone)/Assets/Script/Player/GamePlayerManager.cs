@@ -55,7 +55,7 @@ public class GamePlayerManager : MonoBehaviour
 
         if (exp >= maxExp[lv])
         {
-            CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
+            //CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
         }

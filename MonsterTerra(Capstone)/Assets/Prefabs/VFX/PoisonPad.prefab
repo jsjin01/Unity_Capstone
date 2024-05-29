@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 3586304015382079000}
-  dTime: 5
+  dTime: 2.5
 --- !u!95 &8644454681398149150
 Animator:
   serializedVersion: 5
