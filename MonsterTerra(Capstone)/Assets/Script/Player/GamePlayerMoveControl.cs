@@ -26,7 +26,6 @@ public class GamePlayerMoveControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cd = GetComponent<BoxCollider2D>();
         tr = transform.GetChild(2).GetComponent<TrailRenderer>();
-        anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
         rb.constraints = RigidbodyConstraints2D.None; //재시작할 때 고정되어있는 부분 풀기
         rb.freezeRotation = true; //회전 안하도록 설정
     }

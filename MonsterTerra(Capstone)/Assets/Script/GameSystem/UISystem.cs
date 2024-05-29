@@ -21,11 +21,11 @@ public class UISystem : MonoBehaviour
     string[] weaponNames;
     string[] wperformances;
 
-    int character = 0;  //Character No
-    int weaponCR = 0;   //CR Weapon No
-    int weaponSO = 0;   //SO Weapon No
-    int weaponMG = 0;   //MG Weapon No
-    int weaponSP = 0;   //SP Weapon No
+    public int character = 0;  //Character No
+    public int weaponCR = 0;   //CR Weapon No
+    public int weaponSO = 0;   //SO Weapon No
+    public int weaponMG = 0;   //MG Weapon No
+    public int weaponSP = 0;   //SP Weapon No
 
     Text myText;    //Stage Text
     Slider mySlider;
@@ -200,6 +200,28 @@ public class UISystem : MonoBehaviour
         }
     }
     //Show Name, Show Perfomance
+
+    public void GameStart()
+    {
+        //각각의 인덱스 가져오기
+        int c = GameObject.Find("CharcterImg").GetComponent<UISystem>().character;
+        int cr = GameObject.Find("CloseRangeImg").GetComponent<UISystem>().weaponCR;
+        int so = GameObject.Find("StandOffImg").GetComponent<UISystem>().weaponSO;
+        int mw = GameObject.Find("MagicImg").GetComponent<UISystem>().weaponMG;
+        int sw = GameObject.Find("SWImg").GetComponent<UISystem>().weaponSP;
+        
+        //해당 캐릭터 객체 활성화
+        GameObject.Find("Character").transform.GetChild(c).gameObject.SetActive(true);
+        GamePlayerManager.i.selectCharacter();
+        GamePlayerMoveControl.i.anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
+
+        //무기 설정
+        WeaponManager.i.SetWeapon(cr,so,mw,sw);
+        WeaponManager.i.changeWeapon();
+
+        //게임 시작
+        GameManager.i.isLive = true;
+    }
     public void ShowExplanation(int imgType)
     {
         // explanation 객체가 null인지 확인

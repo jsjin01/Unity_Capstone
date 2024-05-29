@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6689baccc478ab94d9ba7fc24ab87910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  parent: {fileID: 3586304015382079000}
   dTime: 5
 --- !u!95 &4802194448106542241
 Animator:

@@ -28,10 +28,9 @@ public class GamePlayerManager : MonoBehaviour
     private void Awake()
     {
         i = this;
-        selectCharacter();// 지정된 캐릭터 설정
     }
 
-    void  selectCharacter() // 활성화된 캐릭터 찾기
+    public void  selectCharacter() // 활성화된 캐릭터 찾기
     {
         Transform c = transform.Find("Character").transform;
         Transform activeChild = null;

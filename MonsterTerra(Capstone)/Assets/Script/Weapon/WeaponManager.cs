@@ -29,26 +29,12 @@ public class WeaponManager : MonoBehaviour
     /// 이미지 크기랑 각도 수정이 필요함
     /// </summary>
     int weaponAttackNum = 4; // 어떤 무기로 Attack을 시전할 것 인지
-    bool startchange = true; //시작할 때 기본 무기로 바꿈
-    
     private void Awake()
     {
         i = this;
     }
-    void Start()
-    {
-        weaponSR = GamePlayerManager.i.Character.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
-        //무기를 적용하고 있는 스프라이트랜더러를 가져옴
-        SetWeapon((int)crtype, (int)sotype, (int)mwtype, (int)sptype); //무기 설정
-    }
-
     private void Update()
     {
-        if (startchange)//start보다 늦게 호출해야되서 Updata에 넣음
-        {
-            changeWeapon();
-            startchange = false;
-        }
         if (Input.GetKeyDown(KeyCode.P))
         {
 
@@ -124,6 +110,15 @@ public class WeaponManager : MonoBehaviour
 
     public void SetWeapon(int cr, int so, int mw, int sp) //선택한 무기만 활성화
     {
+        weaponSR = GamePlayerManager.i.Character.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
+        //무기를 적용하고 있는 스프라이트랜더러를 가져옴
+
+        //무기 설정 변화
+        crtype = (CRTYPE)cr;
+        sotype = (SOTYPE)so;
+        mwtype = (MWTYPE)mw;
+        sptype = (SPTYPE)sp;
+
         transform.GetChild(0).GetChild(cr).gameObject.SetActive(true);
         transform.GetChild(1).GetChild(so).gameObject.SetActive(true);
         transform.GetChild(2).GetChild(mw).gameObject.SetActive(true);
