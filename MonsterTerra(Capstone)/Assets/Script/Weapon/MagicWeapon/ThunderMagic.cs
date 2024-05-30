@@ -31,6 +31,10 @@ public class ThunderMagic : WeaponComponent
         //thunder »ý¼º
         StartCoroutine(ThunderAttack());
 
+        if(lv >= 5)
+        {
+            StartCoroutine(ThunderMax());
+        }
         StartCoroutine(AttackRate());
     }
 
@@ -106,5 +110,23 @@ public class ThunderMagic : WeaponComponent
             thunder7.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    IEnumerator ThunderMax()
+    {
+        Quaternion rotation = Quaternion.Euler(0f, 0f, 0f);
+
+        for (int i = 0; i < 25; i++)
+        {
+            float x = Random.Range(-9, 9);
+            float y = Random.Range(-5, 5);
+            Vector2 randomPos = GamePlayerMoveControl.i.playerPos + new Vector2(x, y);
+
+            GameObject thunderMax = Instantiate(thunder, randomPos, rotation, transform);
+            thunderMax.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
     }
 }
