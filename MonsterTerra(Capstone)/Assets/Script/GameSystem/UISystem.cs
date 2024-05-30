@@ -219,7 +219,7 @@ public class UISystem : MonoBehaviour
         UIManager.i.WeaponSet = GameObject.Find("WeaponSet").gameObject;
 
         //무기 설정
-        WeaponManager.i.SetWeapon(cr,so,mw,sw);
+        WeaponManager.i.SetWeapon(cr,so,mw,sw, GamePlayerManager.i.CC);
         WeaponManager.i.changeWeapon();
 
         //게임 시작

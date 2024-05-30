@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WEAPONTYPE
+{
+    CLOSERANGE,
+    STANDOFF,
+    MAGICWEAPON,
+    SUPPORTWEAPON
+}
 public enum CRTYPE
 {
     LONGSWORD,
@@ -37,6 +44,7 @@ public enum SPTYPE
 public abstract class WeaponComponent : MonoBehaviour
 {
     protected bool canAttack = true;             //공격 여부
+    [SerializeField]protected WEAPONTYPE weapontype;                   //무기 유형
     protected float weaponmulatk = 0;            //무기 공격력 계수
     protected float weaponmulatkspd = 0;         //무기 공격 속도 계수
     protected float addCridmg = 0;               //추가 크리티컬 데미지 
@@ -50,6 +58,13 @@ public abstract class WeaponComponent : MonoBehaviour
     protected float endCriDmg;               //최종 크리티컬 데미지
     protected float endCri;                  //최종 크리티컬 확률
 
+
+    //캐릭터 특성으로인한 데미지 계산
+    protected float Ccr = 1f;
+    protected float Cso = 1f;
+    protected float Cmw= 1f;
+    protected float Csp = 1f;
+    protected float endC;
 
     protected float angle;                   //플레이어가 보고 있는 방향 계산
 
@@ -66,6 +81,25 @@ public abstract class WeaponComponent : MonoBehaviour
     private void Update()
     {
         angle = Mathf.Atan2(GamePlayerMoveControl.i.playerDir.y, GamePlayerMoveControl.i.playerDir.x) * Mathf.Rad2Deg;
+
+        //무기에 따른 데미지 구별
+        if (weapontype == WEAPONTYPE.CLOSERANGE)
+        {
+            endC = GamePlayerManager.i.atk * Ccr;
+        }
+        else if (weapontype == WEAPONTYPE.STANDOFF)
+        {
+            endC = GamePlayerManager.i.atk * Cso;
+        }
+        else if(weapontype == WEAPONTYPE.MAGICWEAPON)
+        {
+            endC = GamePlayerManager.i.atk * Cmw;
+        }
+        else if(weapontype ==WEAPONTYPE.SUPPORTWEAPON)
+        {
+            endC = GamePlayerManager.i.atk * Csp;
+        }
+
         //최종공격력 , 최종공격속도 , 크리티컬 데미지 및 확률 계산
         dmg = weaponmulatk * GamePlayerManager.i.atk;
         endAtkSpd = weaponmulatkspd * GamePlayerManager.i.atkSpd;
@@ -76,6 +110,13 @@ public abstract class WeaponComponent : MonoBehaviour
 
     abstract public void WeaponLevelUp(); // 무기 강화하는 시스템
 
+    public void SetCdamage(CharacterComponent cc)
+    {
+        Ccr = cc.CRdmg;
+        Cso = cc.SOdmg;
+        Cmw = cc.MWdmg;
+        Csp = cc.SWdmg;
+    }
 
 
 

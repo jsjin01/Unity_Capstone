@@ -47,7 +47,7 @@ public class GamePlayerManager : MonoBehaviour
         {
             Character = activeChild.gameObject;
         } 
-        CC = c.GetComponent<CharacterComponent>();
+        CC = Character.GetComponent<CharacterComponent>();
     }
     public void GetExp() //레벨업 시스템
     {
@@ -55,7 +55,7 @@ public class GamePlayerManager : MonoBehaviour
 
         if (exp >= maxExp[lv])
         {
-            //CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
+            CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
         }

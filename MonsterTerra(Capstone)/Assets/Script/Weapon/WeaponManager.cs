@@ -111,7 +111,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void SetWeapon(int cr, int so, int mw, int sp) //선택한 무기만 활성화
+    public void SetWeapon(int cr, int so, int mw, int sp, CharacterComponent cc) //선택한 무기만 활성화
     {
         weaponSR = GamePlayerManager.i.Character.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         //무기를 적용하고 있는 스프라이트랜더러를 가져옴
@@ -130,5 +130,11 @@ public class WeaponManager : MonoBehaviour
         soWeapon = transform.GetChild(1).GetChild(so).GetComponent<WeaponComponent>();
         mwWeapon = transform.GetChild(2).GetChild(mw).GetComponent<WeaponComponent>();
         spWeapon = transform.GetChild(3).GetChild(sp).GetComponent<WeaponComponent>();
+
+        //캐릭터 계수 추가
+        crWeapon.SetCdamage(cc);
+        soWeapon.SetCdamage(cc);
+        mwWeapon.SetCdamage(cc);    
+        //spWeapon.SetCdamage(cc);
     }
 }
