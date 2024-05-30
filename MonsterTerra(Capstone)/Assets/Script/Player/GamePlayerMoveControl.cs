@@ -62,9 +62,22 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     void Move(float x, float y)           //플레이어 이동
     {
-        playerDir = new Vector2(x, y);
-        playerDir = playerDir.normalized; // 플레이어 이동 방향 정규화
-        rb.MovePosition(rb.position + playerDir*GamePlayerManager.i.speed*Time.deltaTime);
+        Vector2 movedir = new Vector2(x, y);
+        movedir = movedir.normalized; // 플레이어 이동 방향 정규화
+
+        if (movedir == Vector2.zero)
+        {
+            if(playerDir == Vector2.zero)
+            {
+                playerDir = Vector2.right;
+            }
+        }
+        else
+        {
+            playerDir = movedir;
+        }
+
+        rb.MovePosition(rb.position + movedir *GamePlayerManager.i.speed*Time.deltaTime);
         
         if(x > 0) //방향에 따라 이미지 전환
         {
@@ -74,7 +87,7 @@ public class GamePlayerMoveControl : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        anit.SetFloat("speed", playerDir.magnitude);
+        anit.SetFloat("speed", movedir.magnitude);
     }
 
     IEnumerator MissKey()//회피기 key
