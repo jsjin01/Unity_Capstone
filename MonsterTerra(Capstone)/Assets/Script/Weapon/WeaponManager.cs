@@ -60,30 +60,33 @@ public class WeaponManager : MonoBehaviour
 
     public void changeWeapon() //무기 바꾸기 
     {
-        Debug.Log("Weapon change");
         if(idx == 1) //근접 -> 원거리
         {
             weaponSR.sprite = soweapons[(int)sotype];
             weaponAttackNum++;
             idx++;
+            UIManager.i.SetWeaponImg(idx, (int)sotype);
         }
         else if(idx ==2) // 원거리 -> 마법 무기류
         {
             weaponSR.sprite = mwweapons[(int)mwtype];
             weaponAttackNum++;
             idx++;
+            UIManager.i.SetWeaponImg(idx, (int)mwtype);
         }
         else if (idx == 3) // 마법 무기류 ->  지원 무기류
         {
             weaponSR.sprite = spweapons[(int)sptype];
             weaponAttackNum++;
             idx++;
+            UIManager.i.SetWeaponImg(idx, (int)sptype);
         }
         else if (idx == 4) // 지원 무기류 -> 근접
         {
             weaponSR.sprite = crweapons[(int)crtype];
             weaponAttackNum = 1;
             idx = 1;
+            UIManager.i.SetWeaponImg(idx, (int)crtype);
         }
     }
 

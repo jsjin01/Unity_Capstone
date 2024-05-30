@@ -58,11 +58,11 @@ public class PoisonMagic : WeaponComponent
         }
         else if (lv == 2)
         {
-            amount *= 2f;//둔화율 2배 증가
+            amount *= 2f;//독 속성 2배 증가
         }
         else if (lv == 3)
         {
-            dur = 5; //둔화 시간 5초로 증가
+            dur = 5; //독 지속시간 5초로 증가
         }
         else if (lv == 4)
         {

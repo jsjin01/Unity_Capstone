@@ -215,6 +215,9 @@ public class UISystem : MonoBehaviour
         GamePlayerManager.i.selectCharacter();
         GamePlayerMoveControl.i.anit = GamePlayerManager.i.Character.transform.GetChild(0).GetComponent<Animator>();
 
+        //Main UI 가져오기
+        UIManager.i.WeaponSet = GameObject.Find("WeaponSet").gameObject;
+
         //무기 설정
         WeaponManager.i.SetWeapon(cr,so,mw,sw);
         WeaponManager.i.changeWeapon();

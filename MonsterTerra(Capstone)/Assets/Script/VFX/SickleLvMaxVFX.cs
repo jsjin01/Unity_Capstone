@@ -8,7 +8,6 @@ public class SickleLvMaxVFX : MonoBehaviour
     float cridmg = 0;
     float cri = 0;
 
-    int etype = 0; // 특수 효과
     float dur = 0;
     float amount = 0;
 
@@ -27,7 +26,7 @@ public class SickleLvMaxVFX : MonoBehaviour
         parent.transform.position = target;
     }
 
-    public void SetAttack(float _atk, float _cridmg, float _cri, float _dur = 0, float _amount = 0, GameObject obj = null) //데미지 설정
+    public void SetAttack(float _atk, float _cridmg, float _cri,float _dur = 0, float _amount = 0, GameObject obj = null) //데미지 설정
     {
         atk = _atk;
         cridmg = _cridmg;

@@ -15,7 +15,6 @@ public class DaggerLvMaxVFX : MonoBehaviour
 
     Enemy enemy; //몬스터 받는 변수 =>  Invoke 안에서 사용하기 위해서 생성
 
-    bool addATk1 = false;
     bool addATk2 = false;
 
     [SerializeField] GameObject parent;
