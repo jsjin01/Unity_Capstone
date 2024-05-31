@@ -16,14 +16,14 @@ public class ChaosCrard : CharacterComponent
     public override void LevelUp()
     {
         Debug.Log("패시브 작동 중");
-        int upstate = Random.Range(0, 5);
+        int upstate = Random.Range(0, 6);
         int downstate;
         while (true)
         {
-            downstate = Random.Range(0, 5);
+            downstate = Random.Range(0, 6);
             if (downstate == upstate)
             {
-                downstate = Random.Range(0, 5);
+                downstate = Random.Range(0, 6);
             }
             else
             {

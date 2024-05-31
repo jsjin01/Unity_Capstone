@@ -511,7 +511,7 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(KnockBack()); //knockback
                     break;
                 case WeaponType_P.Status_Burn:
-                    StartCoroutine(Burn(dur, amount, 1f)); //burn dot-dmg
+                    StartCoroutine(Burn(dur, amount, 0.5f)); //burn dot-dmg
                     break;
                 case WeaponType_P.Status_Frostbite:
                     StartCoroutine(Frostbite(dur, amount)); //frostbite -spd

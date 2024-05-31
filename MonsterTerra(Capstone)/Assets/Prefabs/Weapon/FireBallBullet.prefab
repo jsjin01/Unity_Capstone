@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8412410072820728975}
   - component: {fileID: 3641105663417810761}
-  - component: {fileID: 7247699580392322278}
+  - component: {fileID: 4179393119013361046}
   m_Layer: 0
   m_Name: img
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 946466765da1c4a59b9d0567507ab229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce5aed296cda2400493b363547f95f89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7247699580392322278
+--- !u!95 &4179393119013361046
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 2701887116585766339}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7bde1ff0446f704cadafd5b9fa36ec0, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -115,11 +115,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266586774246318211}
+  - component: {fileID: 1616730387070399294}
   - component: {fileID: 5180327305928019901}
   - component: {fileID: 2617603385084759972}
-  - component: {fileID: 1938946516622407255}
   m_Layer: 0
-  m_Name: PoisonBullet
+  m_Name: FireBallBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 6865980978896926864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,6 +142,25 @@ Transform:
   - {fileID: 442368439427973879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1616730387070399294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865980978896926864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236378fb45a790d478da9fd1da749ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicT: 1
+  speed: 10
+  magicVFX:
+  - {fileID: 9159474575330657042, guid: 55dc51bcba7457e438982192c7fed2ee, type: 3}
+  - {fileID: 9159474575330657042, guid: fdd688280d196074da4b2b3029623ccf, type: 3}
+  parent: {fileID: 6865980978896926864}
+  dTime: 3
 --- !u!50 &5180327305928019901
 Rigidbody2D:
   serializedVersion: 4
@@ -201,7 +220,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22577704, y: 0.0107195005}
+  m_Offset: {x: -0.08070226, y: 0.0107195005}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -212,27 +231,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20194325, y: 0.16733922}
+  m_Size: {x: 0.18278828, y: 0.16733922}
   m_EdgeRadius: 0
---- !u!114 &1938946516622407255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6865980978896926864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 454beae563842074596982c70560c6d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magicT: 3
-  speed: 10
-  magicVFX:
-  - {fileID: 3586304015382079000, guid: 3ecc2e5e1b1aef1449cbfcf4beba5376, type: 3}
-  - {fileID: 3586304015382079000, guid: 40c6b9e1578a3fc4f97236e96c6a2b92, type: 3}
-  parent: {fileID: 0}
-  dTime: 1
 --- !u!1 &8609062932110111886
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 8609062932110111886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19, y: 0, z: 0}
+  m_LocalPosition: {x: 0.54, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,7 +338,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.21760516, g: 1, b: 0.051886797, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

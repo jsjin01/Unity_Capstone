@@ -37,8 +37,8 @@ public class PoisonMagic : WeaponComponent
 
         //Posion Bullet 생성
         GameObject PoisonBullet = Instantiate(bullet, GamePlayerMoveControl.i.playerPos, rotation, transform);
-        PoisonBullet.GetComponentInChildren<MagicBullet>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
-        PoisonBullet.GetComponentInChildren<MagicBullet>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
+        PoisonBullet.GetComponentInChildren<MagicBulletPoison>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
+        PoisonBullet.GetComponentInChildren<MagicBulletPoison>().Move(GamePlayerMoveControl.i.playerDir); //플레이어 이동 방향으로 발사
 
         if (lvMax)
         {
