@@ -43,7 +43,7 @@ public enum SPTYPE
 } //지원 무기류
 public abstract class WeaponComponent : MonoBehaviour
 {
-    protected bool canAttack = true;             //공격 여부
+    public bool canAttack = true;             //공격 여부
     [SerializeField]protected WEAPONTYPE weapontype;                   //무기 유형
     protected float weaponmulatk = 0;            //무기 공격력 계수
     protected float weaponmulatkspd = 0;         //무기 공격 속도 계수

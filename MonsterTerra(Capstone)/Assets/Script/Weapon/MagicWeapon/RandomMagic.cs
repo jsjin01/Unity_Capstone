@@ -19,6 +19,11 @@ public class RandomMagic : WeaponComponent
 
     public override void Attack()
     {
+        if (!canAttack)
+        {
+            return;
+        }
+
         if(lv < 5)
         {
             int randomatk = Random.Range(0, 4);
@@ -46,6 +51,15 @@ public class RandomMagic : WeaponComponent
             PoisonMagic.i.Attack();
             ThunderMagic.i.Attack();
         }
+        //모든 무기의 공격 루틴 무시 
+        IceMagic.i.StopAllCoroutines();
+        FireMagic.i.StopAllCoroutines();
+        PoisonMagic.i.StopAllCoroutines();
+        ThunderMagic.i.StopAllCoroutines();
+        IceMagic.i.canAttack = true;
+        FireMagic.i.canAttack = true;
+        PoisonMagic.i.canAttack = true;
+        ThunderMagic.i.canAttack= true;
         StartCoroutine(AttackRate());
     }
 
