@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brunch : WeaponComponent
+public class MagicTool : WeaponComponent
 {
-    public static Brunch i;
+    public static MagicTool i;
     [SerializeField] GameObject particle; //버프 파티클
 
     float dur = 3f;
-    bool max = false;
 
 
     private void Awake()
@@ -18,8 +17,8 @@ public class Brunch : WeaponComponent
     private void Start()
     {
         //기본값 적용
-        weaponmulatk = 2f;
-        weaponmulatkspd = 5.0f;
+        weaponmulatk = 0.2f;
+        weaponmulatkspd = 10.0f;
     }
 
     public override void Attack()
@@ -36,7 +35,7 @@ public class Brunch : WeaponComponent
 
         //ICE Bullet 생성
         GameObject iceBullet = Instantiate(particle, GamePlayerMoveControl.i.playerPos, rotation, transform);
-        StartCoroutine(GamePlayerManager.i.Brunch(dmg, dur, max));
+        StartCoroutine(GamePlayerManager.i.MagicTool(dmg, dur));
 
         StartCoroutine(AttackRate());
     }
@@ -46,15 +45,15 @@ public class Brunch : WeaponComponent
         lv++;
         if (lv == 1)
         {
-            weaponmulatk += 1f; //회복량 계수 증가
+            dur = 5f; //지속시간 5초로 증가
         }
         else if (lv == 2)
         {
-            weaponmulatkspd -= 2f; //공속 계수 증가
+            weaponmulatk += 0.1f; //공격력 10% 계수 증가
         }
         else if (lv == 3)
         {
-            max = true;
+            weaponmulatk -= 3f; //계수 감소
         }
         else
         {

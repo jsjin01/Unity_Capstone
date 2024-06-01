@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public string[] Swname;
     public Sprite[] WeaponImg;
 
+    //버프 관련 
+    GameObject buffUI = null; //버프 UI를 가져옴
+
     private void Awake()
     {
         i = this;
@@ -58,5 +61,26 @@ public class UIManager : MonoBehaviour
             WeaponSet.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "SupportWeapon";
             WeaponSet.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = Swname[i];
         }
+    }
+
+    public void BuffOn(int idx) //활성화
+    {
+        if(buffUI == null)
+        {
+            buffUI = GameObject.Find("buff").gameObject; // 버프 UI를 가져옴
+        }
+
+        buffUI.transform.GetChild(idx).gameObject.SetActive(true); //활성화
+                                                                 
+    }
+
+    public void BuffOff(int idx)//비활성화
+    {
+        if (buffUI == null)
+        {
+            buffUI = GameObject.Find("buff").gameObject; // 버프 UI를 가져옴
+        }
+
+        buffUI.transform.GetChild(idx).gameObject.SetActive(false); //비활성화
     }
 }

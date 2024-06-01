@@ -133,6 +133,21 @@ public class GamePlayerMoveControl : MonoBehaviour
         {
             return;
         } //죽으면 끝나도록 설정
+        if(GamePlayerManager.i.def > 0)
+        {
+            if(dmg - GamePlayerManager.i.def > 0)
+            {
+                dmg -= (int)GamePlayerManager.i.def;
+                StopCoroutine(Shield.i.ShieldCor);
+                UIManager.i.BuffOff(0);
+            }
+            else
+            {
+                GamePlayerManager.i.def -= dmg;
+                dmg = 0;
+            }
+        }
+
         GamePlayerManager.i.hp -= dmg; //데미지 받음
         anit.SetTrigger("Hit");
         CameraControl.i.StartCameraShake(0.1f,0.2f,50f);
