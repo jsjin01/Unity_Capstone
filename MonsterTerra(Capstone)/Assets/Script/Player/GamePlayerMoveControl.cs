@@ -33,7 +33,7 @@ public class GamePlayerMoveControl : MonoBehaviour
     {
         if (!GameManager.i.isLive) return;
 
-        if (Input.GetKeyDown(KeyCode.Space)) //무기 공격하는 부분
+        if (Input.GetKey(KeyCode.Space)) //무기 공격하는 부분
         {
             WeaponManager.i.Attack();
         }
@@ -47,6 +47,24 @@ public class GamePlayerMoveControl : MonoBehaviour
             {
                 StartCoroutine("MissKey");
             }
+        }
+
+        //아이템 사용
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseItem(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseItem(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            UseItem(3);
         }
     }
 
@@ -127,8 +145,9 @@ public class GamePlayerMoveControl : MonoBehaviour
         isMiss = true;
     }
 
-    public void TakeDamage(int dmg) //데미지 받는 행위
+    public void TakeDamage(float dmg) //데미지 받는 행위
     {
+        dmg *= GamePlayerManager.i.DmgAdd;
         if (GamePlayerManager.i.isDead)
         {
             return;
@@ -137,7 +156,7 @@ public class GamePlayerMoveControl : MonoBehaviour
         {
             if(dmg - GamePlayerManager.i.def > 0)
             {
-                dmg -= (int)GamePlayerManager.i.def;
+                dmg -= GamePlayerManager.i.def;
                 StopCoroutine(Shield.i.ShieldCor);
                 UIManager.i.BuffOff(0);
             }
@@ -161,5 +180,11 @@ public class GamePlayerMoveControl : MonoBehaviour
         }
     }
 
+    void UseItem(int i)
+    {
+        GamePlayerManager.i.UseItme(GamePlayerManager.i.item[i]);
+        GamePlayerManager.i.item[i] = 0;// 아이템 사용후 해당 인덱스 0
+        UIManager.i.ItemImgChange(i, GamePlayerManager.i.item[i]);
+    }
 
 }

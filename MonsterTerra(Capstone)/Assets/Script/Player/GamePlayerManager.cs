@@ -19,7 +19,12 @@ public class GamePlayerManager : MonoBehaviour
     public float cri = 0;
     public float criDmg = 1.5f;
     public float speed = 3f;
-    
+    public float DmgAdd = 1f;
+    public float Cbuff = 1f; // 캐릭터에게 적용되는 버프
+
+    //Item 창 관련
+    public int[] item = {0, 0, 0, 0 };
+
     public int lv = 1;
     public int exp = 0; // 현재 경험치
     public int[] maxExp = { 100, 140, 196  ,100000000}; // Level UP 하기까지 필요한 경험치
@@ -135,5 +140,91 @@ public class GamePlayerManager : MonoBehaviour
         speed -= amount;
         UIManager.i.BuffOff(4);
     }
+
+    //Item
+    public void setItme(int idx)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (item[i] == 0)
+            {
+                //아이템 배열에 아무것도 없으면 해당 번호에 아이템을 넣음
+                item[i] = idx;
+                UIManager.i.ItemImgChange(i,idx);
+                Debug.Log("아이템이 " + i + "자리에 들어갔습니다."+ idx);
+                break;
+            }
+        }
+    }
+
+    public void UseItme(int idx)
+    {
+        if(idx == 1)
+        {
+            StartCoroutine(Anger());
+        }
+        else if(idx == 2)
+        {
+            StartCoroutine(Concentration());
+        }
+        else if(idx == 3)
+        {
+            StartCoroutine(Rapture());
+        }
+        else if(idx == 4)
+        {
+            StartCoroutine(Challenge());
+        }
+        else if(idx == 5)
+        {
+            float healing = MaxHp * 0.3f * Cbuff;
+            hp += healing;
+            if(hp > MaxHp)
+            {
+                hp = MaxHp;
+            }
+        }
+
+    }
+
+    //아이템 코루틴
+    IEnumerator Anger() //분노의 영약
+    {
+        UIManager.i.BuffOn(5);
+        atk += (5 * Cbuff);
+        yield return new WaitForSeconds(10f * Cbuff);
+        atk -= (5 * Cbuff);
+        UIManager.i.BuffOff(5);
+    }
+
+    IEnumerator Concentration() //집중의 영약
+    {
+        UIManager.i.BuffOn(6);
+        float atkspdup = atkSpd * 0.2f * Cbuff;
+        atkSpd -= atkspdup;
+        yield return new WaitForSeconds(10f * Cbuff);
+        atkSpd += atkspdup;
+        UIManager.i.BuffOff(6);
+    }
+
+    IEnumerator Rapture()
+    {
+        UIManager.i.BuffOn(7);
+        float spd = speed * 0.1f * Cbuff;
+        speed += spd;
+        yield return new WaitForSeconds(10f * Cbuff);
+        speed -= spd;
+        UIManager.i.BuffOff(7);
+    }
+
+    IEnumerator Challenge()
+    {
+        UIManager.i.BuffOn(8);
+        DmgAdd += 0.3f;
+        yield return new WaitForSeconds(10f * Cbuff);
+        DmgAdd -= 0.3f;
+        UIManager.i.BuffOff(8);
+    }
+
 }
 

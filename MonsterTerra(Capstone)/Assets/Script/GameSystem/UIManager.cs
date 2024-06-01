@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class UIManager : MonoBehaviour
     public string[] Mwname;
     public string[] Swname;
     public Sprite[] WeaponImg;
+
+    [SerializeField]GameObject ItemUI = null; //아이템 UI를 가져옴
+    public Sprite[] ItemImg;
 
     //버프 관련 
     GameObject buffUI = null; //버프 UI를 가져옴
@@ -69,9 +73,7 @@ public class UIManager : MonoBehaviour
         {
             buffUI = GameObject.Find("buff").gameObject; // 버프 UI를 가져옴
         }
-
         buffUI.transform.GetChild(idx).gameObject.SetActive(true); //활성화
-                                                                 
     }
 
     public void BuffOff(int idx)//비활성화
@@ -82,5 +84,14 @@ public class UIManager : MonoBehaviour
         }
 
         buffUI.transform.GetChild(idx).gameObject.SetActive(false); //비활성화
+    }
+
+    public void ItemImgChange(int num, int idx) //아이템 바꾸기
+    {
+        if(ItemUI == null)
+        {
+            ItemUI = GameObject.Find("Item").gameObject;
+        }
+        ItemUI.transform.GetChild(num).GetChild(2).GetComponent<Image>().sprite = ItemImg[idx];
     }
 }
