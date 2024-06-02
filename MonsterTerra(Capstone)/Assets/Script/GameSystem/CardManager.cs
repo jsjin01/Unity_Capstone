@@ -124,28 +124,28 @@ public class CardManager : MonoBehaviour
 
     public void CRLevelUp() //근접 무기 업
     {
-        WeaponManager.i.WeaponUpgrade(0);
+        WeaponManager.i.WeaponUpgrade(1);
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }
 
     public void SOLevelUp() //원거리 무기 업
     {
-        WeaponManager.i.WeaponUpgrade(1);
+        WeaponManager.i.WeaponUpgrade(2);
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }
 
     public void MWLevelUp() //마법 무기 업
     {
-        WeaponManager.i.WeaponUpgrade(2);
+        WeaponManager.i.WeaponUpgrade(3);
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }
 
     public void SPLevelUp() //서포트 무기 업
     {
-        WeaponManager.i.WeaponUpgrade(3);
+        WeaponManager.i.WeaponUpgrade(4);
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }

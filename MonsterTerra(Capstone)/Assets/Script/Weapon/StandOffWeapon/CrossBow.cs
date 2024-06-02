@@ -29,6 +29,7 @@ public class CrossBow : WeaponComponent
             return;
         }
 
+        SoundManger.i.PlaySound(6);
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
         //CrossBow Arrow »ý¼º

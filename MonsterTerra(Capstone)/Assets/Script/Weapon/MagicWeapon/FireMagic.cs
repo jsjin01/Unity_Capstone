@@ -33,7 +33,7 @@ public class FireMagic : WeaponComponent
         {
             return;
         }
-
+        SoundManger.i.PlaySound(9);
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
         //ICE Bullet »ý¼º

@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005610347, y: 0.6171434}
+  m_Offset: {x: -0.074198365, y: 1.1805449}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.056104, y: 1.3815069}
+  m_Size: {x: 1.0757005, y: 1.156146}
   m_EdgeRadius: 0
 --- !u!114 &1507688351692818836
 MonoBehaviour:
@@ -138,17 +138,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe32b316ed81a3b4d9dd672792e8873d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  hp: 1
-  maxHp: 1
-  damage: 0
-  defense: 0
+  speed: 4
+  hp: 200
+  maxHp: 200
+  damage: 20
+  defense: 10
   target: {fileID: 0}
-  expPrefab: {fileID: 7836481195849247303, guid: 21d60d3e19f389c49a4067ed914f6231, type: 3}
+  expPrefab: {fileID: 7836481195849247303, guid: 6fbbb768cb94ae64790155a22a711ac3, type: 3}
+  isLive: 0
   anit: {fileID: 0}
   coll: {fileID: 0}
   fireRange: 5
   chargeRange: 5
+  isAttack: 1
 --- !u!1001 &4598089789264019983
 PrefabInstance:
   m_ObjectHideFlags: 0

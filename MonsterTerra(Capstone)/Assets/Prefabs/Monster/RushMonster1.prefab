@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005610347, y: 0.6171434}
+  m_Offset: {x: -0.023035526, y: 0.68393975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.056104, y: 1.3815069}
+  m_Size: {x: 0.5681994, y: 0.93426096}
   m_EdgeRadius: 0
 --- !u!114 &3936572475295350257
 MonoBehaviour:
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  hp: 1
-  maxHp: 1
-  damage: 0
-  defense: 0
+  hp: 100
+  maxHp: 100
+  damage: 10
+  defense: 5
   target: {fileID: 0}
   expPrefab: {fileID: 7836481195849247303, guid: 21d60d3e19f389c49a4067ed914f6231, type: 3}
   isLive: 0

@@ -77,24 +77,29 @@ public class ThunderMagic : WeaponComponent
         Quaternion rotation = Quaternion.Euler(0f, 0f, 0f);
         Vector2 dir = GamePlayerMoveControl.i.playerDir;
 
+        SoundManger.i.PlaySound(8);
         GameObject thunder1 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + dir, rotation, transform);
         thunder1.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
         yield return new WaitForSeconds(0.1f);
 
+        SoundManger.i.PlaySound(8);
         GameObject thunder2 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 2 * dir, rotation, transform);
         thunder2.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
         yield return new WaitForSeconds(0.1f);
 
+        SoundManger.i.PlaySound(8);
         GameObject thunder3 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 3 * dir, rotation, transform);
         thunder3.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
         yield return new WaitForSeconds(0.1f);
 
         if(lv >= 1)
         {
+            SoundManger.i.PlaySound(8);
             GameObject thunder4 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 4 * dir, rotation, transform);
             thunder4.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
             yield return new WaitForSeconds(0.1f);
 
+            SoundManger.i.PlaySound(8);
             GameObject thunder5 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 5 * dir, rotation, transform);
             thunder5.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
             yield return new WaitForSeconds(0.1f);
@@ -102,10 +107,12 @@ public class ThunderMagic : WeaponComponent
 
         if (lv >= 4)
         {
+            SoundManger.i.PlaySound(8);
             GameObject thunder6 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 6 * dir, rotation, transform);
             thunder6.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
             yield return new WaitForSeconds(0.1f);
 
+            SoundManger.i.PlaySound(8);
             GameObject thunder7 = Instantiate(thunder, GamePlayerMoveControl.i.playerPos + 7 * dir, rotation, transform);
             thunder7.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
             yield return new WaitForSeconds(0.1f);
@@ -122,6 +129,7 @@ public class ThunderMagic : WeaponComponent
             float y = Random.Range(-5, 5);
             Vector2 randomPos = GamePlayerMoveControl.i.playerPos + new Vector2(x, y);
 
+            SoundManger.i.PlaySound(8);
             GameObject thunderMax = Instantiate(thunder, randomPos, rotation, transform);
             thunderMax.transform.GetComponentInChildren<MagicVFX>().SetAttack(dmg, endCriDmg, endCri, dur, amount, debuffType);
 

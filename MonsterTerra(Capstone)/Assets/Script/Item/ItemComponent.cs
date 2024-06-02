@@ -27,6 +27,7 @@ public class ItemComponent : MonoBehaviour
     }
     private void GetItem(int index)
     {
+        SoundManger.i.PlaySound(11);
         GamePlayerManager.i.setItme(index);
     }
 

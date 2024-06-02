@@ -484,6 +484,7 @@ public class Enemy : MonoBehaviour
     //default 값은 0으로 효과를 넣고 크리티컬 데미지와 확률을 넣을 수 있게 수정하기!
     public void TakeDamage(float dmg, float cridmg, float cri, int Etype = 0, float dur = 0f, float amount = 0f)
     {
+        SoundManger.i.PlaySound(2);
         dmg -= defense; //방어력에 따른 데미지 감소
         float criTrigger = Random.Range(0, 1f);
         if(criTrigger <= cri) // 크리티컬 적용

@@ -30,7 +30,7 @@ public class GamePlayerManager : MonoBehaviour
 
     public int lv = 1;
     public int exp = 0; // 현재 경험치
-    public int[] maxExp = { 100, 140, 196  ,100000000}; // Level UP 하기까지 필요한 경험치
+    public int MaxExp = 50; //처음에 레벨업 하는데 필요한 경험치
 
     //죽었는지 판단하는 변수
     public bool isDead = false;
@@ -59,15 +59,17 @@ public class GamePlayerManager : MonoBehaviour
         } 
         CC = Character.GetComponent<CharacterComponent>();
     }
-    public void GetExp() //레벨업 시스템
+    public void GetExp(int expAmount) //레벨업 시스템
     {
-        IncreaseExperience(10);
+        IncreaseExperience(expAmount);
 
-        if (exp >= maxExp[Mathf.Min(lv, maxExp.Length-1)])
+        if (exp >= MaxExp)
         {
             CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
+            MaxExp = (int)(MaxExp*1.4f);
+            SoundManger.i.PlaySound(3);
             uiCard.SetActive(true);
         }
     }
@@ -163,7 +165,8 @@ public class GamePlayerManager : MonoBehaviour
 
     public void UseItme(int idx)
     {
-        if(idx == 1)
+        SoundManger.i.PlaySound(12);
+        if (idx == 1)
         {
             StartCoroutine(Anger());
         }

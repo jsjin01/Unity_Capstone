@@ -32,7 +32,7 @@ public class PoisonMagic : WeaponComponent
         {
             return;
         }
-
+        SoundManger.i.PlaySound(9);
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
         //Posion Bullet »ý¼º

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static Spawner i;
+
     public Transform[] spawnPoint;
     public SpawnData[] spawnData;
     private int currentEnemyCount = 0; // 현재 소환된 몹의 수
@@ -31,8 +33,9 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
+        i = this;
         spawnPoint = GetComponentsInChildren<Transform>(); // point array( me = 0, components = 1~N )
-        maxEnemies = 10 * (level + 1);
+        maxEnemies = 5 * (level + 1);
     }
     
     void Update()

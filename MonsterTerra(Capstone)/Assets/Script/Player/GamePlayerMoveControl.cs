@@ -5,6 +5,7 @@ using UnityEngine;
 public class GamePlayerMoveControl : MonoBehaviour
 {
     public static GamePlayerMoveControl i;
+    [SerializeField] GameObject Option;
 
     Rigidbody2D rb;
     BoxCollider2D cd;
@@ -48,7 +49,17 @@ public class GamePlayerMoveControl : MonoBehaviour
                 StartCoroutine("MissKey");
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SoundManger.i.PlaySound(15);
+            GamePlayerManager.i.CC.CharaterSkill();
+        }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Option.SetActive(true);
+            Time.timeScale = 0f;
+        }
         //아이템 사용
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -147,7 +158,8 @@ public class GamePlayerMoveControl : MonoBehaviour
 
     public void TakeDamage(float dmg) //데미지 받는 행위
     {
-        dmg *= GamePlayerManager.i.DmgAdd;
+        SoundManger.i.PlaySound(1);
+        dmg *= GamePlayerManager.i.DmgAdd; //버프로 인한 데미지 증가
         if (GamePlayerManager.i.isDead)
         {
             return;
@@ -172,6 +184,7 @@ public class GamePlayerMoveControl : MonoBehaviour
         CameraControl.i.StartCameraShake(0.1f,0.2f,50f);
         if(GamePlayerManager.i.hp <= 0)
         {
+            SoundManger.i.PlaySound(13);
             GamePlayerManager.i.isDead = true; //죽음 활성화
             rb.constraints = RigidbodyConstraints2D.FreezePosition;//몬스터에게 안 밀리도록 고정
             anit.SetTrigger("Dead");

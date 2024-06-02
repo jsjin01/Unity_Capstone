@@ -28,6 +28,7 @@ public class Feather : WeaponComponent
         {
             return;
         }
+        SoundManger.i.PlaySound(10);
         if (endAtkSpd < dur) //최종 공격속도가 버프지속시간보다 짧을 수 없음
         {
             endAtkSpd = dur;

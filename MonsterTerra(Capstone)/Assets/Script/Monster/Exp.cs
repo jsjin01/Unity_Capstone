@@ -5,7 +5,7 @@ using UnityEngine;
 public class Exp : MonoBehaviour
 {
     public float destroyDelay = 10f;
-
+    public int amount = 10;
     // ExpPrefab이 생성될 때 호출되는 함수
     void Start()
     {
@@ -19,21 +19,8 @@ public class Exp : MonoBehaviour
         // 충돌한 오브젝트가 "Player" 태그를 가진 플레이어인지 확인합니다.
         if (collision.CompareTag("Player"))
         {
-            GamePlayerManager.i.GetExp();
+            GamePlayerManager.i.GetExp(amount);
             Destroy(gameObject);
-
-            //// GameManager의 인스턴스를 가져옵니다.
-            //GameManager gameManager = GameManager.instance;
-
-            //// GameManager 인스턴스가 존재하는지 확인합니다.
-            //if (gameManager != null)
-            //{
-            //    // 경험치를 증가시킵니다.
-            //    gameManager.GetExp();
-
-            //    // 적 오브젝트를 제거합니다.
-            //    Destroy(gameObject);
-            //}
         }
     }
 }

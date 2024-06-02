@@ -28,6 +28,7 @@ public class Sickle : WeaponComponent
         {
             return;
         }
+        SoundManger.i.PlaySound(5);
         GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject sickle = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);

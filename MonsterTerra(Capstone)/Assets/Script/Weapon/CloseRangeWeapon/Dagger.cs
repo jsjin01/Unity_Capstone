@@ -27,6 +27,7 @@ public class Dagger : WeaponComponent
         {
             return;
         }
+        SoundManger.i.PlaySound(4);
         GamePlayerMoveControl.i.anit.SetTrigger("CloseRange");
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         GameObject dagger = Instantiate(weapon[index], GamePlayerMoveControl.i.playerPos, rotation, transform);

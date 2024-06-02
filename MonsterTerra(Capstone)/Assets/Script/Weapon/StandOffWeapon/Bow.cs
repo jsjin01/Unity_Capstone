@@ -27,6 +27,7 @@ public class Bow : WeaponComponent
             return;
         }
 
+        SoundManger.i.PlaySound(6);
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
         //화살 생성

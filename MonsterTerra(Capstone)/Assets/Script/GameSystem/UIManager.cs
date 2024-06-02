@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     //버프 관련 
     GameObject buffUI = null; //버프 UI를 가져옴
 
+    //Option 관련
+    [SerializeField] Slider back_vol;
+    [SerializeField] Slider effect_vol;
     private void Awake()
     {
         i = this;
@@ -30,13 +33,24 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 100f);
+        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 100f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Spawner.i.BossKillCount == 2)
+        {
+            SoundManger.i.PlaySound(14);
+            GameObject.Find("MainUI").gameObject.SetActive(false);
+            GameObject.Find("GameClear").gameObject.SetActive(true);
+            GamePlayerManager.i.hp = GamePlayerManager.i.MaxHp;
+            GameManager.i.isLive = false;
+        }
+
+        setVolume_effect(effect_vol.value);
+        setVolume_background(back_vol.value);
     }
 
     public void SetWeaponImg(int idx, int i)//무슨 타입, 몇번째 무기 => 무기 이미지 설정
@@ -93,5 +107,28 @@ public class UIManager : MonoBehaviour
             ItemUI = GameObject.Find("Item").gameObject;
         }
         ItemUI.transform.GetChild(num).GetChild(2).GetComponent<Image>().sprite = ItemImg[idx];
+    }
+
+    public void BtnSound() //버튼음
+    {
+        SoundManger.i.PlaySound(0);
+    }
+
+    public void setVolume_background(float volume)
+    {
+        Debug.Log("배경음악: " + volume);
+        PlayerPrefs.SetFloat("Volume_Back", volume);
+        PlayerPrefs.Save();
+    }
+    public void setVolume_effect(float volume)
+    {
+        Debug.Log("효과음: " + volume);
+        PlayerPrefs.SetFloat("Volume_Effect", volume);
+        PlayerPrefs.Save();
+    }
+
+    public void SetTime()
+    {
+        Time.timeScale = 1.0f;
     }
 }

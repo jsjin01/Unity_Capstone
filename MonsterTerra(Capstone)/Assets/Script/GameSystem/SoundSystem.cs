@@ -8,7 +8,27 @@ public class SoundManger : MonoBehaviour
     GameObject baseobj;
     [SerializeField] AudioSource Bgm;
     [SerializeField] AudioClip[] clipList;
-
+    /// <summary>
+    /// UI 조작음
+    /// 0 => 버튼음
+    /// 인게임 소리
+    /// 1 => 플레이어가 맞는 소리
+    /// 2 => 몬스터가 데미지 입는 부분
+    /// 3 => Level UP 소리
+    /// 4 => Long Sword & Dagger & Spear
+    /// 5 => Axe & sickle
+    /// 6 => Bow & CrossBow
+    /// 7 => Gun
+    /// 8 => Thunder
+    /// 9 => magic
+    /// 10 => support
+    /// 11 => 물약 획득 소리
+    /// 12 => 물약 사용 소리
+    /// 13 => 죽었을 때 사운드
+    /// 14 => 깻을 때 사운드
+    /// 15 => skill
+    /// </summary>
+    /// 
     private void Awake()
     {
         i = this;
@@ -52,7 +72,7 @@ public class SoundManger : MonoBehaviour
     }
 
 
-    public void StopSound(int id)
+    public void StopSound(int kind,int id)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
