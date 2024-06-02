@@ -34,7 +34,8 @@ public class EnemyBullet : MonoBehaviour
         {
             // 플레이어를 향하는 방향 벡터를 계산
             Vector2 targetDirection = ((Vector2)target.position - rb.position).normalized;
-
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             // 초기 방향과 플레이어 방향 사이를 보간하여 총알의 방향을 조정
             Vector2 newDirection = Vector2.Lerp(rb.velocity.normalized, targetDirection, homingSpeed * Time.deltaTime);
             rb.velocity = newDirection * rb.velocity.magnitude; // 속도 유지

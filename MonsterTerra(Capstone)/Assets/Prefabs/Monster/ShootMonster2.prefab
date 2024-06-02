@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d82dccec3631a488a0418be264fe1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBulletPrefab: {fileID: 5981970629542209787, guid: 04f0f5a26c28319459541806f27f95ff, type: 3}
+  enemyBulletPrefab: {fileID: 5981970629542209787, guid: 672fb4d8bcd54a247ad16c54ea6d3ebd, type: 3}
   firePoint: {fileID: 0}
   chargePoint: {fileID: 0}
   fireRate: 2
@@ -145,10 +145,12 @@ MonoBehaviour:
   defense: 0
   target: {fileID: 0}
   expPrefab: {fileID: 7836481195849247303, guid: 21d60d3e19f389c49a4067ed914f6231, type: 3}
+  isLive: 0
   anit: {fileID: 0}
   coll: {fileID: 0}
   fireRange: 5
   chargeRange: 5
+  isAttack: 1
 --- !u!1001 &7177409056252413787
 PrefabInstance:
   m_ObjectHideFlags: 0
