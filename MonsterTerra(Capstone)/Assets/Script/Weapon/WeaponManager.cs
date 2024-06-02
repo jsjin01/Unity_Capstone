@@ -8,10 +8,10 @@ public class WeaponManager : MonoBehaviour
 
     [Header("# Weapon Info")]
     [SerializeField] int idx = 4; //현재 무기 1=> 근접, 2 => 원거리, 3 => 마법봉, 4 => 지원 무기 
-    [SerializeField] CRTYPE crtype; // 선택한 근접무기
-    [SerializeField] SOTYPE sotype; // 선택한 원거리무기
-    [SerializeField] MWTYPE mwtype; // 선택한 마법무기
-    [SerializeField] SPTYPE sptype; // 선택한 지원무기
+    [SerializeField] public CRTYPE crtype; // 선택한 근접무기
+    [SerializeField] public SOTYPE sotype; // 선택한 원거리무기
+    [SerializeField] public MWTYPE mwtype; // 선택한 마법무기
+    [SerializeField] public SPTYPE sptype; // 선택한 지원무기
     SpriteRenderer weaponSR;        // 플레이어가 하고 있는 캐릭터의 손의 무기 
 
     //해당 무기의 weapon component를 가져옴
@@ -35,26 +35,26 @@ public class WeaponManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
 
-            if (idx == 1)
-            {
-                crWeapon.WeaponLevelUp();
-            }
-            else if (idx == 2)
-            {
-                soWeapon.WeaponLevelUp();
-            }
-            else if (idx == 3) 
-            {
-                mwWeapon.WeaponLevelUp();
-            }
-            else if(idx == 4)
-            {
-                spWeapon.WeaponLevelUp();
-            }
-        }
+        //    if (idx == 1)
+        //    {
+        //        crWeapon.WeaponLevelUp();
+        //    }
+        //    else if (idx == 2)
+        //    {
+        //        soWeapon.WeaponLevelUp();
+        //    }
+        //    else if (idx == 3) 
+        //    {
+        //        mwWeapon.WeaponLevelUp();
+        //    }
+        //    else if(idx == 4)
+        //    {
+        //        spWeapon.WeaponLevelUp();
+        //    }
+        //}
     }
 
 
@@ -135,6 +135,26 @@ public class WeaponManager : MonoBehaviour
         crWeapon.SetCdamage(cc);
         soWeapon.SetCdamage(cc);
         mwWeapon.SetCdamage(cc);    
-        //spWeapon.SetCdamage(cc);
+        spWeapon.SetCdamage(cc);
     }
+
+    public void WeaponUpgrade(int idx)
+    {
+        if (idx == 1)
+        {
+            crWeapon.WeaponLevelUp();
+        }
+        else if (idx == 2)
+        {
+            soWeapon.WeaponLevelUp();
+        }
+        else if (idx == 3)
+        {
+            mwWeapon.WeaponLevelUp();
+        }
+        else if (idx == 4)
+        {
+            spWeapon.WeaponLevelUp();
+        }
+    } 
 }

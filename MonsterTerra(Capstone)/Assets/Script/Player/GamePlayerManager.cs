@@ -23,7 +23,7 @@ public class GamePlayerManager : MonoBehaviour
     public float speed = 3f;
     public float DmgAdd = 1f;
     public float Cbuff = 1f; // 캐릭터에게 적용되는 버프
-    public CardManager uiCard;
+    public GameObject uiCard;
 
     //Item 창 관련
     public int[] item = {0, 0, 0, 0 };
@@ -68,7 +68,7 @@ public class GamePlayerManager : MonoBehaviour
             CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
-            uiCard.Show();
+            uiCard.SetActive(true);
         }
     }
 
