@@ -17,6 +17,7 @@ TagManager:
   - ShootMonster4
   - BossMonster1
   - BossMonster2
+  - Tile
   layers:
   - Default
   - TransparentFX
