@@ -829,7 +829,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: AttackSpeedUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13489,7 +13489,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: CriDmgUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13761,7 +13761,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: AttackUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14785,7 +14785,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: SOLevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17443,7 +17443,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: CRLevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17851,7 +17851,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: MaxHpUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20190,7 +20190,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: criUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21195,7 +21195,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: SPLevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22062,7 +22062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: MWLevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40108,7 +40108,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1414432392}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: SpeedUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
