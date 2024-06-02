@@ -72,7 +72,7 @@ public class UISystem : MonoBehaviour
         {
             case InfoType.Exp:
                 float curExp = GamePlayerManager.i.exp;
-                float maxExp = GamePlayerManager.i.maxExp[GamePlayerManager.i.lv];
+                float maxExp = GamePlayerManager.i.maxExp[Mathf.Min(GamePlayerManager.i.lv, GamePlayerManager.i.maxExp.Length - 1)];
                 mySlider.value = curExp / maxExp;
                 break;
             case InfoType.Hp:

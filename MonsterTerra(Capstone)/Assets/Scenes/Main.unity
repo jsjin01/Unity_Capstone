@@ -780,7 +780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.63333, y: -72.5}
+  m_AnchoredPosition: {x: 171.92499, y: -72.5}
   m_SizeDelta: {x: 50, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &31093438
@@ -826,7 +826,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 31093439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &31093439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13443,7 +13455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 415267096}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &415267096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13657,7 +13681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.535, y: -72.5}
+  m_AnchoredPosition: {x: 122.5, y: -72.5}
   m_SizeDelta: {x: 50, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &426063945
@@ -13703,7 +13727,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 426063946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &426063946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14715,7 +14751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 555224993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &555224993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17361,7 +17409,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 742566564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &742566564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17711,7 +17771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.771427, y: -72.5}
+  m_AnchoredPosition: {x: 196.6375, y: -72.5}
   m_SizeDelta: {x: 50, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769829961
@@ -17757,7 +17817,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 769829962}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &769829962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19973,7 +20045,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 922719579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &922719579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20816,7 +20900,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1056623733}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1056623733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21671,7 +21767,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126660663}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1126660663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21949,6 +22057,7 @@ MonoBehaviour:
   speed: 5
   DmgAdd: 1
   Cbuff: 1
+  uiCard: {fileID: 1414432392}
   item: 00000000000000000000000000000000
   lv: 0
   exp: 0
@@ -29079,6 +29188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414432391}
+  - component: {fileID: 1414432392}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -29107,6 +29217,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 255, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1414432392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414432390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9dafe26ff9842b43a7a83bfef97d019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1416023258
 GameObject:
   m_ObjectHideFlags: 0
@@ -39287,7 +39409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.00625, y: -72.5}
+  m_AnchoredPosition: {x: 188.4, y: -72.5}
   m_SizeDelta: {x: 50, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992761008
@@ -39333,7 +39455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1992761009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1414432392}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1992761009
 MonoBehaviour:
   m_ObjectHideFlags: 0

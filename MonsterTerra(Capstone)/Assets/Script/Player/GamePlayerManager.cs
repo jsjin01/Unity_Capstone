@@ -21,6 +21,7 @@ public class GamePlayerManager : MonoBehaviour
     public float speed = 3f;
     public float DmgAdd = 1f;
     public float Cbuff = 1f; // 캐릭터에게 적용되는 버프
+    public CardManager uiCard;
 
     //Item 창 관련
     public int[] item = {0, 0, 0, 0 };
@@ -60,11 +61,12 @@ public class GamePlayerManager : MonoBehaviour
     {
         IncreaseExperience(10);
 
-        if (exp >= maxExp[lv])
+        if (exp >= maxExp[Mathf.Min(lv, maxExp.Length-1)])
         {
             CC.LevelUp(); //캐릭터별로 고유한 패시브 특성 적용
             lv++;
             exp = 0;
+            uiCard.Show();
         }
     }
 

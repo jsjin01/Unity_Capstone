@@ -67,4 +67,16 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    public void Stop()
+    {
+        isLive = false;
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        isLive = true;
+        Time.timeScale = 1f;
+    }
 }
