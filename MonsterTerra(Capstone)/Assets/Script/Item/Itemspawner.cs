@@ -16,7 +16,7 @@ public class Itemspawner : MonoBehaviour
     {
         if (GameManager.i.isLive && !isStart) //처음 스폰하는 부분
         {
-            InvokeRepeating("CreatItem", 0f, 10f);
+            InvokeRepeating("CreatItem", 0f, 10f*(2 -GamePlayerManager.i.Cbuff));
             isStart = true;
         }
     }

@@ -139,7 +139,7 @@ public class GamePlayerMoveControl : MonoBehaviour
         while (elapsedTime < 5f)
         {
             elapsedTime += Time.deltaTime;
-            GamePlayerManager.i.mp = elapsedTime * 20;
+            GamePlayerManager.i.dash = elapsedTime * 20;
             yield return null;
         }
         isMiss = true;

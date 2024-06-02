@@ -11,9 +11,11 @@ public class GamePlayerManager : MonoBehaviour
     public CharacterComponent CC; // 캐릭터 컴포넌트
     public float MaxHp = 100;
     public float hp = 100;
-    public float MaxMp = 100;
     public float def = 0; // 보호막
+    public float MaxMp = 100;
     public float mp = 100;
+    public float MaxDash = 100;
+    public float dash = 100;
     public float atk = 20;
     public float atkSpd = 1f;
     public float cri = 0;

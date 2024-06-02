@@ -6,6 +6,7 @@ public class ItemMaven : CharacterComponent
 {
     private void OnEnable()
     {
+        GamePlayerManager.i.Cbuff = 1.5f;
         Debug.Log("캐릭터가 할당되었습니다.");
     }
     public override void CharaterSkill()

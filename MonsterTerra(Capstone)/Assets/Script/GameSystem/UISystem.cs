@@ -41,6 +41,7 @@ public class UISystem : MonoBehaviour
         Time,
         Hp,
         Mp,
+        Dash,
         Stage,
         Weapon,
         None
@@ -84,6 +85,11 @@ public class UISystem : MonoBehaviour
                 float curMp = GamePlayerManager.i.mp;
                 float maxMp = GamePlayerManager.i.MaxMp;
                 mySlider.value = curMp / maxMp;
+                break;
+            case InfoType.Dash:
+                float curDash = GamePlayerManager.i.dash;
+                float maxDash = GamePlayerManager.i.MaxDash;
+                mySlider.value = curDash / maxDash;
                 break;
             case InfoType.Stage:
                 myText.text = string.Format("Stage {0}", spawner.level + 1);
